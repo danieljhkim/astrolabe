@@ -1,8 +1,9 @@
 """JPL Horizons adapter (M5, stretch) — via astroquery.jplhorizons.
 
-Ephemerides are time-series, not a static catalog, so this adapter is deliberately
-thin and its storage question is left to an ADR (SPEC §7 / M5). It returns the astropy
-Table Horizons gives, normalized only to carry ra/dec + a source_id = target id.
+Ephemerides are time-series, not a static catalog, so this adapter declares
+`kind = "ephemeris"` and its datasets land under `data/processed/ephemeris/`
+(SPEC §7, resolved). It returns the astropy Table Horizons gives, normalized only
+to carry ra/dec + a source_id = target id.
 
     {"target": "499", "location": "500@399", "epochs": {...} | [jd, ...]}
 """
@@ -20,6 +21,7 @@ class HorizonsSource:
     """Adapter over JPL Horizons ephemeris service."""
 
     name = "horizons"
+    kind = "ephemeris"
 
     def query(self, params: dict[str, Any]) -> Table:
         table = self._run(params)

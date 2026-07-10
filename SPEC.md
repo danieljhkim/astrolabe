@@ -34,9 +34,13 @@ src/astrolabe/
 - **Source protocol** is the load-bearing abstraction: `query() -> astropy Table` with
   standardized units/columns per astropy conventions. Adapters are isolated; nothing outside
   `sources/` may import a specific provider SDK.
-- **Store**: raw fetches land in `data/raw/<source>/`, normalized tables in
-  `data/processed/` as Parquet with dataset metadata (source, query, fetched_at, row count)
-  in a sidecar JSON. `data/` is gitignored.
+- **Store**: raw fetches land in `data/raw/<source>/`; normalized tables live under
+  `data/processed/<kind>/` (kind ∈ `catalog` | `ephemeris` | `derived`) as Parquet with a
+  sidecar JSON (kind, source, query, fetched_at, row count; derived datasets carry
+  `lineage` naming their parents). Names follow a per-kind grammar and must be
+  deterministic w.r.t. their query — overwrite-by-name is a refresh, a changed query is a
+  new name (full layout + grammar in `store.py`'s docstring). `data/scratch/` is free-form
+  notebook space outside the catalog. `data/` is gitignored.
 - **Analysis** functions are pure (Table in, Table/figure out) and unit-tested against small
   fixture tables — no network in tests.
 
@@ -55,9 +59,9 @@ src/astrolabe/
 - [x] **M3 — analysis v1**: cross-match two catalogs, HR diagram from Gaia photometry.
 - [x] **M4 — second source (SDSS)**: proves the adapter seam; protocol held (only the
       `objid -> source_id` rename differed — absorbed by per-adapter normalization).
-- [~] **M5 — ephemeris (stretch)**: JPL Horizons adapter scaffolded (`sources/horizons.py`,
-      normalized to ra/dec + target `source_id`). Time-series storage decision still open —
-      deferred to an ADR (see §7); ephemerides currently flow through the same `store.py`.
+- [x] **M5 — ephemeris (stretch)**: JPL Horizons adapter (`sources/horizons.py`,
+      normalized to ra/dec + target `source_id`). Storage resolved (2026-07): ephemerides
+      share `store.py` but land under their own `data/processed/ephemeris/` kind (see §7).
 
 ## 6. Constellation integration
 
@@ -69,5 +73,10 @@ src/astrolabe/
 ## 7. Open questions
 
 - Column-naming convention for normalized tables (adopt Gaia's? define a minimal house set?)
-- Dataset versioning: overwrite vs. append-with-fetched_at partitions in `data/processed/`.
-- Whether ephemeris/event data (time-series) shares `store.py` or gets its own path (M5).
+- ~~Dataset versioning~~ — **resolved 2026-07**: overwrite-by-name; the sidecar's exact
+  query makes datasets reproducible, and a name must be deterministic w.r.t. its query
+  (time-dependent identity goes in the name, e.g. `mars_2026`). See `store.py` docstring.
+- ~~Ephemeris/time-series storage path~~ — **resolved 2026-07**: shares `store.py`, but
+  every dataset is kind-partitioned under `data/processed/<kind>/` (`catalog` |
+  `ephemeris` | `derived`); adapters declare their kind (`Source.kind`), and derived
+  datasets record `lineage`. Decided with Daniel in-session; recorded here (no ADR).

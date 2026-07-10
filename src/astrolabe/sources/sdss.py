@@ -24,6 +24,7 @@ class SDSSSource:
     """Adapter over the SDSS SkyServer via astroquery."""
 
     name = "sdss"
+    kind = "catalog"
 
     def query(self, params: dict[str, Any]) -> Table:
         if "sql" in params:

@@ -26,6 +26,7 @@ class GaiaSource:
     """Adapter over the ESA Gaia TAP service."""
 
     name = "gaia"
+    kind = "catalog"
 
     def query(self, params: dict[str, Any]) -> Table:
         adql = params.get("adql") or self._cone_adql(params)

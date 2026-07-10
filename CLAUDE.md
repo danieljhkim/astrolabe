@@ -10,15 +10,21 @@ current as work lands.
 ## Orientation
 
 - **`src/astrolabe/sources/`** — one adapter per data source; each implements the
-  `Source` protocol in [base.py](src/astrolabe/sources/base.py) (`name` +
+  `Source` protocol in [base.py](src/astrolabe/sources/base.py) (`name` + `kind` +
   `query(params) -> astropy.table.Table`). **The load-bearing seam: nothing outside
   `sources/` may import a provider SDK.** Adapters normalize to the house standard
   columns (`source_id`, `ra`, `dec`); provider imports and the network call are
   isolated in a small method (`_run*`) so tests inject fixtures instead of hitting the
   network.
 - **`store.py`** — catalog: astropy Table ↔ Parquet under `data/` (gitignored), DuckDB
-  query layer. Processed datasets in `data/processed/<name>.parquet` + sidecar
-  `<name>.json` (source, query, fetched_at, n_rows); raw fetches in `data/raw/<source>/`.
+  query layer. Datasets are kind-partitioned: `data/processed/<kind>/<name>.parquet` +
+  sidecar `<name>.json`, kind ∈ `catalog` | `ephemeris` | `derived` (adapters declare
+  theirs via `Source.kind`; derived datasets carry `lineage` naming their parents).
+  Names follow a per-kind grammar, deterministic w.r.t. the query — layout, grammar, and
+  the overwrite rule live in `store.py`'s module docstring. Raw fetches in
+  `data/raw/<source>/`; `data/scratch/` is free-form notebook space outside the catalog.
+  `Store.query` registers views as `<kind>.<name>` (plus an unqualified alias while a
+  name is unique across kinds).
 - **`analysis/`** — pure functions (Table in, Table/Figure out): `crossmatch`,
   `hr_diagram`. No network, no I/O side effects.
 - **`cli.py`** — `astrolabe fetch|query|list|hr`.

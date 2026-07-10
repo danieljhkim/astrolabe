@@ -51,8 +51,10 @@ def cmd_fetch(args: argparse.Namespace) -> int:
         return 2
     table = source.query(params)
     store = Store(args.data_dir)
-    meta = store.write(table, name=args.name, source=source.name, query=params)
-    print(f"wrote {meta.n_rows} rows to dataset {meta.name!r} "
+    meta = store.write(
+        table, name=args.name, source=source.name, kind=source.kind, query=params
+    )
+    print(f"wrote {meta.n_rows} rows to {meta.kind} dataset {meta.name!r} "
           f"({', '.join(meta.columns)})")
     return 0
 
@@ -71,13 +73,13 @@ def cmd_query(args: argparse.Namespace) -> int:
 
 def cmd_list(args: argparse.Namespace) -> int:
     store = Store(args.data_dir)
-    names = store.list_datasets()
-    if not names:
+    pairs = store.datasets()
+    if not pairs:
         print("(no datasets)")
         return 0
-    for name in names:
-        meta = store.read_meta(name)
-        print(f"{name}\t{meta.source}\t{meta.n_rows} rows\t{meta.fetched_at}")
+    for kind, name in pairs:
+        meta = store.read_meta(name, kind)
+        print(f"{kind}/{name}\t{meta.source}\t{meta.n_rows} rows\t{meta.fetched_at}")
     return 0
 
 

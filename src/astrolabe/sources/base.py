@@ -33,9 +33,12 @@ class Source(Protocol):
 
     Implementations are cheap, stateless handles; the network call happens in
     `query()`. `name` is the stable slug used for storage paths and CLI selection.
+    `kind` is the dataset kind this source produces (`store.KINDS`) — it decides
+    where fetched data lands under `data/processed/<kind>/`.
     """
 
     name: str
+    kind: str
 
     def query(self, params: dict[str, Any]) -> Table:
         """Run a query and return an astropy Table.

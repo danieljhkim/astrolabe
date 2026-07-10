@@ -27,7 +27,7 @@ def test_fetch_then_query_then_list(tmp_path, gaia_table, monkeypatch, capsys):
     rc = cli.main(["--data-dir", str(tmp_path), "list"])
     assert rc == 0
     out = capsys.readouterr().out
-    assert "stars" in out and "gaia" in out
+    assert "catalog/stars" in out and "gaia" in out
 
 
 def test_fetch_requires_params(tmp_path, capsys):
