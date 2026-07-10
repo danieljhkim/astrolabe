@@ -36,5 +36,7 @@ current as work lands.
 
 - Structured decisions (storage format, column convention — see SPEC §7) → ADRs in
   polaris, not inline here.
-- Orbit workspace `ws_astrolabe` is provisioned only once M2 has landed and there is
-  dispatchable work (SPEC §6).
+- Orbit workspace **`ws_astrolabe`** is provisioned (dk-server-1, ship-mode `local`,
+  base branch `agent-main`) — research tasks are tracked there (SPEC §6).
+- Research work here is performed by **tycho**, the astrophysicist agent
+  (`agentbase/tycho/memory`).
