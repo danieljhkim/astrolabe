@@ -8,5 +8,6 @@ from __future__ import annotations
 
 from .crossmatch import crossmatch
 from .hr import hr_diagram
+from .kinematics import galactocentric_kinematics, rotation_curve
 
-__all__ = ["crossmatch", "hr_diagram"]
+__all__ = ["crossmatch", "galactocentric_kinematics", "hr_diagram", "rotation_curve"]
