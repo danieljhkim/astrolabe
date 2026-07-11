@@ -26,8 +26,11 @@ current as work lands.
   `Store.query` registers views as `<kind>.<name>` (plus an unqualified alias while a
   name is unique across kinds).
 - **`analysis/`** — pure functions (Table in, Table/Figure out): `crossmatch`,
-  `hr_diagram`. No network, no I/O side effects.
+  `hr_diagram`, `galactocentric_kinematics`, `rotation_curve`, `ephemeris_residuals`.
+  No network, no I/O side effects.
 - **`cli.py`** — `astrolabe fetch|query|list|hr`.
+- **`docs/`** — cross-repo exchange conventions (e.g. `baseline-interface.md`, the
+  orrery n-body baseline contract for ORB-10076).
 
 ## Working here
 
