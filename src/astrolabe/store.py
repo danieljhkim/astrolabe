@@ -64,6 +64,9 @@ class DatasetMeta:
     n_rows: int
     columns: list[str]
     lineage: list[dict[str, Any]] | None = None  # derived only: parent datasets
+    # column name -> meaning + units, for datasets consumed outside this repo
+    # (exchange deliveries à la ORB-10075/ORB-10168)
+    semantics: dict[str, str] | None = None
 
     @classmethod
     def now(
@@ -75,6 +78,7 @@ class DatasetMeta:
         query: dict[str, Any],
         table: Table,
         lineage: list[dict[str, Any]] | None = None,
+        semantics: dict[str, str] | None = None,
     ) -> DatasetMeta:
         return cls(
             name=name,
@@ -85,6 +89,7 @@ class DatasetMeta:
             n_rows=len(table),
             columns=list(table.colnames),
             lineage=lineage,
+            semantics=semantics,
         )
 
 
@@ -137,13 +142,16 @@ class Store:
         query: dict[str, Any] | None = None,
         raw: Table | None = None,
         lineage: list[dict[str, Any]] | None = None,
+        semantics: dict[str, str] | None = None,
     ) -> DatasetMeta:
         """Persist a normalized Table as a processed dataset + sidecar metadata.
 
         `kind` places the dataset in the layout above (adapters carry the right one
         as `Source.kind`). Derived datasets should pass `lineage` naming their parent
         datasets. If `raw` is given it is stored under `data/raw/<source>/` as
-        fetched; the normalized `table` is the queryable one.
+        fetched; the normalized `table` is the queryable one. `semantics` (column
+        name -> meaning + units) makes the sidecar self-describing for datasets
+        consumed outside this repo.
         """
         _check_kind(kind)
         _write_parquet(table, self._processed_path(kind, name))
@@ -153,7 +161,7 @@ class Store:
 
         meta = DatasetMeta.now(
             name=name, kind=kind, source=source, query=query or {}, table=table,
-            lineage=lineage,
+            lineage=lineage, semantics=semantics,
         )
         self._meta_path(kind, name).write_text(json.dumps(asdict(meta), indent=2))
         return meta

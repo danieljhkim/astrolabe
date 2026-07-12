@@ -16,6 +16,7 @@ _REGISTRY: dict[str, str] = {
     "gaia": "astrolabe.sources.gaia:GaiaSource",
     "sdss": "astrolabe.sources.sdss:SDSSSource",
     "horizons": "astrolabe.sources.horizons:HorizonsSource",
+    "sparc": "astrolabe.sources.sparc:SPARCSource",
 }
 
 SOURCE_NAMES = tuple(_REGISTRY)

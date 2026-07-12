@@ -62,6 +62,11 @@ src/astrolabe/
 - [x] **M5 — ephemeris (stretch)**: JPL Horizons adapter (`sources/horizons.py`,
       normalized to ra/dec + target `source_id`). Storage resolved (2026-07): ephemerides
       share `store.py` but land under their own `data/processed/ephemeris/` kind (see §7).
+- [x] **M6 — external galaxies (SPARC, ORB-10168)**: `sources/sparc.py` over the
+      published Lelli+2016 MRT tables (whole-survey download, no ra/dec — SPARC
+      publishes none), `analysis/rar.py` radial-acceleration-relation arrays, sidecar
+      `semantics` field for cross-repo deliveries, `scripts/deliver_sparc.py` +
+      `docs/sparc-interface.md` (the ws_orrery universality-fit contract).
 
 ## 6. Constellation integration
 

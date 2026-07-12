@@ -7,6 +7,8 @@ and Store.query exposes each dataset as a schema-qualified DuckDB view.
 
 from __future__ import annotations
 
+import json
+
 import duckdb
 import numpy as np
 import pytest
@@ -67,6 +69,20 @@ def test_derived_lineage_roundtrip(tmp_path, gaia_table):
     meta = store.read_meta("stars_xmatch")
     assert meta.kind == "derived"
     assert meta.lineage == lineage
+
+
+def test_semantics_sidecar_roundtrip(tmp_path, gaia_table):
+    store = Store(tmp_path)
+    semantics = {"ra": "right ascension, deg", "dec": "declination, deg"}
+    store.write(gaia_table, name="stars", source="gaia", semantics=semantics)
+    assert store.read_meta("stars").semantics == semantics
+    # Sidecars written before the field existed still load (default None).
+    store.write(gaia_table, name="stars_old", source="gaia")
+    meta_path = tmp_path / "processed" / "catalog" / "stars_old.json"
+    raw = json.loads(meta_path.read_text())
+    raw.pop("semantics")
+    meta_path.write_text(json.dumps(raw))
+    assert store.read_meta("stars_old").semantics is None
 
 
 def test_same_name_across_kinds_needs_kind(tmp_path, gaia_table):
