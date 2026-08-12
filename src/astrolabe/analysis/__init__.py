@@ -11,6 +11,7 @@ from .hr import hr_diagram
 from .kinematics import galactocentric_kinematics, rotation_curve
 from .rar import radial_acceleration_relation
 from .residuals import ephemeris_residuals
+from .turnaround import annotate_predictions
 from .wide_binaries import (
     binned_vtilde,
     chance_alignment_rate,
@@ -20,6 +21,7 @@ from .wide_binaries import (
 )
 
 __all__ = [
+    "annotate_predictions",
     "binned_vtilde",
     "chance_alignment_rate",
     "crossmatch",

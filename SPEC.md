@@ -72,6 +72,12 @@ src/astrolabe/
       chance-alignment, ṽ(g_N) vs Newtonian mocks, sensitivity table),
       `scripts/run_wide_binary_study.py` + notebook. Predeclared cuts/ecc prior
       before binning; honest Newtonian comparison (not circular-orbit analytic).
+- [x] **M8 — turnaround radii compilation (ORB-10754)**: offline literature
+      Source `sources/turnaround.py` (Local Volume R₀ + Virgo/Fornax; citations
+      + circularity flags), `analysis/turnaround.py` (R_sc=(2GM/H₀²)^{1/3},
+      Pavlidou–Tomaras R_ta,max, ΛCDM R₀ inversion; H₀=67/73 sensitivity),
+      `scripts/deliver_turnaround.py` + `docs/turnaround-interface.md` for the
+      principia shear-consumption study note.
 
 ## 6. Constellation integration
 
