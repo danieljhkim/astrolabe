@@ -67,6 +67,11 @@ src/astrolabe/
       publishes none), `analysis/rar.py` radial-acceleration-relation arrays, sidecar
       `semantics` field for cross-repo deliveries, `scripts/deliver_sparc.py` +
       `docs/sparc-interface.md` (the ws_orrery universality-fit contract).
+- [x] **M7 — wide binaries (ORB-10753)**: `sources/wide_binaries.py` (Gaia DR3
+      local-volume ADQL), `analysis/wide_binaries.py` (El-Badry-style pairing,
+      chance-alignment, ṽ(g_N) vs Newtonian mocks, sensitivity table),
+      `scripts/run_wide_binary_study.py` + notebook. Predeclared cuts/ecc prior
+      before binning; honest Newtonian comparison (not circular-orbit analytic).
 
 ## 6. Constellation integration
 

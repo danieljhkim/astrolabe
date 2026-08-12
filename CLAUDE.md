@@ -27,7 +27,8 @@ current as work lands.
   name is unique across kinds).
 - **`analysis/`** — pure functions (Table in, Table/Figure out): `crossmatch`,
   `hr_diagram`, `galactocentric_kinematics`, `rotation_curve`, `ephemeris_residuals`,
-  `radial_acceleration_relation`. No network, no I/O side effects.
+  `radial_acceleration_relation`, `wide_binaries` (pair selection, ṽ(g_N), Newtonian
+  mocks). No network, no I/O side effects.
 - **`cli.py`** — `astrolabe fetch|query|list|hr`.
 - **`docs/`** — cross-repo exchange conventions (e.g. `baseline-interface.md`, the
   orrery n-body baseline contract for ORB-10076; `sparc-interface.md`, the SPARC
