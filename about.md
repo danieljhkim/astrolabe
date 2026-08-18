@@ -5,7 +5,7 @@ summary: Celestial data collection & analysis — a local library + CLI that pul
 status: active
 stack: Python
 gate: direct
-agents: tycho
+agents: "—"
 ---
 
 # astrolabe — codebase card
