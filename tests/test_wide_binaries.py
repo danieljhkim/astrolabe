@@ -2,8 +2,10 @@
 
 from __future__ import annotations
 
+import astropy.units as u
 import numpy as np
 import pytest
+from astropy.coordinates import SkyCoord
 from astropy.table import Table
 
 from astrolabe.analysis.wide_binaries import (
@@ -20,6 +22,115 @@ from astrolabe.analysis.wide_binaries import (
 )
 from astrolabe.sources import get_source
 from astrolabe.sources.wide_binaries import WideBinarySource
+
+
+def _geometry_fixture(source_ids, ra, dec, *, g_mag=None):
+    """Small all-quality-passing field for an independent geometry oracle."""
+    n = len(source_ids)
+    return Table(
+        {
+            "source_id": source_ids,
+            "ra": ra,
+            "dec": dec,
+            "parallax": np.full(n, 10.0),
+            "parallax_error": np.full(n, 0.05),
+            "pmra": np.full(n, 5.0),
+            "pmdec": np.full(n, -3.0),
+            "pmra_error": np.full(n, 0.05),
+            "pmdec_error": np.full(n, 0.05),
+            "phot_g_mean_mag": np.asarray(g_mag if g_mag is not None else np.arange(n) + 10.0),
+            "bp_rp": np.full(n, 1.0),
+            "ruwe": np.full(n, 1.0),
+        }
+    )
+
+
+def _exhaustive_spherical_oracle_ids(stars, *, ra_shift_deg=0.0, theta_max_arcsec=3600.0):
+    """Independent all-pairs SkyCoord oracle for the test fixtures.
+
+    Fixture stars share valid quality, parallax, and proper motion, so every
+    geometric candidate also passes the non-geometric selector cuts.
+    """
+    ids = [str(value) for value in stars["source_id"]]
+    primary = SkyCoord(stars["ra"] * u.deg, stars["dec"] * u.deg)
+    secondary = SkyCoord(((stars["ra"] + ra_shift_deg) % 360.0) * u.deg, stars["dec"] * u.deg)
+    shifted = ra_shift_deg != 0.0
+    result = set()
+    for i in range(len(stars)):
+        for j in range(len(stars)):
+            if ids[i] == ids[j] or (not shifted and j <= i):
+                continue
+            if primary[i].separation(secondary[j]).arcsec <= theta_max_arcsec:
+                result.add(tuple(sorted((ids[i], ids[j]))))
+    return result
+
+
+def _selected_ids(pairs):
+    return {(str(row["source_id_1"]), str(row["source_id_2"])) for row in pairs}
+
+
+@pytest.mark.parametrize(
+    ("ra", "dec", "shift"),
+    [
+        ([10.0, 10.02], [0.0, 0.0], 0.0),  # ordinary sky position
+        ([359.99, 0.01], [0.0, 0.0], 0.0),  # RA wrap
+        ([0.0, 10.0], [89.9, 89.9], 0.0),  # high declination, wide raw-RA gap
+        ([20.0, 10.0], [0.0, 0.0], 9.98),  # shifted secondary, positive shift
+        ([10.0, 20.0], [0.0, 0.0], -9.98),  # shifted secondary, negative shift
+    ],
+)
+def test_spherical_radius_search_matches_exhaustive_oracle(ra, dec, shift):
+    stars = _geometry_fixture(["a", "b"], ra, dec)
+    pairs = select_wide_pairs(
+        stars,
+        ra_shift_deg=shift,
+        theta_min_arcsec=0.0,
+        s_min_kau=0.0,
+        s_max_kau=1_000.0,
+        max_stars=None,
+    )
+    expected = _exhaustive_spherical_oracle_ids(stars, ra_shift_deg=shift)
+    assert _selected_ids(pairs) == expected == {("a", "b")}
+    if shift:
+        # The previous raw-RA prefilter searched around the unshifted secondary
+        # and would never have generated this shifted-control candidate.
+        assert abs(ra[1] - ra[0]) > 1.05
+
+
+def test_spherical_radius_search_fixes_old_raw_ra_false_negative():
+    stars = _geometry_fixture(["a", "b"], [0.0, 10.0], [89.9, 89.9])
+    pairs = select_wide_pairs(stars, theta_min_arcsec=0.0, s_min_kau=0.0, max_stars=None)
+    # The old equatorial raw-RA window was just 1.05 deg, although this is a
+    # 62.8 arcsec great-circle pair at the pole.
+    assert abs(stars["ra"][1] - stars["ra"][0]) > 1.05
+    assert _selected_ids(pairs) == {("a", "b")}
+
+
+def test_shifted_catalog_excludes_self_and_deduplicates_unordered_pairs():
+    stars = _geometry_fixture(["10", "2"], [10.0, 10.01], [0.0, 0.0], g_mag=[12.0, 12.0])
+    kwargs = {"ra_shift_deg": 0.001, "theta_min_arcsec": 0.0, "s_min_kau": 0.0, "max_stars": None}
+    pairs = select_wide_pairs(stars, **kwargs)
+    repeated = select_wide_pairs(stars, **kwargs)
+    assert len(pairs) == 1
+    assert _selected_ids(pairs) == {("10", "2")}
+    assert list(pairs["source_id_1"]) == list(repeated["source_id_1"])
+    assert list(pairs["source_id_2"]) == list(repeated["source_id_2"])
+    assert pairs.meta["pair_cuts"]["shifted_catalog_semantics"].startswith("unshifted primary")
+
+
+def test_radius_search_records_cap_and_reproducible_candidate_evidence():
+    stars = make_synthetic_star_field(n_pairs=0, n_field=1024, seed=77)
+    pairs = select_wide_pairs(stars, theta_max_arcsec=30.0, max_stars=256)
+    meta = pairs.meta["pair_cuts"]
+    assert meta["n_input_stars"] == 1024
+    assert meta["n_quality_stars"] == 1024
+    assert meta["n_capped_stars"] == 256
+    assert meta["cap_applied"] is True
+    assert meta["candidate_generation"] == "cKDTree unit-vector spherical radius search"
+    assert 0 <= meta["n_radius_candidates"] < 256**2
+    # Runtime is recorded for a reproducible synthetic catalog, but no timing
+    # threshold is asserted because runner load is not a correctness signal.
+    assert meta["candidate_search_seconds"] >= 0.0
 
 
 def test_mass_from_abs_g_solar_like():

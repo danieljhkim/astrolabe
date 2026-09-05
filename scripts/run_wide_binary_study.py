@@ -129,7 +129,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--dec0", type=float, default=40.0)
     parser.add_argument("--radius-deg", type=float, default=30.0)
     parser.add_argument("--max-stars", type=int, default=12000,
-                        help="cap stars after quality cuts for O(N^2) pairing")
+                        help="cap stars after quality cuts before spherical radius search")
     parser.add_argument("--n-mock", type=int, default=8000)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--summary-json", default="",
@@ -319,6 +319,7 @@ def main(argv: list[str] | None = None) -> int:
         "f_triple_residual": BASELINE_CUTS["f_triple_residual"],
         "ecc_prior_baseline": BASELINE_ECC_PRIOR,
         "baseline_cuts": BASELINE_CUTS,
+        "pair_selection": pairs.meta.get("pair_cuts"),
         "datasets": {
             "stars": f"catalog/{STAR_DS}",
             "pairs": f"catalog/{PAIRS_DS}",

@@ -20,10 +20,12 @@ analytic circular-orbit expectation.
 
 from __future__ import annotations
 
+from time import perf_counter
 from typing import Any, Literal
 
 import numpy as np
 from astropy.table import Table
+from scipy.spatial import cKDTree
 
 # -- physical constants (SI-consistent conversions) -----------------------
 # G M_sun / AU^2 in m/s^2: acceleration of 1 Msun at 1 AU.
@@ -159,6 +161,51 @@ def _angular_sep_arcsec(
     return np.rad2deg(ang) * 3600.0
 
 
+def _unit_vectors(ra_deg: np.ndarray, dec_deg: np.ndarray) -> np.ndarray:
+    """Return Cartesian unit vectors for finite ICRS-like coordinates."""
+    ra = np.deg2rad(np.asarray(ra_deg, dtype=float) % 360.0)
+    dec = np.deg2rad(np.asarray(dec_deg, dtype=float))
+    cos_dec = np.cos(dec)
+    return np.column_stack((cos_dec * np.cos(ra), cos_dec * np.sin(ra), np.sin(dec)))
+
+
+def _radius_candidates(
+    primary_ra: np.ndarray,
+    primary_dec: np.ndarray,
+    secondary_ra: np.ndarray,
+    secondary_dec: np.ndarray,
+    theta_max_arcsec: float,
+) -> tuple[list[tuple[int, int]], float, int, int]:
+    """Find complete spherical-radius candidates without an NxN distance array.
+
+    A chord radius on unit vectors is exactly equivalent to a great-circle
+    radius.  The final Vincenty separation check remains authoritative.
+    """
+    primary_ok = np.isfinite(primary_ra) & np.isfinite(primary_dec)
+    secondary_ok = np.isfinite(secondary_ra) & np.isfinite(secondary_dec)
+    primary_idx = np.flatnonzero(primary_ok)
+    secondary_idx = np.flatnonzero(secondary_ok)
+    if not len(primary_idx) or not len(secondary_idx):
+        return [], 0.0, int(len(primary_idx)), int(len(secondary_idx))
+
+    theta_rad = np.deg2rad(theta_max_arcsec / 3600.0)
+    chord_radius = 2.0 * np.sin(theta_rad / 2.0)
+    start = perf_counter()
+    tree = cKDTree(_unit_vectors(secondary_ra[secondary_idx], secondary_dec[secondary_idx]))
+    neighbors = tree.query_ball_point(
+        _unit_vectors(primary_ra[primary_idx], primary_dec[primary_idx]), chord_radius
+    )
+    elapsed = perf_counter() - start
+    candidates = [
+        (int(i), int(secondary_idx[j]))
+        for i, matches in zip(primary_idx, neighbors, strict=True)
+        for j in matches
+    ]
+    # SciPy does not promise a query_ball_point ordering across implementations.
+    candidates.sort()
+    return candidates, elapsed, int(len(primary_idx)), int(len(secondary_idx))
+
+
 def _v_circ_kms(m_tot: np.ndarray, s_au: np.ndarray) -> np.ndarray:
     with np.errstate(invalid="ignore", divide="ignore"):
         return _V_CIRC_1MSUN_1AU_KMS * np.sqrt(m_tot / s_au)
@@ -235,10 +282,24 @@ def select_wide_pairs(
 ) -> Table:
     """El-Badry-style pair selection from a Gaia-shaped star table.
 
-    When `ra_shift_deg` is non-zero, secondary coordinates are shifted in RA
-    before pairing (shifted-field chance-alignment control). `max_stars` caps
-    the post-quality sample (brightest first) to keep the O(N²) pair loop
-    tractable; set None only for small tables.
+    Candidate generation uses a :class:`scipy.spatial.cKDTree` over Cartesian
+    unit vectors, so every pair within ``theta_max_arcsec`` on the sphere is
+    considered, including across RA=0 and near the poles.  It does not form an
+    NxN distance matrix.
+
+    With ``ra_shift_deg == 0``, the catalog is matched to itself, self-matches
+    are excluded, and each unordered source-id pair is considered once.  With
+    a nonzero shift, the unshifted catalog is the primary field and a distinct
+    RA-shifted copy is the secondary field.  Same-source matches are excluded;
+    if both directed shifted matches for an unordered source-id pair pass all
+    cuts, the lexicographically first candidate is retained.  This makes the
+    chance-alignment control independent of candidate traversal order while
+    retaining a shifted match whenever either direction qualifies.
+
+    ``max_stars`` caps the post-quality sample (brightest first) before the
+    radius search; set it to ``None`` only when the caller has accepted an
+    uncapped sample.  Output coordinates remain the source coordinates; the
+    shift used for the secondary search field is recorded in metadata.
     """
     clean = select_star_quality(
         stars,
@@ -247,14 +308,28 @@ def select_wide_pairs(
         g_mag_max=g_mag_max,
         parallax_min_mas=parallax_min_mas,
     )
-    if max_stars is not None and len(clean) > max_stars:
+    n_input = len(stars)
+    n_quality = len(clean)
+    cap_applied = max_stars is not None and n_quality > max_stars
+    if cap_applied:
         order = np.argsort(_as_float(clean, "phot_g_mean_mag"))
         clean = clean[order[:max_stars]]
 
     n = len(clean)
     if n < 2:
         empty = _empty_pairs_table()
-        empty.meta["pair_cuts"] = {"n_stars": n, "n_pairs": 0}
+        empty.meta["pair_cuts"] = {
+            "n_input_stars": n_input,
+            "n_quality_stars": n_quality,
+            "n_capped_stars": n,
+            "max_stars": max_stars,
+            "cap_applied": cap_applied,
+            "ra_shift_deg": ra_shift_deg,
+            "candidate_generation": "cKDTree unit-vector spherical radius search",
+            "n_radius_candidates": 0,
+            "candidate_search_seconds": 0.0,
+            "n_pairs": 0,
+        }
         return empty
 
     ra = _as_float(clean, "ra")
@@ -279,99 +354,100 @@ def select_wide_pairs(
     has_rv = "radial_velocity" in clean.colnames
     rv = _as_float(clean, "radial_velocity") if has_rv else np.full(n, np.nan)
 
-    # Optional shifted field on the "secondary" copy.
-    ra2_all = ra + ra_shift_deg
+    # The shifted copy is a distinct secondary catalog.  Modulo is important
+    # both for RA-wrap controls and for valid cKDTree unit vectors.
+    ra2_all = (ra + ra_shift_deg) % 360.0
 
     rows: list[tuple[Any, ...]] = []
-    # Block by coarse HEALPix-like dec strips to reduce comparisons.
-    # Simple approach: sort by ra and only compare within theta_max window.
-    order = np.argsort(ra)
-    ra_s = ra[order]
-    # Convert theta_max to approximate RA degrees at equator (upper bound).
-    ra_window_deg = theta_max_arcsec / 3600.0 + 0.05
+    candidates, search_seconds, n_primary_searchable, n_secondary_searchable = (
+        _radius_candidates(ra, dec, ra2_all, dec, theta_max_arcsec)
+    )
+    is_shifted = ra_shift_deg != 0.0
+    seen_source_pairs: set[tuple[str, str]] = set()
 
-    for a_idx in range(n):
-        i = order[a_idx]
-        # binary search RA window in sorted frame
-        ra_lo = ra_s[a_idx] - ra_window_deg
-        ra_hi = ra_s[a_idx] + ra_window_deg
-        lo = np.searchsorted(ra_s, ra_lo, side="left")
-        hi = np.searchsorted(ra_s, ra_hi, side="right")
-        for b_idx in range(max(lo, a_idx + 1), hi):
-            j = order[b_idx]
-            # angular sep using shifted secondary RA
-            th = float(
-                _angular_sep_arcsec(
-                    np.array([ra[i]]),
-                    np.array([dec[i]]),
-                    np.array([ra2_all[j]]),
-                    np.array([dec[j]]),
-                )[0]
+    for i, j in candidates:
+        # A real catalog is an unordered self-match.  A shifted catalog is a
+        # cross-match, but source-id self matches remain unphysical controls.
+        if sid[i] == sid[j] or (not is_shifted and j <= i):
+            continue
+        # Angular separation uses shifted secondary coordinates.
+        th = float(
+            _angular_sep_arcsec(
+                np.array([ra[i]]),
+                np.array([dec[i]]),
+                np.array([ra2_all[j]]),
+                np.array([dec[j]]),
+            )[0]
+        )
+        if th < theta_min_arcsec or th > theta_max_arcsec:
+            continue
+        # parallax consistency
+        dplx = abs(plx[i] - plx[j])
+        sig = np.sqrt(eplx[i] ** 2 + eplx[j] ** 2)
+        if sig <= 0 or dplx > parallax_sigma_max * sig:
+            continue
+        plx_mean = 0.5 * (plx[i] + plx[j])
+        if plx_mean <= 0:
+            continue
+        d_pc = 1000.0 / plx_mean
+        s_au = th * d_pc  # arcsec * pc = AU
+        s_kau = s_au / 1000.0
+        if s_kau < s_min_kau or s_kau > s_max_kau:
+            continue
+
+        # photometric masses for escape gate
+        mg_i = absolute_g(np.array([gmag[i]]), np.array([plx[i]]))[0]
+        mg_j = absolute_g(np.array([gmag[j]]), np.array([plx[j]]))[0]
+        if not (np.isfinite(mg_i) and np.isfinite(mg_j)):
+            continue
+        m_i = float(mass_from_abs_g(np.array([mg_i]))[0])
+        m_j = float(mass_from_abs_g(np.array([mg_j]))[0])
+        m_tot = m_i + m_j
+        v_c = float(_v_circ_kms(np.array([m_tot]), np.array([s_au]))[0])
+        # max circular-equivalent PM (mas/yr) for escape factor * v_circ
+        # v = K * mu * d  =>  mu = v / (K * d)
+        mu_max = (pm_escape_factor * v_c) / (_K_MU_D * d_pc)
+        dpmra = pmra[i] - pmra[j]
+        dpmdec = pmdec[i] - pmdec[j]
+        dpm = np.hypot(dpmra, dpmdec)
+        sig_pm = np.sqrt(e_pmra[i] ** 2 + e_pmra[j] ** 2 + e_pmdec[i] ** 2 + e_pmdec[j] ** 2)
+        if dpm > mu_max + 3.0 * sig_pm:
+            continue
+
+        # RV consistency when both measured
+        if has_rv and np.isfinite(rv[i]) and np.isfinite(rv[j]):
+            if abs(rv[i] - rv[j]) > rv_diff_max_kms:
+                continue
+
+        source_pair = tuple(sorted((sid[i], sid[j])))
+        if source_pair in seen_source_pairs:
+            continue
+        seen_source_pairs.add(source_pair)
+
+        # Primary = brighter (lower G); source id gives a stable tie-break.
+        if (gmag[i], sid[i]) <= (gmag[j], sid[j]):
+            p, s, m_p, m_s = i, j, m_i, m_j
+        else:
+            p, s, m_p, m_s = j, i, m_j, m_i
+
+        dv = _K_MU_D * dpm * d_pc
+        v_circ = float(_v_circ_kms(np.array([m_p + m_s]), np.array([s_au]))[0])
+        g_n = float(_g_n_ms2(np.array([m_p + m_s]), np.array([s_au]))[0])
+        vtilde = dv / v_circ if v_circ > 0 else np.nan
+
+        rows.append(
+            (
+                sid[p], sid[s],
+                ra[p], dec[p], ra[s], dec[s],
+                float(plx_mean), float(d_pc), float(th),
+                float(s_kau), float(s_au),
+                float(m_p), float(m_s), float(m_p + m_s),
+                float(dv), float(v_circ), float(vtilde), float(g_n),
+                float(ruwe[p]), float(ruwe[s]),
             )
-            if th < theta_min_arcsec or th > theta_max_arcsec:
-                continue
-            # parallax consistency
-            dplx = abs(plx[i] - plx[j])
-            sig = np.sqrt(eplx[i] ** 2 + eplx[j] ** 2)
-            if sig <= 0 or dplx > parallax_sigma_max * sig:
-                continue
-            plx_mean = 0.5 * (plx[i] + plx[j])
-            if plx_mean <= 0:
-                continue
-            d_pc = 1000.0 / plx_mean
-            s_au = th * d_pc  # arcsec * pc = AU
-            s_kau = s_au / 1000.0
-            if s_kau < s_min_kau or s_kau > s_max_kau:
-                continue
+        )
 
-            # photometric masses for escape gate
-            mg_i = absolute_g(np.array([gmag[i]]), np.array([plx[i]]))[0]
-            mg_j = absolute_g(np.array([gmag[j]]), np.array([plx[j]]))[0]
-            if not (np.isfinite(mg_i) and np.isfinite(mg_j)):
-                continue
-            m_i = float(mass_from_abs_g(np.array([mg_i]))[0])
-            m_j = float(mass_from_abs_g(np.array([mg_j]))[0])
-            m_tot = m_i + m_j
-            v_c = float(_v_circ_kms(np.array([m_tot]), np.array([s_au]))[0])
-            # max circular-equivalent PM (mas/yr) for escape factor * v_circ
-            # v = K * mu * d  =>  mu = v / (K * d)
-            mu_max = (pm_escape_factor * v_c) / (_K_MU_D * d_pc)
-            dpmra = pmra[i] - pmra[j]
-            dpmdec = pmdec[i] - pmdec[j]
-            dpm = np.hypot(dpmra, dpmdec)
-            sig_pm = np.sqrt(e_pmra[i] ** 2 + e_pmra[j] ** 2 + e_pmdec[i] ** 2 + e_pmdec[j] ** 2)
-            if dpm > mu_max + 3.0 * sig_pm:
-                continue
-
-            # RV consistency when both measured
-            if has_rv and np.isfinite(rv[i]) and np.isfinite(rv[j]):
-                if abs(rv[i] - rv[j]) > rv_diff_max_kms:
-                    continue
-
-            # primary = brighter (lower G)
-            if gmag[i] <= gmag[j]:
-                p, s = i, j
-            else:
-                p, s = j, i
-                m_i, m_j = m_j, m_i
-
-            dv = _K_MU_D * dpm * d_pc
-            v_circ = float(_v_circ_kms(np.array([m_i + m_j]), np.array([s_au]))[0])
-            g_n = float(_g_n_ms2(np.array([m_i + m_j]), np.array([s_au]))[0])
-            vtilde = dv / v_circ if v_circ > 0 else np.nan
-
-            rows.append(
-                (
-                    sid[p], sid[s],
-                    ra[p], dec[p], ra[s], dec[s],
-                    float(plx_mean), float(d_pc), float(th),
-                    float(s_kau), float(s_au),
-                    float(m_i), float(m_j), float(m_i + m_j),
-                    float(dv), float(v_circ), float(vtilde), float(g_n),
-                    float(ruwe[p]), float(ruwe[s]),
-                )
-            )
-
+    rows.sort(key=lambda row: (str(row[0]), str(row[1]), row[8]))
     out = _pairs_table_from_rows(rows)
     out.meta["pair_cuts"] = {
         "ruwe_max": ruwe_max,
@@ -387,7 +463,21 @@ def select_wide_pairs(
         "rv_diff_max_kms": rv_diff_max_kms,
         "ra_shift_deg": ra_shift_deg,
         "max_stars": max_stars,
+        "n_input_stars": n_input,
+        "n_quality_stars": n_quality,
+        "n_capped_stars": n,
+        "cap_applied": cap_applied,
         "n_stars": n,
+        "candidate_generation": "cKDTree unit-vector spherical radius search",
+        "candidate_search_radius_arcsec": theta_max_arcsec,
+        "n_primary_searchable": n_primary_searchable,
+        "n_secondary_searchable": n_secondary_searchable,
+        "n_radius_candidates": len(candidates),
+        "candidate_search_seconds": search_seconds,
+        "shifted_catalog_semantics": (
+            "unshifted primary catalog vs RA-shifted secondary catalog; same-source "
+            "matches excluded; unordered source pairs deduplicated after all cuts"
+        ),
         "n_pairs": len(out),
         "mass_relation": "Pecaut & Mamajek 2013-inspired M_G (Gaia G) piecewise log-linear",
         "f_triple_residual": BASELINE_CUTS["f_triple_residual"],
