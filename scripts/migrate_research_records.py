@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Build/check the ORB-11380 owner migration from a read-only inventory.
 
-This is an Astrolabe mapping adapter, not a second record engine.  All records,
-references, revision hashes, manifests, and validation use orbit-research v1.
-It never reads tables, runs analyses, changes source data, or puts Parquet in Git.
+This is an Astrolabe mapping adapter, not a second record engine. Archived records,
+references, revision hashes, and manifests retain their orbit-research v1 contract;
+the exact-pinned v0.2 package validates that compatibility surface. It never reads
+tables, runs analyses, changes source data, or puts Parquet in Git.
 """
 
 from __future__ import annotations
@@ -22,7 +23,8 @@ from orbit_research import make_record, validate
 from orbit_research.contract import reference, revision_digest
 
 BASELINE = "90f5b58890da36c44286a4edbde7eead879410a8"
-FRAMEWORK = "7b6c1b2380bc915d6ff7cca50f288ed716a99c74"
+FRAMEWORK = "0a9cf756e1c2522b9d5ee71c1cf462b8676f4281"
+HISTORICAL_FRAMEWORK = "7b6c1b2380bc915d6ff7cca50f288ed716a99c74"
 ROOT = Path(__file__).resolve().parents[1]
 AUTHORITY = ROOT / "research" / "datasets"
 EXPECTED_DATASETS = 27
@@ -66,7 +68,7 @@ def package_check() -> None:
     dist = distribution("orbit-research")
     direct = json.loads(dist.read_text("direct_url.json") or "{}")
     require(
-        dist.version == "0.1.0" and direct.get("vcs_info", {}).get("commit_id") == FRAMEWORK,
+        dist.version == "0.2.0" and direct.get("vcs_info", {}).get("commit_id") == FRAMEWORK,
         "install requirements-research.txt: exact orbit-research revision required",
     )
 
@@ -290,7 +292,11 @@ def build(inventory: dict[str, Any]) -> dict[str, bytes]:
         "schema_version": 1,
         "migration": "ORB-11380",
         "authority": "Astrolabe-owned orbit-research v1 artifact records",
-        "framework": {"version": "0.1.0", "contract": 1, "git_revision": FRAMEWORK},
+        "framework": {
+            "version": "0.1.0",
+            "contract": 1,
+            "git_revision": HISTORICAL_FRAMEWORK,
+        },
         "source_revision": BASELINE,
         "inventory": {
             "path": "inventory.json",

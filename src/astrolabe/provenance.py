@@ -23,13 +23,14 @@ from typing import Any
 
 import pyarrow.parquet as pq
 from astropy.table import Table
-from orbit_research import make_record, validate
+from orbit_research import make_record, reconcile, validate, verify_artifact
+from orbit_research.artifacts import VerifiedArtifact
 from orbit_research.contract import canonical, digest_bytes, reference, revision_digest
 
 from .store import DatasetMeta, Store, _file_digest, _replace_pair, _temporary_path
 
-FRAMEWORK_VERSION = "0.1.0"
-FRAMEWORK_REVISION = "7b6c1b2380bc915d6ff7cca50f288ed716a99c74"
+FRAMEWORK_VERSION = "0.2.0"
+FRAMEWORK_REVISION = "0a9cf756e1c2522b9d5ee71c1cf462b8676f4281"
 SNAPSHOT_MEDIA_TYPE = "application/vnd.apache.parquet"
 
 
@@ -411,24 +412,81 @@ def _verify_existing(
     return existing
 
 
-def _verify_snapshot_directory(target: Path, record: dict[str, Any]) -> None:
-    data_path = target / "dataset.parquet"
-    meta_path = target / "metadata.json"
-    record_path = target / "record.json"
-    if not all(path.is_file() for path in (data_path, meta_path, record_path)):
-        raise SnapshotConflictError(f"incomplete retained snapshot at {target}")
-    on_disk_record = _strict_object(record_path.read_bytes(), label=str(record_path))
-    if on_disk_record != record:
-        raise SnapshotConflictError(f"snapshot record changed at {record_path}")
+def _snapshot_schema_check(root: Path, record: dict[str, Any], descriptor: dict[str, Any]) -> None:
+    """Check Astrolabe's Parquet/sidecar meaning for the shared artifact proof."""
+    metadata_path = root / "metadata.json"
+    raw_meta = _strict_object(metadata_path.read_bytes(), label=str(metadata_path))
+    dataset = descriptor.get("dataset")
+    if not isinstance(dataset, dict):
+        raise ValueError("snapshot descriptor lacks dataset identity")
+    if raw_meta.get("name") != dataset.get("name") or raw_meta.get("kind") != dataset.get("kind"):
+        raise ValueError("snapshot sidecar identity differs from descriptor")
+    if raw_meta != record.get("legacy", {}).get("dataset"):
+        raise ValueError("snapshot sidecar differs from retained legacy metadata")
+    schema, parquet_metadata, n_rows = _parquet_facts(root / "dataset.parquet")
+    if schema != descriptor.get("schema") or parquet_metadata != descriptor.get("parquet_metadata"):
+        raise ValueError("retained Parquet schema or metadata differs from descriptor")
+    if (
+        raw_meta.get("columns") != [field["name"] for field in schema]
+        or raw_meta.get("n_rows") != n_rows
+    ):
+        raise ValueError("snapshot sidecar row/column metadata differs from Parquet")
+    if (raw_meta.get("units") or {}) != descriptor.get("units"):
+        raise ValueError("snapshot sidecar units differ from descriptor")
+    if descriptor.get("parent_pins") != record.get("references"):
+        raise ValueError("snapshot parent pins differ from record references")
+
+
+def _verified_snapshot_artifact(target: Path, record: dict[str, Any]) -> VerifiedArtifact:
     evidence = record.get("legacy", {}).get("snapshot")
     if not isinstance(evidence, dict):
-        raise SnapshotConflictError("snapshot record lacks owner evidence")
-    if _file_digest(data_path) != evidence.get("parquet_sha256"):
-        raise SnapshotConflictError("retained Parquet bytes do not match snapshot record")
-    if _file_digest(meta_path) != evidence.get("sidecar_sha256"):
-        raise SnapshotConflictError("retained sidecar bytes do not match snapshot record")
-    if digest_bytes(canonical(evidence)) != record["payload"]["snapshot_digest"]:
-        raise SnapshotConflictError("snapshot evidence no longer matches its digest")
+        raise ValueError("snapshot record lacks owner evidence")
+    return verify_artifact(
+        record,
+        root=target,
+        descriptor=evidence,
+        byte_fields={
+            "parquet_sha256": "dataset.parquet",
+            "sidecar_sha256": "metadata.json",
+        },
+        semantic_check=_snapshot_schema_check,
+    )
+
+
+def snapshot_artifact_resolver(store: Store):
+    """Return the native v0.2 resolver for retained snapshots under ``store``.
+
+    The resolver only recognizes an exact id/revision/source pin in this data root.
+    It returns a recheckable proof, never a persisted assertion that non-Git bytes
+    were historically consumed.
+    """
+
+    def resolve(pin: dict[str, Any]) -> VerifiedArtifact | None:
+        if not isinstance(pin, dict):
+            return None
+        for record_path in store.snapshot_dir.glob("*/record.json"):
+            try:
+                record = _strict_object(record_path.read_bytes(), label=str(record_path))
+            except SnapshotError:
+                continue
+            if (
+                record.get("id") != pin.get("id")
+                or record.get("revision_id") != pin.get("revision_id")
+                or record.get("provenance", {}).get("repository") != pin.get("repository")
+                or record.get("provenance", {}).get("git_revision") != pin.get("source_revision")
+            ):
+                continue
+            return _verified_snapshot_artifact(record_path.parent, record)
+        return None
+
+    return resolve
+
+
+def _verify_snapshot_directory(target: Path, record: dict[str, Any]) -> None:
+    try:
+        _verified_snapshot_artifact(target, record)
+    except (OSError, ValueError) as exc:
+        raise SnapshotConflictError(f"invalid retained snapshot at {target}: {exc}") from exc
 
 
 def load_snapshot(store: Store, digest: str) -> Snapshot:
@@ -475,7 +533,9 @@ def restore_snapshot(store: Store, digest: str, *, overwrite: bool = False) -> D
     return DatasetMeta(**raw_meta)
 
 
-def make_manifest(records: Iterable[dict[str, Any]]) -> dict[str, Any]:
+def make_manifest(
+    records: Iterable[dict[str, Any]], *, artifact_resolver: Any = None
+) -> dict[str, Any]:
     _framework_check()
     records = list(records)
     for record in records:
@@ -499,18 +559,45 @@ def make_manifest(records: Iterable[dict[str, Any]]) -> dict[str, Any]:
         ],
         "references": [reference(record) for record in records],
     }
-    errors = validate(manifest)
+    manifest = reconcile(manifest, records, artifact_resolver=artifact_resolver)
+    errors = validate(manifest, targets=records, artifact_resolver=artifact_resolver)
     if errors:
         raise SnapshotError("orbit-research rejected manifest: " + "; ".join(errors))
     return manifest
 
 
 def export_manifest(record_paths: Iterable[Path | str], output: Path | str) -> Path:
-    records = [_load_parent(path) for path in record_paths]
+    paths = [Path(path) for path in record_paths]
+    records = [_load_parent(path) for path in paths]
+    by_pin = {
+        (
+            record["id"],
+            record["revision_id"],
+            record["provenance"]["repository"],
+            record["provenance"]["git_revision"],
+        ): path.parent
+        for record, path in zip(records, paths, strict=True)
+    }
+
+    def resolve(pin: dict[str, Any]) -> VerifiedArtifact | None:
+        target = by_pin.get(
+            (
+                pin.get("id"),
+                pin.get("revision_id"),
+                pin.get("repository"),
+                pin.get("source_revision"),
+            )
+        )
+        if target is None:
+            return None
+        record_path = target / "record.json"
+        record = _strict_object(record_path.read_bytes(), label=str(record_path))
+        return _verified_snapshot_artifact(target, record)
+
     path = Path(output)
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("xb") as stream:
-        stream.write(_encoded(make_manifest(records)))
+        stream.write(_encoded(make_manifest(records, artifact_resolver=resolve)))
     return path
 
 

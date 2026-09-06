@@ -78,11 +78,13 @@ src/astrolabe/
       Pavlidou–Tomaras R_ta,max, ΛCDM R₀ inversion; H₀=67/73 sensitivity),
       `scripts/deliver_turnaround.py` + `docs/turnaround-interface.md` for the
       principia shear-consumption study note.
-- [x] **M9 — immutable dataset provenance (ORB-11380)**: content-addressed Parquet +
-      exact-sidecar snapshots under ignored `data/snapshots/`, orbit-research v1 artifact
-      records/manifests, exact parent pins, capture/read/trace/export/restore CLI, and a
-      reversible 27-pair legacy inventory. Mutable Store aliases remain compatible;
-      reproducible run exports reject unresolved lineage.
+- [x] **M9 — immutable dataset provenance (ORB-11380, ORB-11400)**: content-addressed
+      Parquet + exact-sidecar snapshots under ignored `data/snapshots/`, exact-pinned
+      orbit-research v0.2 native retained-byte verification/reconciliation, v1-compatible
+      artifact records/manifests, exact parent pins, capture/read/trace/export/restore CLI,
+      and a reversible 27-pair legacy inventory. Mutable Store aliases remain compatible;
+      reproducible run exports reject unresolved lineage and never upgrade historical
+      missingness.
 
 ## 6. Constellation integration
 

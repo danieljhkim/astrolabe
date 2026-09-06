@@ -1,5 +1,5 @@
-# ORB-11380: orbit-research v0.1.0 / contract v1, exact reviewed revision.
-orbit-research @ git+https://github.com/danieljhkim/orbit-research.git@7b6c1b2380bc915d6ff7cca50f288ed716a99c74
+# ORB-11400: orbit-research v0.2.0 native workflow / v1 compatibility, exact reviewed revision.
+orbit-research @ git+https://github.com/danieljhkim/orbit-research.git@0a9cf756e1c2522b9d5ee71c1cf462b8676f4281
 attrs==26.1.0
 jsonschema==4.26.0
 jsonschema-specifications==2025.9.1

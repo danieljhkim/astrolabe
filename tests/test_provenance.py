@@ -12,7 +12,7 @@ from pathlib import Path
 import numpy as np
 import pytest
 from astropy.table import Table
-from orbit_research import validate
+from orbit_research import reconcile, validate
 
 from astrolabe.provenance import (
     SnapshotConflictError,
@@ -20,6 +20,8 @@ from astrolabe.provenance import (
     SourceChangedError,
     export_manifest,
     inventory,
+    make_manifest,
+    snapshot_artifact_resolver,
     trace_snapshot,
 )
 from astrolabe.store import Store
@@ -195,7 +197,7 @@ def test_changed_parent_is_rejected(tmp_path, gaia_table):
         kind="derived",
         lineage=[{"dataset": "stars"}],
     )
-    with pytest.raises(SnapshotConflictError, match="Parquet bytes"):
+    with pytest.raises(SnapshotConflictError, match="artifact byte digest"):
         store.snapshot("derived", "derived", parents=[parent.record_path])
 
 
@@ -246,8 +248,12 @@ def test_manifest_and_inventory_validate_without_reading_science(tmp_path, gaia_
     snapshot = store.snapshot("stars")
     output = export_manifest([snapshot.record_path], tmp_path / "manifest.json")
     manifest = json.loads(output.read_text())
-    assert validate(manifest) == []
-    assert manifest["references"][0]["status"] == "pending"
+    assert manifest["references"][0]["status"] == "resolved"
+    assert validate(
+        manifest,
+        targets=[snapshot.record],
+        artifact_resolver=snapshot_artifact_resolver(store),
+    ) == []
     report = inventory(store)
     assert report["counts"] == {
         "sidecars": 1,
@@ -287,8 +293,42 @@ def test_read_snapshot_refuses_tampered_metadata(tmp_path, gaia_table):
     store.write(gaia_table, name="stars", source="gaia")
     snapshot = store.snapshot("stars")
     snapshot.metadata_path.write_text("{}")
-    with pytest.raises(SnapshotConflictError, match="sidecar bytes"):
+    with pytest.raises(SnapshotConflictError, match="artifact byte digest"):
         store.read_snapshot(snapshot.digest)
+
+
+def test_native_resolver_reconciles_retained_snapshot_and_rechecks_bytes(tmp_path, gaia_table):
+    store = Store(tmp_path)
+    store.write(gaia_table, name="stars", source="gaia")
+    snapshot = store.snapshot("stars")
+    resolver = snapshot_artifact_resolver(store)
+    manifest = make_manifest([snapshot.record], artifact_resolver=resolver)
+
+    assert manifest["references"][0]["status"] == "resolved"
+    assert validate(manifest, targets=[snapshot.record], artifact_resolver=resolver) == []
+    assert trace_snapshot(store, snapshot.digest)["snapshot_digest"] == snapshot.digest
+
+    snapshot.data_path.write_bytes(b"tampered")
+    assert validate(manifest, targets=[snapshot.record], artifact_resolver=resolver)
+    reconciled = reconcile(
+        make_manifest([snapshot.record]), [snapshot.record], artifact_resolver=resolver
+    )
+    assert reconciled["references"][0]["status"] == "pending"
+
+
+def test_native_resolver_refuses_missing_retained_member(tmp_path, gaia_table):
+    store = Store(tmp_path)
+    store.write(gaia_table, name="stars", source="gaia")
+    snapshot = store.snapshot("stars")
+    resolver = snapshot_artifact_resolver(store)
+    manifest = make_manifest([snapshot.record], artifact_resolver=resolver)
+
+    snapshot.metadata_path.unlink()
+    assert validate(manifest, targets=[snapshot.record], artifact_resolver=resolver)
+    reconciled = reconcile(
+        make_manifest([snapshot.record]), [snapshot.record], artifact_resolver=resolver
+    )
+    assert reconciled["references"][0]["status"] == "pending"
 
 
 def test_snapshot_roundtrip_preserves_table_type(tmp_path, gaia_table):

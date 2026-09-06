@@ -1,10 +1,12 @@
 # Immutable dataset provenance
 
-Astrolabe uses **orbit-research 0.1.0, contract v1**, pinned to Git revision
-`7b6c1b2380bc915d6ff7cca50f288ed716a99c74`. The framework owns record identity,
-revision hashing, references, manifests, and validation. Astrolabe supplies only the
-dataset-specific capture and legacy mapping. Orbit remains the operational task/run
-authority; neither package adds a service, scheduler, or shadow task store.
+Astrolabe uses **orbit-research 0.2.0**, pinned to Git revision
+`0a9cf756e1c2522b9d5ee71c1cf462b8676f4281`. The framework owns record identity,
+revision hashing, references, manifests, reconciliation, and generic retained-byte
+verification. Astrolabe supplies only the Parquet/sidecar schema check and legacy mapping.
+Package 0.2 reads the archived v1 records unchanged; it does not rewrite or upgrade them.
+Orbit remains the operational task/run authority; neither package adds a service,
+scheduler, or shadow task store.
 
 ## Install the exact contract
 
@@ -31,7 +33,7 @@ Scientific consumption captures a generation first:
 uv run astrolabe --data-dir data snapshot capture widebin_gaia_dr3_d200 --kind catalog
 ```
 
-The result prints an immutable `sha256:...` pin and a v1 artifact record. Exact bytes
+The result prints an immutable `sha256:...` pin and a v1-compatible artifact record. Exact bytes
 are retained under:
 
 ```text
@@ -49,7 +51,9 @@ sources under a shared lock; it does not query the table or contact a provider.
 
 Large bytes stay under ignored `data/`. To transfer a snapshot, copy the **complete**
 digest directory and verify it by reading through `Store.read_snapshot` or the CLI. Do
-not commit Parquet snapshots to Git.
+not commit Parquet snapshots to Git. The native resolver verifies `record.json`, every
+declared byte member, descriptor digest, Parquet schema/metadata, sidecar identity/units,
+and exact parent pins again on every use. A missing or changed byte is not available.
 
 ## Exact parents, export, and trace
 
@@ -76,15 +80,33 @@ uv run astrolabe --data-dir data snapshot manifest \
   --record data/snapshots/v1/sha256/<digest>/record.json \
   --output /tmp/run-input-manifest.json
 
-# Validate against the one shared authority.
-uv run orbit-research validate /tmp/run-input-manifest.json
+# The Astrolabe export runs native trace/export/reconcile with the exact-pinned
+# owner resolver. Generic orbit-research CLI validation intentionally cannot discover
+# an owner-local non-Git data root or load a dynamic verifier.
+# To verify in Python, route both the exact Store root and resolver explicitly.
+uv run python - <<'PY'
+import json
+
+from astrolabe.provenance import snapshot_artifact_resolver
+from astrolabe.store import Store
+from orbit_research import validate
+
+store = Store("data")
+resolver = snapshot_artifact_resolver(store)
+record = json.loads(
+    open("data/snapshots/v1/sha256/<snapshot-digest>/record.json", "rb").read()
+)
+manifest = json.loads(open("/tmp/run-input-manifest.json", "rb").read())
+assert validate(manifest, targets=[record], artifact_resolver=resolver) == []
+PY
 ```
 
 Contract v1 requires clean Git provenance before a reference can be marked `resolved`.
-Dataset bytes deliberately live outside Git, so owner-local snapshot references remain
-`pending` even though their IDs, revisions, byte hashes, and locators are exact. This v1
-generic reconciliation limitation is recorded in the migration; Astrolabe does not create
-a second resolution schema to conceal it.
+For an exact retained snapshot, package 0.2's typed resolver is the explicit exception:
+it can mark the reference resolved only while it can freshly verify the owner-local bytes.
+This is a recheckable capability, not a persistent claim of historical consumption. The
+archived migration records and unknown historical inputs remain pending/unknown exactly as
+recorded; no present-day snapshot supplies a missing Gaia parent or upgrades an old run.
 
 Read or restore a retained generation explicitly:
 

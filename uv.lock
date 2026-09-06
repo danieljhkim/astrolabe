@@ -42,8 +42,8 @@ requires-dist = [
     { name = "duckdb", specifier = ">=1.0" },
     { name = "matplotlib", specifier = ">=3.9" },
     { name = "numpy", specifier = ">=1.26" },
-    { name = "orbit-research", marker = "extra == 'dev'", git = "https://github.com/danieljhkim/orbit-research.git?rev=7b6c1b2380bc915d6ff7cca50f288ed716a99c74" },
-    { name = "orbit-research", marker = "extra == 'research'", git = "https://github.com/danieljhkim/orbit-research.git?rev=7b6c1b2380bc915d6ff7cca50f288ed716a99c74" },
+    { name = "orbit-research", marker = "extra == 'dev'", git = "https://github.com/danieljhkim/orbit-research.git?rev=0a9cf756e1c2522b9d5ee71c1cf462b8676f4281" },
+    { name = "orbit-research", marker = "extra == 'research'", git = "https://github.com/danieljhkim/orbit-research.git?rev=0a9cf756e1c2522b9d5ee71c1cf462b8676f4281" },
     { name = "pandas", specifier = ">=2.2" },
     { name = "pyarrow", specifier = ">=16.0" },
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=8.0" },
@@ -766,8 +766,8 @@ wheels = [
 
 [[package]]
 name = "orbit-research"
-version = "0.1.0"
-source = { git = "https://github.com/danieljhkim/orbit-research.git?rev=7b6c1b2380bc915d6ff7cca50f288ed716a99c74#7b6c1b2380bc915d6ff7cca50f288ed716a99c74" }
+version = "0.2.0"
+source = { git = "https://github.com/danieljhkim/orbit-research.git?rev=0a9cf756e1c2522b9d5ee71c1cf462b8676f4281#0a9cf756e1c2522b9d5ee71c1cf462b8676f4281" }
 dependencies = [
     { name = "jsonschema" },
     { name = "referencing" },

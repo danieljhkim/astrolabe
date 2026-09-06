@@ -46,9 +46,11 @@ normalized in `data/processed/` as Parquet with a sidecar `<name>.json` (source,
 fetched_at, row count).
 
 Mutable names remain convenient for exploration. Reproducible runs use content-addressed
-snapshots under ignored `data/snapshots/` and orbit-research v1 artifact/manifest pins.
-See [immutable dataset provenance](docs/research-provenance.md) for installation, exact
-parent capture, trace/export, the 27-dataset migration, compatibility, and rollback.
+snapshots under ignored `data/snapshots/` and exact-pinned orbit-research v0.2 artifact/
+manifest pins. The native resolver rechecks retained non-Git bytes without upgrading
+archived v1 evidence. See [immutable dataset provenance](docs/research-provenance.md) for
+installation, exact parent capture, trace/export, the 27-dataset migration, compatibility,
+and rollback.
 
 ## Adding a source
 
