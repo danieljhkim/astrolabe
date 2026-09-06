@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "kind": "artifact",
+  "id": "urn:research:astrolabe:artifact:dataset%3Aephemeris%3Amars_2026",
+  "aliases": [
+    "ephemeris/mars_2026",
+    "mars_2026"
+  ],
+  "activity": "active",
+  "scope": "unknown",
+  "provenance": {
+    "repository": "astrolabe",
+    "git_revision": "90f5b58890da36c44286a4edbde7eead879410a8",
+    "blob_oid": null,
+    "sha256": "sha256:aa61c4953e6d5bd8084765097cc41f11689f928a737fb4c3b74430b0aea8c0cf",
+    "path": "data/processed/ephemeris/mars_2026.json",
+    "selector": "$",
+    "historical": true,
+    "working_tree": true
+  },
+  "limitations": [
+    "Dry-run current-byte hash; retained immutable bytes require snapshot capture.",
+    "Present bytes do not establish which generation any historical analysis consumed."
+  ],
+  "missingness": [
+    "immutable-retained-bytes",
+    "historical-consumption",
+    "scope",
+    "lineage-not-recorded"
+  ],
+  "legacy": {
+    "dataset": {
+      "name": "mars_2026",
+      "source": "horizons",
+      "query": {
+        "target": "499",
+        "location": "500@399",
+        "epochs": {
+          "start": "2026-01-01",
+          "stop": "2026-12-31",
+          "step": "3d"
+        }
+      },
+      "fetched_at": "2026-07-10T04:44:25.038645+00:00",
+      "n_rows": 122,
+      "columns": [
+        "source_id",
+        "datetime_str",
+        "datetime_jd",
+        "ra",
+        "dec",
+        "V",
+        "delta",
+        "r"
+      ],
+      "kind": "ephemeris",
+      "lineage": null
+    },
+    "sidecar_bytes_base64": "ewogICJuYW1lIjogIm1hcnNfMjAyNiIsCiAgInNvdXJjZSI6ICJob3Jpem9ucyIsCiAgInF1ZXJ5IjogewogICAgInRhcmdldCI6ICI0OTkiLAogICAgImxvY2F0aW9uIjogIjUwMEAzOTkiLAogICAgImVwb2NocyI6IHsKICAgICAgInN0YXJ0IjogIjIwMjYtMDEtMDEiLAogICAgICAic3RvcCI6ICIyMDI2LTEyLTMxIiwKICAgICAgInN0ZXAiOiAiM2QiCiAgICB9CiAgfSwKICAiZmV0Y2hlZF9hdCI6ICIyMDI2LTA3LTEwVDA0OjQ0OjI1LjAzODY0NSswMDowMCIsCiAgIm5fcm93cyI6IDEyMiwKICAiY29sdW1ucyI6IFsKICAgICJzb3VyY2VfaWQiLAogICAgImRhdGV0aW1lX3N0ciIsCiAgICAiZGF0ZXRpbWVfamQiLAogICAgInJhIiwKICAgICJkZWMiLAogICAgIlYiLAogICAgImRlbHRhIiwKICAgICJyIgogIF0sCiAgImtpbmQiOiAiZXBoZW1lcmlzIiwKICAibGluZWFnZSI6IG51bGwKfQ==",
+    "inventory_pins": {
+      "sidecar_sha256": "sha256:aa61c4953e6d5bd8084765097cc41f11689f928a737fb4c3b74430b0aea8c0cf",
+      "parquet_sha256": "sha256:887af957480a89b00ab4ce94e3f6a7f69263b89a6233d50918946de874f43d27"
+    },
+    "lineage_resolution": []
+  },
+  "references": [],
+  "presentation": {},
+  "payload": {
+    "role": "dataset",
+    "availability": "external",
+    "snapshot_digest": "sha256:887af957480a89b00ab4ce94e3f6a7f69263b89a6233d50918946de874f43d27",
+    "locator": "data/processed/ephemeris/mars_2026.parquet",
+    "media_type": "application/vnd.apache.parquet"
+  },
+  "revision_id": "sha256:62a07fd23252bbc20ffac3ca4f3ba76959c8fa9dd43eac90b6cda3e58f2bff8e"
+}

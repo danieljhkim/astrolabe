@@ -1,0 +1,201 @@
+{
+  "schema_version": 1,
+  "kind": "manifest",
+  "repositories": [
+    {
+      "id": "astrolabe",
+      "git_revision": "90f5b58890da36c44286a4edbde7eead879410a8"
+    }
+  ],
+  "references": [
+    {
+      "repository": "astrolabe",
+      "id": "urn:research:astrolabe:artifact:dataset%3Acatalog%3Afield_eq180_sdss",
+      "revision_id": "sha256:35747c57119ad00d414d524e06aaaa37655b3032bf87e4a8b5e18a48b71d1e18",
+      "source_revision": "90f5b58890da36c44286a4edbde7eead879410a8",
+      "status": "pending"
+    },
+    {
+      "repository": "astrolabe",
+      "id": "urn:research:astrolabe:artifact:dataset%3Acatalog%3Amw_disk_anticenter_gaia",
+      "revision_id": "sha256:f61af27d574b31ba95a43d96bac30132948d35c0fada12e4deec73124bec093c",
+      "source_revision": "90f5b58890da36c44286a4edbde7eead879410a8",
+      "status": "pending"
+    },
+    {
+      "repository": "astrolabe",
+      "id": "urn:research:astrolabe:artifact:dataset%3Acatalog%3Amw_disk_gaia",
+      "revision_id": "sha256:0feda29491c2fe162092fb9f4867998f2be20017438db0710e17feb83ecd7c8e",
+      "source_revision": "90f5b58890da36c44286a4edbde7eead879410a8",
+      "status": "pending"
+    },
+    {
+      "repository": "astrolabe",
+      "id": "urn:research:astrolabe:artifact:dataset%3Acatalog%3Amw_disk_outer_gaia",
+      "revision_id": "sha256:c5b49f2a496e2de23b4f476db40303fb9da361d852cfcf294d810df2fb843900",
+      "source_revision": "90f5b58890da36c44286a4edbde7eead879410a8",
+      "status": "pending"
+    },
+    {
+      "repository": "astrolabe",
+      "id": "urn:research:astrolabe:artifact:dataset%3Acatalog%3Apleiades_gaia",
+      "revision_id": "sha256:b95fedf470f9897294f8106b17ae27af1953d6b9c86cb985d4bfbfa9141eec30",
+      "source_revision": "90f5b58890da36c44286a4edbde7eead879410a8",
+      "status": "pending"
+    },
+    {
+      "repository": "astrolabe",
+      "id": "urn:research:astrolabe:artifact:dataset%3Acatalog%3Asparc_galaxies",
+      "revision_id": "sha256:d4f86a59b78d4a4587bd17b0f136416a7d47a1b0f105396064c6733aed73054c",
+      "source_revision": "90f5b58890da36c44286a4edbde7eead879410a8",
+      "status": "pending"
+    },
+    {
+      "repository": "astrolabe",
+      "id": "urn:research:astrolabe:artifact:dataset%3Acatalog%3Asparc_rotcurves",
+      "revision_id": "sha256:87fe8460e9581723b77fae75c1e05d02553f331e497835f46281c6249baee398",
+      "source_revision": "90f5b58890da36c44286a4edbde7eead879410a8",
+      "status": "pending"
+    },
+    {
+      "repository": "astrolabe",
+      "id": "urn:research:astrolabe:artifact:dataset%3Aderived%3Aearth_newtonian_residuals",
+      "revision_id": "sha256:053a60282f46e8fbe75ba9a0cc9febee5c6717e639cb3671ce38b7de6532226a",
+      "source_revision": "90f5b58890da36c44286a4edbde7eead879410a8",
+      "status": "pending"
+    },
+    {
+      "repository": "astrolabe",
+      "id": "urn:research:astrolabe:artifact:dataset%3Aderived%3Afield_eq180_xmatch",
+      "revision_id": "sha256:9e7b7e7ba36f652a55b1b4c2f880c57ef072fb7db54e9bf27343b07960b3ad86",
+      "source_revision": "90f5b58890da36c44286a4edbde7eead879410a8",
+      "status": "pending"
+    },
+    {
+      "repository": "astrolabe",
+      "id": "urn:research:astrolabe:artifact:dataset%3Aderived%3Ajupiter_newtonian_residuals",
+      "revision_id": "sha256:c7f02c667e7242b954cbdd0417accf0353936518f08093a71eaba5ec4410d066",
+      "source_revision": "90f5b58890da36c44286a4edbde7eead879410a8",
+      "status": "pending"
+    },
+    {
+      "repository": "astrolabe",
+      "id": "urn:research:astrolabe:artifact:dataset%3Aderived%3Amars_newtonian_residuals",
+      "revision_id": "sha256:13580d5dbcd4ceceba20a9f78ca5b648815aff793ed4d71773aabb3aa3c58529",
+      "source_revision": "90f5b58890da36c44286a4edbde7eead879410a8",
+      "status": "pending"
+    },
+    {
+      "repository": "astrolabe",
+      "id": "urn:research:astrolabe:artifact:dataset%3Aderived%3Amercury_newtonian_residuals",
+      "revision_id": "sha256:c3244a07f323b8355896b2e421961059772a2a1a4a38ae4d4507011f48913528",
+      "source_revision": "90f5b58890da36c44286a4edbde7eead879410a8",
+      "status": "pending"
+    },
+    {
+      "repository": "astrolabe",
+      "id": "urn:research:astrolabe:artifact:dataset%3Aderived%3Amw_rotation_curve",
+      "revision_id": "sha256:c55339824334e1ac88ce88e76b3824ebc75f875b1bcf8856820edd8b0f7b86ba",
+      "source_revision": "90f5b58890da36c44286a4edbde7eead879410a8",
+      "status": "pending"
+    },
+    {
+      "repository": "astrolabe",
+      "id": "urn:research:astrolabe:artifact:dataset%3Aderived%3Aneptune_newtonian_residuals",
+      "revision_id": "sha256:8e175ecafae9a5596906de48d519271e2098763fdb4a4d94d8ad16298ecd2b61",
+      "source_revision": "90f5b58890da36c44286a4edbde7eead879410a8",
+      "status": "pending"
+    },
+    {
+      "repository": "astrolabe",
+      "id": "urn:research:astrolabe:artifact:dataset%3Aderived%3Asaturn_newtonian_residuals",
+      "revision_id": "sha256:6e5482ae5efdfd0a5dc55809f8097223b291af10238f5f82dc070fb086f08770",
+      "source_revision": "90f5b58890da36c44286a4edbde7eead879410a8",
+      "status": "pending"
+    },
+    {
+      "repository": "astrolabe",
+      "id": "urn:research:astrolabe:artifact:dataset%3Aderived%3Asparc_rar",
+      "revision_id": "sha256:ad021a8c5c473f1c6be351e3cd0cc8f32c66240e321e3b2ed65e2c0868aa91d1",
+      "source_revision": "90f5b58890da36c44286a4edbde7eead879410a8",
+      "status": "pending"
+    },
+    {
+      "repository": "astrolabe",
+      "id": "urn:research:astrolabe:artifact:dataset%3Aderived%3Auranus_newtonian_residuals",
+      "revision_id": "sha256:8b27ffd1929dcd050987799d0f6e9048cebecd8d4131c5648d3152e4b646281b",
+      "source_revision": "90f5b58890da36c44286a4edbde7eead879410a8",
+      "status": "pending"
+    },
+    {
+      "repository": "astrolabe",
+      "id": "urn:research:astrolabe:artifact:dataset%3Aderived%3Avenus_newtonian_residuals",
+      "revision_id": "sha256:db97111f9972510c924e4a4683870d77addb90aa0e042c35ee70f2dd8a6cec4f",
+      "source_revision": "90f5b58890da36c44286a4edbde7eead879410a8",
+      "status": "pending"
+    },
+    {
+      "repository": "astrolabe",
+      "id": "urn:research:astrolabe:artifact:dataset%3Aephemeris%3Aearth_2016_2026",
+      "revision_id": "sha256:7ae9259e300d3085e1b5cb1df4ac9eb5d2a1c996f9d6e650932351b0079f59e5",
+      "source_revision": "90f5b58890da36c44286a4edbde7eead879410a8",
+      "status": "pending"
+    },
+    {
+      "repository": "astrolabe",
+      "id": "urn:research:astrolabe:artifact:dataset%3Aephemeris%3Ajupiter_2016_2026",
+      "revision_id": "sha256:52acbf28237ebce7079b5971a6bd251c2dd96ada8673878235e73a35c75303ba",
+      "source_revision": "90f5b58890da36c44286a4edbde7eead879410a8",
+      "status": "pending"
+    },
+    {
+      "repository": "astrolabe",
+      "id": "urn:research:astrolabe:artifact:dataset%3Aephemeris%3Amars_2016_2026",
+      "revision_id": "sha256:6dfacee92c4fe757f72aff4452081b3990983adbae008acf1b1d7f381308c0df",
+      "source_revision": "90f5b58890da36c44286a4edbde7eead879410a8",
+      "status": "pending"
+    },
+    {
+      "repository": "astrolabe",
+      "id": "urn:research:astrolabe:artifact:dataset%3Aephemeris%3Amars_2026",
+      "revision_id": "sha256:62a07fd23252bbc20ffac3ca4f3ba76959c8fa9dd43eac90b6cda3e58f2bff8e",
+      "source_revision": "90f5b58890da36c44286a4edbde7eead879410a8",
+      "status": "pending"
+    },
+    {
+      "repository": "astrolabe",
+      "id": "urn:research:astrolabe:artifact:dataset%3Aephemeris%3Amercury_2016_2026",
+      "revision_id": "sha256:31cc7df7aa7d917f72d3863e0cbbfa0bd3745d15124d31b94b7ba605b1fa16d3",
+      "source_revision": "90f5b58890da36c44286a4edbde7eead879410a8",
+      "status": "pending"
+    },
+    {
+      "repository": "astrolabe",
+      "id": "urn:research:astrolabe:artifact:dataset%3Aephemeris%3Aneptune_2016_2026",
+      "revision_id": "sha256:ecd5402b942c8f09388d4b8c804d5a0294749eb52a192b1c1ccecfb34a8257ef",
+      "source_revision": "90f5b58890da36c44286a4edbde7eead879410a8",
+      "status": "pending"
+    },
+    {
+      "repository": "astrolabe",
+      "id": "urn:research:astrolabe:artifact:dataset%3Aephemeris%3Asaturn_2016_2026",
+      "revision_id": "sha256:a984c74150d07f77b14bc1b2487b6921ab0eb04015b27f631a18ab62c18427bf",
+      "source_revision": "90f5b58890da36c44286a4edbde7eead879410a8",
+      "status": "pending"
+    },
+    {
+      "repository": "astrolabe",
+      "id": "urn:research:astrolabe:artifact:dataset%3Aephemeris%3Auranus_2016_2026",
+      "revision_id": "sha256:80137af3ba59f311132aa8df1ee461ce1ba50176c73ae2a0c879ce4452c89ba3",
+      "source_revision": "90f5b58890da36c44286a4edbde7eead879410a8",
+      "status": "pending"
+    },
+    {
+      "repository": "astrolabe",
+      "id": "urn:research:astrolabe:artifact:dataset%3Aephemeris%3Avenus_2016_2026",
+      "revision_id": "sha256:cf53501de39716ffdf39f762b096637325d7b065ab2eb7b87565384afbc55a00",
+      "source_revision": "90f5b58890da36c44286a4edbde7eead879410a8",
+      "status": "pending"
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "kind": "artifact",
+  "id": "urn:research:astrolabe:artifact:dataset%3Aephemeris%3Amercury_2016_2026",
+  "aliases": [
+    "ephemeris/mercury_2016_2026",
+    "mercury_2016_2026"
+  ],
+  "activity": "active",
+  "scope": "unknown",
+  "provenance": {
+    "repository": "astrolabe",
+    "git_revision": "90f5b58890da36c44286a4edbde7eead879410a8",
+    "blob_oid": null,
+    "sha256": "sha256:eb86d4bfeeee260d072b9f74df9e34bb41aeb9be64fc32e13b9a8bd6b7a96455",
+    "path": "data/processed/ephemeris/mercury_2016_2026.json",
+    "selector": "$",
+    "historical": true,
+    "working_tree": true
+  },
+  "limitations": [
+    "Dry-run current-byte hash; retained immutable bytes require snapshot capture.",
+    "Present bytes do not establish which generation any historical analysis consumed."
+  ],
+  "missingness": [
+    "immutable-retained-bytes",
+    "historical-consumption",
+    "scope",
+    "lineage-not-recorded"
+  ],
+  "legacy": {
+    "dataset": {
+      "name": "mercury_2016_2026",
+      "kind": "ephemeris",
+      "source": "horizons",
+      "query": {
+        "target": "1",
+        "type": "vectors",
+        "location": "500@10",
+        "refplane": "earth",
+        "epochs": {
+          "start": "2016-01-01",
+          "stop": "2026-01-01",
+          "step": "10d"
+        }
+      },
+      "fetched_at": "2026-07-11T00:42:52.248464+00:00",
+      "n_rows": 366,
+      "columns": [
+        "targetname",
+        "epoch_jd_tdb",
+        "datetime_str",
+        "x_au",
+        "y_au",
+        "z_au",
+        "vx_au_d",
+        "vy_au_d",
+        "vz_au_d",
+        "lighttime",
+        "range",
+        "range_rate",
+        "source_id"
+      ],
+      "lineage": null
+    },
+    "sidecar_bytes_base64": "ewogICJuYW1lIjogIm1lcmN1cnlfMjAxNl8yMDI2IiwKICAia2luZCI6ICJlcGhlbWVyaXMiLAogICJzb3VyY2UiOiAiaG9yaXpvbnMiLAogICJxdWVyeSI6IHsKICAgICJ0YXJnZXQiOiAiMSIsCiAgICAidHlwZSI6ICJ2ZWN0b3JzIiwKICAgICJsb2NhdGlvbiI6ICI1MDBAMTAiLAogICAgInJlZnBsYW5lIjogImVhcnRoIiwKICAgICJlcG9jaHMiOiB7CiAgICAgICJzdGFydCI6ICIyMDE2LTAxLTAxIiwKICAgICAgInN0b3AiOiAiMjAyNi0wMS0wMSIsCiAgICAgICJzdGVwIjogIjEwZCIKICAgIH0KICB9LAogICJmZXRjaGVkX2F0IjogIjIwMjYtMDctMTFUMDA6NDI6NTIuMjQ4NDY0KzAwOjAwIiwKICAibl9yb3dzIjogMzY2LAogICJjb2x1bW5zIjogWwogICAgInRhcmdldG5hbWUiLAogICAgImVwb2NoX2pkX3RkYiIsCiAgICAiZGF0ZXRpbWVfc3RyIiwKICAgICJ4X2F1IiwKICAgICJ5X2F1IiwKICAgICJ6X2F1IiwKICAgICJ2eF9hdV9kIiwKICAgICJ2eV9hdV9kIiwKICAgICJ2el9hdV9kIiwKICAgICJsaWdodHRpbWUiLAogICAgInJhbmdlIiwKICAgICJyYW5nZV9yYXRlIiwKICAgICJzb3VyY2VfaWQiCiAgXSwKICAibGluZWFnZSI6IG51bGwKfQ==",
+    "inventory_pins": {
+      "sidecar_sha256": "sha256:eb86d4bfeeee260d072b9f74df9e34bb41aeb9be64fc32e13b9a8bd6b7a96455",
+      "parquet_sha256": "sha256:4406750276f8aab69e34b962bdd6d3f2079df34afd033b208db1e82ccb2b0791"
+    },
+    "lineage_resolution": []
+  },
+  "references": [],
+  "presentation": {},
+  "payload": {
+    "role": "dataset",
+    "availability": "external",
+    "snapshot_digest": "sha256:4406750276f8aab69e34b962bdd6d3f2079df34afd033b208db1e82ccb2b0791",
+    "locator": "data/processed/ephemeris/mercury_2016_2026.parquet",
+    "media_type": "application/vnd.apache.parquet"
+  },
+  "revision_id": "sha256:31cc7df7aa7d917f72d3863e0cbbfa0bd3745d15124d31b94b7ba605b1fa16d3"
+}

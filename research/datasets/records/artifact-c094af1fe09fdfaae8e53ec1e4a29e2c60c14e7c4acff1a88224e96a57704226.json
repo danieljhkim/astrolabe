@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "kind": "artifact",
+  "id": "urn:research:astrolabe:artifact:source%3Aastrolabe%3A90f5b58890da36c44286a4edbde7eead879410a8%3Asrc%2Fastrolabe%2Fanalysis%2Fwide_binaries.py",
+  "aliases": [
+    "source:astrolabe:90f5b58890da36c44286a4edbde7eead879410a8:src/astrolabe/analysis/wide_binaries.py"
+  ],
+  "activity": "active",
+  "scope": "synthetic-calibration",
+  "provenance": {
+    "repository": "astrolabe",
+    "git_revision": "90f5b58890da36c44286a4edbde7eead879410a8",
+    "blob_oid": "024c01fd8302bdf07869f402f7328cb4504e8ed7",
+    "sha256": "sha256:6e39198e6babf452ec94f34ccd1eec49e3ca885964f4d6742937b33b5f9269f1",
+    "path": "src/astrolabe/analysis/wide_binaries.py",
+    "selector": "$",
+    "historical": true,
+    "working_tree": false
+  },
+  "limitations": [
+    "Source-code artifact only; execution and scientific assessment are separate."
+  ],
+  "missingness": [],
+  "legacy": {
+    "source_revision": "90f5b58890da36c44286a4edbde7eead879410a8",
+    "bytes_sha256": "sha256:6e39198e6babf452ec94f34ccd1eec49e3ca885964f4d6742937b33b5f9269f1"
+  },
+  "references": [],
+  "presentation": {},
+  "payload": {
+    "role": "source",
+    "availability": "available",
+    "snapshot_digest": "sha256:6e39198e6babf452ec94f34ccd1eec49e3ca885964f4d6742937b33b5f9269f1",
+    "locator": "src/astrolabe/analysis/wide_binaries.py",
+    "media_type": "text/x-python"
+  },
+  "revision_id": "sha256:c094af1fe09fdfaae8e53ec1e4a29e2c60c14e7c4acff1a88224e96a57704226"
+}

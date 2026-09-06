@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "kind": "artifact",
+  "id": "urn:research:astrolabe:artifact:dataset%3Aderived%3Amw_rotation_curve",
+  "aliases": [
+    "derived/mw_rotation_curve",
+    "mw_rotation_curve"
+  ],
+  "activity": "active",
+  "scope": "unknown",
+  "provenance": {
+    "repository": "astrolabe",
+    "git_revision": "90f5b58890da36c44286a4edbde7eead879410a8",
+    "blob_oid": null,
+    "sha256": "sha256:3fe8e6bef3aec980c90c6d5a89f16d708d5a3ab867563a17248349793a012d81",
+    "path": "data/processed/derived/mw_rotation_curve.json",
+    "selector": "$",
+    "historical": true,
+    "working_tree": true
+  },
+  "limitations": [
+    "Dry-run current-byte hash; retained immutable bytes require snapshot capture.",
+    "Present bytes do not establish which generation any historical analysis consumed."
+  ],
+  "missingness": [
+    "immutable-retained-bytes",
+    "historical-consumption",
+    "scope",
+    "historical-lineage-unresolved"
+  ],
+  "legacy": {
+    "dataset": {
+      "name": "mw_rotation_curve",
+      "kind": "derived",
+      "source": "analysis.rotation_curve",
+      "query": {
+        "r_min_kpc": 4.0,
+        "r_max_kpc": 25.0,
+        "bin_kpc": 0.5,
+        "z_max_kpc": 0.5,
+        "min_stars": 30,
+        "distance_col": "r_med_photogeo",
+        "dedup": "unique source_id across the three lineage catalogs",
+        "selection_note": "inner sample POE>3; outer d>3.5kpc POE>3; anticenter d>6kpc POE>1 (Bailer-Jones photogeometric distances carry the far bins)",
+        "method": "median v_phi per R bin, |z| < 0.5 kpc; NOT asymmetric-drift corrected (biased low ~5-15 km/s for a mixed sample); err = 1.4826*MAD/sqrt(n)",
+        "galactocentric_params": {
+          "galcen_distance_kpc": 8.122,
+          "z_sun_pc": 20.8,
+          "galcen_v_sun_kms": [
+            12.9,
+            245.6,
+            7.78
+          ]
+        }
+      },
+      "fetched_at": "2026-07-10T06:10:13.672771+00:00",
+      "n_rows": 30,
+      "columns": [
+        "R_kpc",
+        "v_c_kms",
+        "v_c_err_kms",
+        "n_stars"
+      ],
+      "lineage": [
+        {
+          "dataset": "mw_disk_gaia",
+          "fetched_at": "2026-07-10T06:03:53.810655+00:00"
+        },
+        {
+          "dataset": "mw_disk_outer_gaia",
+          "fetched_at": "2026-07-10T06:06:30.731932+00:00"
+        },
+        {
+          "dataset": "mw_disk_anticenter_gaia",
+          "fetched_at": "2026-07-10T06:10:13.411965+00:00"
+        }
+      ]
+    },
+    "sidecar_bytes_base64": "ewogICJuYW1lIjogIm13X3JvdGF0aW9uX2N1cnZlIiwKICAia2luZCI6ICJkZXJpdmVkIiwKICAic291cmNlIjogImFuYWx5c2lzLnJvdGF0aW9uX2N1cnZlIiwKICAicXVlcnkiOiB7CiAgICAicl9taW5fa3BjIjogNC4wLAogICAgInJfbWF4X2twYyI6IDI1LjAsCiAgICAiYmluX2twYyI6IDAuNSwKICAgICJ6X21heF9rcGMiOiAwLjUsCiAgICAibWluX3N0YXJzIjogMzAsCiAgICAiZGlzdGFuY2VfY29sIjogInJfbWVkX3Bob3RvZ2VvIiwKICAgICJkZWR1cCI6ICJ1bmlxdWUgc291cmNlX2lkIGFjcm9zcyB0aGUgdGhyZWUgbGluZWFnZSBjYXRhbG9ncyIsCiAgICAic2VsZWN0aW9uX25vdGUiOiAiaW5uZXIgc2FtcGxlIFBPRT4zOyBvdXRlciBkPjMuNWtwYyBQT0U+MzsgYW50aWNlbnRlciBkPjZrcGMgUE9FPjEgKEJhaWxlci1Kb25lcyBwaG90b2dlb21ldHJpYyBkaXN0YW5jZXMgY2FycnkgdGhlIGZhciBiaW5zKSIsCiAgICAibWV0aG9kIjogIm1lZGlhbiB2X3BoaSBwZXIgUiBiaW4sIHx6fCA8IDAuNSBrcGM7IE5PVCBhc3ltbWV0cmljLWRyaWZ0IGNvcnJlY3RlZCAoYmlhc2VkIGxvdyB+NS0xNSBrbS9zIGZvciBhIG1peGVkIHNhbXBsZSk7IGVyciA9IDEuNDgyNipNQUQvc3FydChuKSIsCiAgICAiZ2FsYWN0b2NlbnRyaWNfcGFyYW1zIjogewogICAgICAiZ2FsY2VuX2Rpc3RhbmNlX2twYyI6IDguMTIyLAogICAgICAiel9zdW5fcGMiOiAyMC44LAogICAgICAiZ2FsY2VuX3Zfc3VuX2ttcyI6IFsKICAgICAgICAxMi45LAogICAgICAgIDI0NS42LAogICAgICAgIDcuNzgKICAgICAgXQogICAgfQogIH0sCiAgImZldGNoZWRfYXQiOiAiMjAyNi0wNy0xMFQwNjoxMDoxMy42NzI3NzErMDA6MDAiLAogICJuX3Jvd3MiOiAzMCwKICAiY29sdW1ucyI6IFsKICAgICJSX2twYyIsCiAgICAidl9jX2ttcyIsCiAgICAidl9jX2Vycl9rbXMiLAogICAgIm5fc3RhcnMiCiAgXSwKICAibGluZWFnZSI6IFsKICAgIHsKICAgICAgImRhdGFzZXQiOiAibXdfZGlza19nYWlhIiwKICAgICAgImZldGNoZWRfYXQiOiAiMjAyNi0wNy0xMFQwNjowMzo1My44MTA2NTUrMDA6MDAiCiAgICB9LAogICAgewogICAgICAiZGF0YXNldCI6ICJtd19kaXNrX291dGVyX2dhaWEiLAogICAgICAiZmV0Y2hlZF9hdCI6ICIyMDI2LTA3LTEwVDA2OjA2OjMwLjczMTkzMiswMDowMCIKICAgIH0sCiAgICB7CiAgICAgICJkYXRhc2V0IjogIm13X2Rpc2tfYW50aWNlbnRlcl9nYWlhIiwKICAgICAgImZldGNoZWRfYXQiOiAiMjAyNi0wNy0xMFQwNjoxMDoxMy40MTE5NjUrMDA6MDAiCiAgICB9CiAgXQp9",
+    "inventory_pins": {
+      "sidecar_sha256": "sha256:3fe8e6bef3aec980c90c6d5a89f16d708d5a3ab867563a17248349793a012d81",
+      "parquet_sha256": "sha256:dd1fb11919515c685c86d30c7183110504785af95217f1c1216b784ff7cb6cb1"
+    },
+    "lineage_resolution": [
+      {
+        "index": 0,
+        "legacy": {
+          "dataset": "mw_disk_gaia",
+          "fetched_at": "2026-07-10T06:03:53.810655+00:00"
+        },
+        "status": "pending",
+        "reason": "Legacy name/timestamp is not an immutable historical parent pin."
+      },
+      {
+        "index": 1,
+        "legacy": {
+          "dataset": "mw_disk_outer_gaia",
+          "fetched_at": "2026-07-10T06:06:30.731932+00:00"
+        },
+        "status": "pending",
+        "reason": "Legacy name/timestamp is not an immutable historical parent pin."
+      },
+      {
+        "index": 2,
+        "legacy": {
+          "dataset": "mw_disk_anticenter_gaia",
+          "fetched_at": "2026-07-10T06:10:13.411965+00:00"
+        },
+        "status": "pending",
+        "reason": "Legacy name/timestamp is not an immutable historical parent pin."
+      }
+    ]
+  },
+  "references": [],
+  "presentation": {},
+  "payload": {
+    "role": "dataset",
+    "availability": "external",
+    "snapshot_digest": "sha256:dd1fb11919515c685c86d30c7183110504785af95217f1c1216b784ff7cb6cb1",
+    "locator": "data/processed/derived/mw_rotation_curve.parquet",
+    "media_type": "application/vnd.apache.parquet"
+  },
+  "revision_id": "sha256:c55339824334e1ac88ce88e76b3824ebc75f875b1bcf8856820edd8b0f7b86ba"
+}

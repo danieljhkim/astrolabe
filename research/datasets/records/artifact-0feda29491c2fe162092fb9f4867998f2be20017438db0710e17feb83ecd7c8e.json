@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "kind": "artifact",
+  "id": "urn:research:astrolabe:artifact:dataset%3Acatalog%3Amw_disk_gaia",
+  "aliases": [
+    "catalog/mw_disk_gaia",
+    "mw_disk_gaia"
+  ],
+  "activity": "active",
+  "scope": "unknown",
+  "provenance": {
+    "repository": "astrolabe",
+    "git_revision": "90f5b58890da36c44286a4edbde7eead879410a8",
+    "blob_oid": null,
+    "sha256": "sha256:3346a17e38cd2313285714a7f9e3f753b72f96e2e8b0ddedbc7f21b79ea89baf",
+    "path": "data/processed/catalog/mw_disk_gaia.json",
+    "selector": "$",
+    "historical": true,
+    "working_tree": true
+  },
+  "limitations": [
+    "Dry-run current-byte hash; retained immutable bytes require snapshot capture.",
+    "Present bytes do not establish which generation any historical analysis consumed."
+  ],
+  "missingness": [
+    "immutable-retained-bytes",
+    "historical-consumption",
+    "scope",
+    "lineage-not-recorded"
+  ],
+  "legacy": {
+    "dataset": {
+      "name": "mw_disk_gaia",
+      "kind": "catalog",
+      "source": "gaia",
+      "query": {
+        "adql": "SELECT TOP 300000\n  g.source_id, g.ra, g.dec, g.parallax, g.parallax_over_error,\n  g.pmra, g.pmdec, g.radial_velocity, g.ruwe,\n  g.phot_g_mean_mag, g.bp_rp, d.r_med_photogeo\nFROM gaiadr3.gaia_source AS g\nJOIN external.gaiaedr3_distance AS d ON g.source_id = d.source_id\nWHERE g.radial_velocity IS NOT NULL\n  AND g.ruwe < 1.4\n  AND g.parallax_over_error > 3\n  AND ABS(g.b) < 25\n  AND d.r_med_photogeo IS NOT NULL\nORDER BY g.random_index"
+      },
+      "fetched_at": "2026-07-10T06:03:53.810655+00:00",
+      "n_rows": 300000,
+      "columns": [
+        "source_id",
+        "ra",
+        "dec",
+        "parallax",
+        "parallax_over_error",
+        "pmra",
+        "pmdec",
+        "radial_velocity",
+        "ruwe",
+        "phot_g_mean_mag",
+        "bp_rp",
+        "r_med_photogeo"
+      ],
+      "lineage": null
+    },
+    "sidecar_bytes_base64": "ewogICJuYW1lIjogIm13X2Rpc2tfZ2FpYSIsCiAgImtpbmQiOiAiY2F0YWxvZyIsCiAgInNvdXJjZSI6ICJnYWlhIiwKICAicXVlcnkiOiB7CiAgICAiYWRxbCI6ICJTRUxFQ1QgVE9QIDMwMDAwMFxuICBnLnNvdXJjZV9pZCwgZy5yYSwgZy5kZWMsIGcucGFyYWxsYXgsIGcucGFyYWxsYXhfb3Zlcl9lcnJvcixcbiAgZy5wbXJhLCBnLnBtZGVjLCBnLnJhZGlhbF92ZWxvY2l0eSwgZy5ydXdlLFxuICBnLnBob3RfZ19tZWFuX21hZywgZy5icF9ycCwgZC5yX21lZF9waG90b2dlb1xuRlJPTSBnYWlhZHIzLmdhaWFfc291cmNlIEFTIGdcbkpPSU4gZXh0ZXJuYWwuZ2FpYWVkcjNfZGlzdGFuY2UgQVMgZCBPTiBnLnNvdXJjZV9pZCA9IGQuc291cmNlX2lkXG5XSEVSRSBnLnJhZGlhbF92ZWxvY2l0eSBJUyBOT1QgTlVMTFxuICBBTkQgZy5ydXdlIDwgMS40XG4gIEFORCBnLnBhcmFsbGF4X292ZXJfZXJyb3IgPiAzXG4gIEFORCBBQlMoZy5iKSA8IDI1XG4gIEFORCBkLnJfbWVkX3Bob3RvZ2VvIElTIE5PVCBOVUxMXG5PUkRFUiBCWSBnLnJhbmRvbV9pbmRleCIKICB9LAogICJmZXRjaGVkX2F0IjogIjIwMjYtMDctMTBUMDY6MDM6NTMuODEwNjU1KzAwOjAwIiwKICAibl9yb3dzIjogMzAwMDAwLAogICJjb2x1bW5zIjogWwogICAgInNvdXJjZV9pZCIsCiAgICAicmEiLAogICAgImRlYyIsCiAgICAicGFyYWxsYXgiLAogICAgInBhcmFsbGF4X292ZXJfZXJyb3IiLAogICAgInBtcmEiLAogICAgInBtZGVjIiwKICAgICJyYWRpYWxfdmVsb2NpdHkiLAogICAgInJ1d2UiLAogICAgInBob3RfZ19tZWFuX21hZyIsCiAgICAiYnBfcnAiLAogICAgInJfbWVkX3Bob3RvZ2VvIgogIF0sCiAgImxpbmVhZ2UiOiBudWxsCn0=",
+    "inventory_pins": {
+      "sidecar_sha256": "sha256:3346a17e38cd2313285714a7f9e3f753b72f96e2e8b0ddedbc7f21b79ea89baf",
+      "parquet_sha256": "sha256:81217666295c46e72b79b941b87fd3f8027920637b313b043035b2597249f2bf"
+    },
+    "lineage_resolution": []
+  },
+  "references": [],
+  "presentation": {},
+  "payload": {
+    "role": "dataset",
+    "availability": "external",
+    "snapshot_digest": "sha256:81217666295c46e72b79b941b87fd3f8027920637b313b043035b2597249f2bf",
+    "locator": "data/processed/catalog/mw_disk_gaia.parquet",
+    "media_type": "application/vnd.apache.parquet"
+  },
+  "revision_id": "sha256:0feda29491c2fe162092fb9f4867998f2be20017438db0710e17feb83ecd7c8e"
+}

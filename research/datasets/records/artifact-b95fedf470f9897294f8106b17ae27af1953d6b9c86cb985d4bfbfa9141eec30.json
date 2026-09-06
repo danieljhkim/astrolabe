@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "kind": "artifact",
+  "id": "urn:research:astrolabe:artifact:dataset%3Acatalog%3Apleiades_gaia",
+  "aliases": [
+    "catalog/pleiades_gaia",
+    "pleiades_gaia"
+  ],
+  "activity": "active",
+  "scope": "unknown",
+  "provenance": {
+    "repository": "astrolabe",
+    "git_revision": "90f5b58890da36c44286a4edbde7eead879410a8",
+    "blob_oid": null,
+    "sha256": "sha256:26b54438f8a20091f038d3d215b0213a93f650ca3f977cc40a0c1bc51969e7b0",
+    "path": "data/processed/catalog/pleiades_gaia.json",
+    "selector": "$",
+    "historical": true,
+    "working_tree": true
+  },
+  "limitations": [
+    "Dry-run current-byte hash; retained immutable bytes require snapshot capture.",
+    "Present bytes do not establish which generation any historical analysis consumed."
+  ],
+  "missingness": [
+    "immutable-retained-bytes",
+    "historical-consumption",
+    "scope",
+    "lineage-not-recorded"
+  ],
+  "legacy": {
+    "dataset": {
+      "name": "pleiades_gaia",
+      "source": "gaia",
+      "query": {
+        "ra": 56.75,
+        "dec": 24.1167,
+        "radius": 1.5,
+        "limit": 8000
+      },
+      "fetched_at": "2026-07-10T04:44:21.898276+00:00",
+      "n_rows": 8000,
+      "columns": [
+        "source_id",
+        "ra",
+        "dec",
+        "phot_g_mean_mag",
+        "bp_rp",
+        "parallax"
+      ],
+      "kind": "catalog",
+      "lineage": null
+    },
+    "sidecar_bytes_base64": "ewogICJuYW1lIjogInBsZWlhZGVzX2dhaWEiLAogICJzb3VyY2UiOiAiZ2FpYSIsCiAgInF1ZXJ5IjogewogICAgInJhIjogNTYuNzUsCiAgICAiZGVjIjogMjQuMTE2NywKICAgICJyYWRpdXMiOiAxLjUsCiAgICAibGltaXQiOiA4MDAwCiAgfSwKICAiZmV0Y2hlZF9hdCI6ICIyMDI2LTA3LTEwVDA0OjQ0OjIxLjg5ODI3NiswMDowMCIsCiAgIm5fcm93cyI6IDgwMDAsCiAgImNvbHVtbnMiOiBbCiAgICAic291cmNlX2lkIiwKICAgICJyYSIsCiAgICAiZGVjIiwKICAgICJwaG90X2dfbWVhbl9tYWciLAogICAgImJwX3JwIiwKICAgICJwYXJhbGxheCIKICBdLAogICJraW5kIjogImNhdGFsb2ciLAogICJsaW5lYWdlIjogbnVsbAp9",
+    "inventory_pins": {
+      "sidecar_sha256": "sha256:26b54438f8a20091f038d3d215b0213a93f650ca3f977cc40a0c1bc51969e7b0",
+      "parquet_sha256": "sha256:9b7233f8b6a7240ecf23a2fb1797faf986b4a3e54321459f10e857744dd3fb66"
+    },
+    "lineage_resolution": []
+  },
+  "references": [],
+  "presentation": {},
+  "payload": {
+    "role": "dataset",
+    "availability": "external",
+    "snapshot_digest": "sha256:9b7233f8b6a7240ecf23a2fb1797faf986b4a3e54321459f10e857744dd3fb66",
+    "locator": "data/processed/catalog/pleiades_gaia.parquet",
+    "media_type": "application/vnd.apache.parquet"
+  },
+  "revision_id": "sha256:b95fedf470f9897294f8106b17ae27af1953d6b9c86cb985d4bfbfa9141eec30"
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "kind": "artifact",
+  "id": "urn:research:astrolabe:artifact:dataset%3Aderived%3Awidebin_vtilde_gn",
+  "aliases": [
+    "derived/widebin_vtilde_gn",
+    "widebin_vtilde_gn"
+  ],
+  "activity": "unknown",
+  "scope": "unknown",
+  "provenance": {
+    "repository": "astrolabe",
+    "git_revision": "90f5b58890da36c44286a4edbde7eead879410a8",
+    "blob_oid": "e027916b0087a30f713cbfb2cc1b21f8464bd022",
+    "sha256": "sha256:5efd6457d7f13c2adce8786793aa24ef97110434395394ad141b47e12a6307c1",
+    "path": "scripts/run_wide_binary_study.py",
+    "selector": "dataset:derived/widebin_vtilde_gn",
+    "historical": true,
+    "working_tree": false
+  },
+  "limitations": [
+    "Expected study output only; no dataset bytes or historical consumption were inferred."
+  ],
+  "missingness": [
+    "dataset-snapshot",
+    "historical-consumption",
+    "scope",
+    "activity"
+  ],
+  "legacy": {
+    "expected_dataset": {
+      "kind": "derived",
+      "name": "widebin_vtilde_gn"
+    },
+    "availability_at_inventory": "missing",
+    "historical_consumption": "unknown"
+  },
+  "references": [],
+  "presentation": {},
+  "payload": {
+    "role": "dataset",
+    "availability": "missing",
+    "snapshot_digest": null,
+    "locator": "data/processed/derived/widebin_vtilde_gn.parquet",
+    "media_type": "application/vnd.apache.parquet"
+  },
+  "revision_id": "sha256:302bec3f697c44e4abbb4a5156cbf3f2af984a840972ea041b2575427b2344ef"
+}

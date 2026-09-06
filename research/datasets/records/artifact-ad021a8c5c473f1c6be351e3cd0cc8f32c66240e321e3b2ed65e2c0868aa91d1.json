@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "kind": "artifact",
+  "id": "urn:research:astrolabe:artifact:dataset%3Aderived%3Asparc_rar",
+  "aliases": [
+    "derived/sparc_rar",
+    "sparc_rar"
+  ],
+  "activity": "active",
+  "scope": "unknown",
+  "provenance": {
+    "repository": "astrolabe",
+    "git_revision": "90f5b58890da36c44286a4edbde7eead879410a8",
+    "blob_oid": null,
+    "sha256": "sha256:6e492df44b7a1b45fcaa9e29ef193b278fe497491690fc1cb16237388be969dd",
+    "path": "data/processed/derived/sparc_rar.json",
+    "selector": "$",
+    "historical": true,
+    "working_tree": true
+  },
+  "limitations": [
+    "Dry-run current-byte hash; retained immutable bytes require snapshot capture.",
+    "Present bytes do not establish which generation any historical analysis consumed."
+  ],
+  "missingness": [
+    "immutable-retained-bytes",
+    "historical-consumption",
+    "scope",
+    "historical-lineage-unresolved"
+  ],
+  "legacy": {
+    "dataset": {
+      "name": "sparc_rar",
+      "kind": "derived",
+      "source": "analysis.radial_acceleration_relation",
+      "query": {
+        "ml_disk": 0.5,
+        "ml_bulge": 0.7,
+        "formula": "g_bar = (v_gas|v_gas| + Y_disk v_disk|v_disk| + Y_bul v_bul|v_bul|)/r; g_obs = v_obs^2/r; m/s^2",
+        "sample_cuts": {
+          "max_quality": 2,
+          "min_incl_deg": 30.0
+        }
+      },
+      "fetched_at": "2026-07-12T09:18:15.913244+00:00",
+      "n_rows": 3168,
+      "columns": [
+        "source_id",
+        "dist_mpc",
+        "r_kpc",
+        "v_obs_kms",
+        "v_obs_err_kms",
+        "v_gas_kms",
+        "v_disk_kms",
+        "v_bul_kms",
+        "sb_disk_lsun_pc2",
+        "sb_bul_lsun_pc2",
+        "g_obs_ms2",
+        "g_obs_err_ms2",
+        "g_bar_ms2",
+        "quality",
+        "incl_deg",
+        "r_disk_kpc",
+        "lum36_1e9lsun"
+      ],
+      "lineage": [
+        {
+          "dataset": "sparc_galaxies",
+          "fetched_at": "2026-07-12T09:18:15.896492+00:00"
+        },
+        {
+          "dataset": "sparc_rotcurves",
+          "fetched_at": "2026-07-12T09:18:15.899771+00:00"
+        }
+      ],
+      "semantics": null
+    },
+    "sidecar_bytes_base64": "ewogICJuYW1lIjogInNwYXJjX3JhciIsCiAgImtpbmQiOiAiZGVyaXZlZCIsCiAgInNvdXJjZSI6ICJhbmFseXNpcy5yYWRpYWxfYWNjZWxlcmF0aW9uX3JlbGF0aW9uIiwKICAicXVlcnkiOiB7CiAgICAibWxfZGlzayI6IDAuNSwKICAgICJtbF9idWxnZSI6IDAuNywKICAgICJmb3JtdWxhIjogImdfYmFyID0gKHZfZ2FzfHZfZ2FzfCArIFlfZGlzayB2X2Rpc2t8dl9kaXNrfCArIFlfYnVsIHZfYnVsfHZfYnVsfCkvcjsgZ19vYnMgPSB2X29ic14yL3I7IG0vc14yIiwKICAgICJzYW1wbGVfY3V0cyI6IHsKICAgICAgIm1heF9xdWFsaXR5IjogMiwKICAgICAgIm1pbl9pbmNsX2RlZyI6IDMwLjAKICAgIH0KICB9LAogICJmZXRjaGVkX2F0IjogIjIwMjYtMDctMTJUMDk6MTg6MTUuOTEzMjQ0KzAwOjAwIiwKICAibl9yb3dzIjogMzE2OCwKICAiY29sdW1ucyI6IFsKICAgICJzb3VyY2VfaWQiLAogICAgImRpc3RfbXBjIiwKICAgICJyX2twYyIsCiAgICAidl9vYnNfa21zIiwKICAgICJ2X29ic19lcnJfa21zIiwKICAgICJ2X2dhc19rbXMiLAogICAgInZfZGlza19rbXMiLAogICAgInZfYnVsX2ttcyIsCiAgICAic2JfZGlza19sc3VuX3BjMiIsCiAgICAic2JfYnVsX2xzdW5fcGMyIiwKICAgICJnX29ic19tczIiLAogICAgImdfb2JzX2Vycl9tczIiLAogICAgImdfYmFyX21zMiIsCiAgICAicXVhbGl0eSIsCiAgICAiaW5jbF9kZWciLAogICAgInJfZGlza19rcGMiLAogICAgImx1bTM2XzFlOWxzdW4iCiAgXSwKICAibGluZWFnZSI6IFsKICAgIHsKICAgICAgImRhdGFzZXQiOiAic3BhcmNfZ2FsYXhpZXMiLAogICAgICAiZmV0Y2hlZF9hdCI6ICIyMDI2LTA3LTEyVDA5OjE4OjE1Ljg5NjQ5MiswMDowMCIKICAgIH0sCiAgICB7CiAgICAgICJkYXRhc2V0IjogInNwYXJjX3JvdGN1cnZlcyIsCiAgICAgICJmZXRjaGVkX2F0IjogIjIwMjYtMDctMTJUMDk6MTg6MTUuODk5NzcxKzAwOjAwIgogICAgfQogIF0sCiAgInNlbWFudGljcyI6IG51bGwKfQ==",
+    "inventory_pins": {
+      "sidecar_sha256": "sha256:6e492df44b7a1b45fcaa9e29ef193b278fe497491690fc1cb16237388be969dd",
+      "parquet_sha256": "sha256:aab41ef19c50e82890481d2cf029bdd008016472fd49e9a2b9f29e8daa68f40c"
+    },
+    "lineage_resolution": [
+      {
+        "index": 0,
+        "legacy": {
+          "dataset": "sparc_galaxies",
+          "fetched_at": "2026-07-12T09:18:15.896492+00:00"
+        },
+        "status": "pending",
+        "reason": "Legacy name/timestamp is not an immutable historical parent pin."
+      },
+      {
+        "index": 1,
+        "legacy": {
+          "dataset": "sparc_rotcurves",
+          "fetched_at": "2026-07-12T09:18:15.899771+00:00"
+        },
+        "status": "pending",
+        "reason": "Legacy name/timestamp is not an immutable historical parent pin."
+      }
+    ]
+  },
+  "references": [],
+  "presentation": {},
+  "payload": {
+    "role": "dataset",
+    "availability": "external",
+    "snapshot_digest": "sha256:aab41ef19c50e82890481d2cf029bdd008016472fd49e9a2b9f29e8daa68f40c",
+    "locator": "data/processed/derived/sparc_rar.parquet",
+    "media_type": "application/vnd.apache.parquet"
+  },
+  "revision_id": "sha256:ad021a8c5c473f1c6be351e3cd0cc8f32c66240e321e3b2ed65e2c0868aa91d1"
+}

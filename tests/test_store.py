@@ -8,6 +8,7 @@ and Store.query exposes each dataset as a schema-qualified DuckDB view.
 from __future__ import annotations
 
 import json
+import os
 
 import duckdb
 import numpy as np
@@ -104,14 +105,16 @@ def test_list_datasets(tmp_path, gaia_table):
     assert store.list_datasets() == ["a", "b", "c"]
     assert store.list_datasets(kind="catalog") == ["a", "b"]
     assert store.datasets() == [
-        ("catalog", "a"), ("catalog", "b"), ("ephemeris", "c"),
+        ("catalog", "a"),
+        ("catalog", "b"),
+        ("ephemeris", "c"),
     ]
 
 
 def test_query_over_catalog(tmp_path, gaia_table):
     store = Store(tmp_path)
     store.write(gaia_table, name="stars", source="gaia")
-    result = store.query('SELECT COUNT(*) AS n FROM stars WHERE dec < 0')
+    result = store.query("SELECT COUNT(*) AS n FROM stars WHERE dec < 0")
     assert isinstance(result, Table)
     assert int(result["n"][0]) == 2
 
@@ -162,3 +165,25 @@ def test_read_missing_raises(tmp_path):
         pass
     else:
         raise AssertionError("expected FileNotFoundError")
+
+
+def test_write_partial_publish_rolls_back_exact_old_pair(tmp_path, gaia_table, monkeypatch):
+    store = Store(tmp_path)
+    store.write(gaia_table, name="stars", source="gaia")
+    data_path = store._processed_path("catalog", "stars")
+    meta_path = store._meta_path("catalog", "stars")
+    before = (data_path.read_bytes(), meta_path.read_bytes())
+    real_replace = os.replace
+    calls = 0
+
+    def fail_second_replace(src, dst):
+        nonlocal calls
+        calls += 1
+        if calls == 2:
+            raise OSError("injected metadata publish failure")
+        return real_replace(src, dst)
+
+    monkeypatch.setattr(os, "replace", fail_second_replace)
+    with pytest.raises(OSError, match="metadata publish"):
+        store.write(gaia_table[:1], name="stars", source="gaia")
+    assert (data_path.read_bytes(), meta_path.read_bytes()) == before

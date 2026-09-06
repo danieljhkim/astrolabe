@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "kind": "artifact",
+  "id": "urn:research:astrolabe:artifact:dataset%3Aephemeris%3Ajupiter_2016_2026",
+  "aliases": [
+    "ephemeris/jupiter_2016_2026",
+    "jupiter_2016_2026"
+  ],
+  "activity": "active",
+  "scope": "unknown",
+  "provenance": {
+    "repository": "astrolabe",
+    "git_revision": "90f5b58890da36c44286a4edbde7eead879410a8",
+    "blob_oid": null,
+    "sha256": "sha256:b4dd8a75ef02c5b286fe3f9efb790d4c9c651a81ec78a32606ffebd717544e1c",
+    "path": "data/processed/ephemeris/jupiter_2016_2026.json",
+    "selector": "$",
+    "historical": true,
+    "working_tree": true
+  },
+  "limitations": [
+    "Dry-run current-byte hash; retained immutable bytes require snapshot capture.",
+    "Present bytes do not establish which generation any historical analysis consumed."
+  ],
+  "missingness": [
+    "immutable-retained-bytes",
+    "historical-consumption",
+    "scope",
+    "lineage-not-recorded"
+  ],
+  "legacy": {
+    "dataset": {
+      "name": "jupiter_2016_2026",
+      "kind": "ephemeris",
+      "source": "horizons",
+      "query": {
+        "target": "5",
+        "type": "vectors",
+        "location": "500@10",
+        "refplane": "earth",
+        "epochs": {
+          "start": "2016-01-01",
+          "stop": "2026-01-01",
+          "step": "10d"
+        }
+      },
+      "fetched_at": "2026-07-11T00:42:54.258859+00:00",
+      "n_rows": 366,
+      "columns": [
+        "targetname",
+        "epoch_jd_tdb",
+        "datetime_str",
+        "x_au",
+        "y_au",
+        "z_au",
+        "vx_au_d",
+        "vy_au_d",
+        "vz_au_d",
+        "lighttime",
+        "range",
+        "range_rate",
+        "source_id"
+      ],
+      "lineage": null
+    },
+    "sidecar_bytes_base64": "ewogICJuYW1lIjogImp1cGl0ZXJfMjAxNl8yMDI2IiwKICAia2luZCI6ICJlcGhlbWVyaXMiLAogICJzb3VyY2UiOiAiaG9yaXpvbnMiLAogICJxdWVyeSI6IHsKICAgICJ0YXJnZXQiOiAiNSIsCiAgICAidHlwZSI6ICJ2ZWN0b3JzIiwKICAgICJsb2NhdGlvbiI6ICI1MDBAMTAiLAogICAgInJlZnBsYW5lIjogImVhcnRoIiwKICAgICJlcG9jaHMiOiB7CiAgICAgICJzdGFydCI6ICIyMDE2LTAxLTAxIiwKICAgICAgInN0b3AiOiAiMjAyNi0wMS0wMSIsCiAgICAgICJzdGVwIjogIjEwZCIKICAgIH0KICB9LAogICJmZXRjaGVkX2F0IjogIjIwMjYtMDctMTFUMDA6NDI6NTQuMjU4ODU5KzAwOjAwIiwKICAibl9yb3dzIjogMzY2LAogICJjb2x1bW5zIjogWwogICAgInRhcmdldG5hbWUiLAogICAgImVwb2NoX2pkX3RkYiIsCiAgICAiZGF0ZXRpbWVfc3RyIiwKICAgICJ4X2F1IiwKICAgICJ5X2F1IiwKICAgICJ6X2F1IiwKICAgICJ2eF9hdV9kIiwKICAgICJ2eV9hdV9kIiwKICAgICJ2el9hdV9kIiwKICAgICJsaWdodHRpbWUiLAogICAgInJhbmdlIiwKICAgICJyYW5nZV9yYXRlIiwKICAgICJzb3VyY2VfaWQiCiAgXSwKICAibGluZWFnZSI6IG51bGwKfQ==",
+    "inventory_pins": {
+      "sidecar_sha256": "sha256:b4dd8a75ef02c5b286fe3f9efb790d4c9c651a81ec78a32606ffebd717544e1c",
+      "parquet_sha256": "sha256:a920a87ef80a9afd1a9779c5ac0a1a525685db55e7aff1f61e2ca1885b3902f2"
+    },
+    "lineage_resolution": []
+  },
+  "references": [],
+  "presentation": {},
+  "payload": {
+    "role": "dataset",
+    "availability": "external",
+    "snapshot_digest": "sha256:a920a87ef80a9afd1a9779c5ac0a1a525685db55e7aff1f61e2ca1885b3902f2",
+    "locator": "data/processed/ephemeris/jupiter_2016_2026.parquet",
+    "media_type": "application/vnd.apache.parquet"
+  },
+  "revision_id": "sha256:52acbf28237ebce7079b5971a6bd251c2dd96ada8673878235e73a35c75303ba"
+}

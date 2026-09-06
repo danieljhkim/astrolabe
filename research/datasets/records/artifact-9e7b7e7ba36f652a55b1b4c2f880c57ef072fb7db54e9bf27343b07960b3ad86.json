@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "kind": "artifact",
+  "id": "urn:research:astrolabe:artifact:dataset%3Aderived%3Afield_eq180_xmatch",
+  "aliases": [
+    "derived/field_eq180_xmatch",
+    "field_eq180_xmatch"
+  ],
+  "activity": "active",
+  "scope": "unknown",
+  "provenance": {
+    "repository": "astrolabe",
+    "git_revision": "90f5b58890da36c44286a4edbde7eead879410a8",
+    "blob_oid": null,
+    "sha256": "sha256:3e27194bf8ab938c6850d8ae9c147e24b00169bc9d116901878a31cdad435258",
+    "path": "data/processed/derived/field_eq180_xmatch.json",
+    "selector": "$",
+    "historical": true,
+    "working_tree": true
+  },
+  "limitations": [
+    "Dry-run current-byte hash; retained immutable bytes require snapshot capture.",
+    "Present bytes do not establish which generation any historical analysis consumed."
+  ],
+  "missingness": [
+    "immutable-retained-bytes",
+    "historical-consumption",
+    "scope",
+    "historical-lineage-unresolved"
+  ],
+  "legacy": {
+    "dataset": {
+      "name": "field_eq180_xmatch",
+      "source": "analysis.crossmatch",
+      "query": {
+        "ra": 180.0,
+        "dec": 0.0,
+        "radius": 0.02,
+        "radius_arcsec": 1.0
+      },
+      "fetched_at": "2026-07-10T04:44:24.577878+00:00",
+      "n_rows": 8,
+      "columns": [
+        "source_id",
+        "ra",
+        "dec",
+        "phot_g_mean_mag",
+        "bp_rp",
+        "parallax",
+        "source_id_2",
+        "ra_2",
+        "dec_2",
+        "u",
+        "g",
+        "r",
+        "i",
+        "z",
+        "sep_arcsec"
+      ],
+      "kind": "derived",
+      "lineage": [
+        {
+          "dataset": "field_eq180_sdss",
+          "fetched_at": "2026-07-10T04:44:24.574727+00:00"
+        },
+        {
+          "dataset": null,
+          "source": "gaia",
+          "note": "gaia input was not persisted as a dataset"
+        }
+      ]
+    },
+    "sidecar_bytes_base64": "ewogICJuYW1lIjogImZpZWxkX2VxMTgwX3htYXRjaCIsCiAgInNvdXJjZSI6ICJhbmFseXNpcy5jcm9zc21hdGNoIiwKICAicXVlcnkiOiB7CiAgICAicmEiOiAxODAuMCwKICAgICJkZWMiOiAwLjAsCiAgICAicmFkaXVzIjogMC4wMiwKICAgICJyYWRpdXNfYXJjc2VjIjogMS4wCiAgfSwKICAiZmV0Y2hlZF9hdCI6ICIyMDI2LTA3LTEwVDA0OjQ0OjI0LjU3Nzg3OCswMDowMCIsCiAgIm5fcm93cyI6IDgsCiAgImNvbHVtbnMiOiBbCiAgICAic291cmNlX2lkIiwKICAgICJyYSIsCiAgICAiZGVjIiwKICAgICJwaG90X2dfbWVhbl9tYWciLAogICAgImJwX3JwIiwKICAgICJwYXJhbGxheCIsCiAgICAic291cmNlX2lkXzIiLAogICAgInJhXzIiLAogICAgImRlY18yIiwKICAgICJ1IiwKICAgICJnIiwKICAgICJyIiwKICAgICJpIiwKICAgICJ6IiwKICAgICJzZXBfYXJjc2VjIgogIF0sCiAgImtpbmQiOiAiZGVyaXZlZCIsCiAgImxpbmVhZ2UiOiBbCiAgICB7CiAgICAgICJkYXRhc2V0IjogImZpZWxkX2VxMTgwX3Nkc3MiLAogICAgICAiZmV0Y2hlZF9hdCI6ICIyMDI2LTA3LTEwVDA0OjQ0OjI0LjU3NDcyNyswMDowMCIKICAgIH0sCiAgICB7CiAgICAgICJkYXRhc2V0IjogbnVsbCwKICAgICAgInNvdXJjZSI6ICJnYWlhIiwKICAgICAgIm5vdGUiOiAiZ2FpYSBpbnB1dCB3YXMgbm90IHBlcnNpc3RlZCBhcyBhIGRhdGFzZXQiCiAgICB9CiAgXQp9",
+    "inventory_pins": {
+      "sidecar_sha256": "sha256:3e27194bf8ab938c6850d8ae9c147e24b00169bc9d116901878a31cdad435258",
+      "parquet_sha256": "sha256:2b607721f10320a2ccea4ddb32a8735b4eeb28579125ce6e24809c415fad7a60"
+    },
+    "lineage_resolution": [
+      {
+        "index": 0,
+        "legacy": {
+          "dataset": "field_eq180_sdss",
+          "fetched_at": "2026-07-10T04:44:24.574727+00:00"
+        },
+        "status": "pending",
+        "reason": "Legacy name/timestamp is not an immutable historical parent pin."
+      },
+      {
+        "index": 1,
+        "legacy": {
+          "dataset": null,
+          "source": "gaia",
+          "note": "gaia input was not persisted as a dataset"
+        },
+        "status": "pending",
+        "reason": "Legacy parent was never persisted."
+      }
+    ]
+  },
+  "references": [],
+  "presentation": {},
+  "payload": {
+    "role": "dataset",
+    "availability": "external",
+    "snapshot_digest": "sha256:2b607721f10320a2ccea4ddb32a8735b4eeb28579125ce6e24809c415fad7a60",
+    "locator": "data/processed/derived/field_eq180_xmatch.parquet",
+    "media_type": "application/vnd.apache.parquet"
+  },
+  "revision_id": "sha256:9e7b7e7ba36f652a55b1b4c2f880c57ef072fb7db54e9bf27343b07960b3ad86"
+}

@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "kind": "artifact",
+  "id": "urn:research:astrolabe:artifact:dataset%3Acatalog%3Afield_eq180_sdss",
+  "aliases": [
+    "catalog/field_eq180_sdss",
+    "field_eq180_sdss"
+  ],
+  "activity": "active",
+  "scope": "unknown",
+  "provenance": {
+    "repository": "astrolabe",
+    "git_revision": "90f5b58890da36c44286a4edbde7eead879410a8",
+    "blob_oid": null,
+    "sha256": "sha256:dfd994605ac7a2a4fe14d033489330069938cada998cf4b7c7fb406cb00734db",
+    "path": "data/processed/catalog/field_eq180_sdss.json",
+    "selector": "$",
+    "historical": true,
+    "working_tree": true
+  },
+  "limitations": [
+    "Dry-run current-byte hash; retained immutable bytes require snapshot capture.",
+    "Present bytes do not establish which generation any historical analysis consumed."
+  ],
+  "missingness": [
+    "immutable-retained-bytes",
+    "historical-consumption",
+    "scope",
+    "lineage-not-recorded"
+  ],
+  "legacy": {
+    "dataset": {
+      "name": "field_eq180_sdss",
+      "source": "sdss",
+      "query": {
+        "ra": 180.0,
+        "dec": 0.0,
+        "radius": 0.02
+      },
+      "fetched_at": "2026-07-10T04:44:24.574727+00:00",
+      "n_rows": 41,
+      "columns": [
+        "source_id",
+        "ra",
+        "dec",
+        "u",
+        "g",
+        "r",
+        "i",
+        "z"
+      ],
+      "kind": "catalog",
+      "lineage": null
+    },
+    "sidecar_bytes_base64": "ewogICJuYW1lIjogImZpZWxkX2VxMTgwX3Nkc3MiLAogICJzb3VyY2UiOiAic2RzcyIsCiAgInF1ZXJ5IjogewogICAgInJhIjogMTgwLjAsCiAgICAiZGVjIjogMC4wLAogICAgInJhZGl1cyI6IDAuMDIKICB9LAogICJmZXRjaGVkX2F0IjogIjIwMjYtMDctMTBUMDQ6NDQ6MjQuNTc0NzI3KzAwOjAwIiwKICAibl9yb3dzIjogNDEsCiAgImNvbHVtbnMiOiBbCiAgICAic291cmNlX2lkIiwKICAgICJyYSIsCiAgICAiZGVjIiwKICAgICJ1IiwKICAgICJnIiwKICAgICJyIiwKICAgICJpIiwKICAgICJ6IgogIF0sCiAgImtpbmQiOiAiY2F0YWxvZyIsCiAgImxpbmVhZ2UiOiBudWxsCn0=",
+    "inventory_pins": {
+      "sidecar_sha256": "sha256:dfd994605ac7a2a4fe14d033489330069938cada998cf4b7c7fb406cb00734db",
+      "parquet_sha256": "sha256:a4532be0971fda0fc5d696cbc1187ce539ac0673a61ba5a6e6425f110543b2ea"
+    },
+    "lineage_resolution": []
+  },
+  "references": [],
+  "presentation": {},
+  "payload": {
+    "role": "dataset",
+    "availability": "external",
+    "snapshot_digest": "sha256:a4532be0971fda0fc5d696cbc1187ce539ac0673a61ba5a6e6425f110543b2ea",
+    "locator": "data/processed/catalog/field_eq180_sdss.parquet",
+    "media_type": "application/vnd.apache.parquet"
+  },
+  "revision_id": "sha256:35747c57119ad00d414d524e06aaaa37655b3032bf87e4a8b5e18a48b71d1e18"
+}

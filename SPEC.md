@@ -78,6 +78,11 @@ src/astrolabe/
       Pavlidou–Tomaras R_ta,max, ΛCDM R₀ inversion; H₀=67/73 sensitivity),
       `scripts/deliver_turnaround.py` + `docs/turnaround-interface.md` for the
       principia shear-consumption study note.
+- [x] **M9 — immutable dataset provenance (ORB-11380)**: content-addressed Parquet +
+      exact-sidecar snapshots under ignored `data/snapshots/`, orbit-research v1 artifact
+      records/manifests, exact parent pins, capture/read/trace/export/restore CLI, and a
+      reversible 27-pair legacy inventory. Mutable Store aliases remain compatible;
+      reproducible run exports reject unresolved lineage.
 
 ## 6. Constellation integration
 
@@ -89,9 +94,11 @@ src/astrolabe/
 ## 7. Open questions
 
 - Column-naming convention for normalized tables (adopt Gaia's? define a minimal house set?)
-- ~~Dataset versioning~~ — **resolved 2026-07**: overwrite-by-name; the sidecar's exact
-  query makes datasets reproducible, and a name must be deterministic w.r.t. its query
-  (time-dependent identity goes in the name, e.g. `mars_2026`). See `store.py` docstring.
+- ~~Dataset versioning~~ — **extended 2026-09**: overwrite-by-name remains the mutable
+  exploration interface and names remain deterministic w.r.t. queries. Scientific
+  consumption first captures exact Parquet/sidecar bytes plus schema, units, and parent
+  record revisions under a content-addressed snapshot. See `store.py` and
+  `docs/research-provenance.md`.
 - ~~Ephemeris/time-series storage path~~ — **resolved 2026-07**: shares `store.py`, but
   every dataset is kind-partitioned under `data/processed/<kind>/` (`catalog` |
   `ephemeris` | `derived`); adapters declare their kind (`Source.kind`), and derived

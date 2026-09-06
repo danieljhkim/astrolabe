@@ -19,7 +19,7 @@ from pathlib import Path
 from typing import Any
 
 from .sources import SOURCE_NAMES, get_source
-from .store import Store
+from .store import KINDS, Store
 
 
 def _build_params(args: argparse.Namespace) -> dict[str, Any]:
@@ -94,6 +94,75 @@ def cmd_hr(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_snapshot_capture(args: argparse.Namespace) -> int:
+    store = Store(args.data_dir)
+    snapshot = store.snapshot(
+        args.name,
+        args.kind,
+        parents=args.parent,
+        allow_unresolved=args.allow_unresolved,
+    )
+    print(
+        json.dumps(
+            {
+                "created": snapshot.created,
+                "snapshot_digest": snapshot.digest,
+                "record": str(snapshot.record_path),
+            }
+        )
+    )
+    return 0
+
+
+def cmd_snapshot_read(args: argparse.Namespace) -> int:
+    store = Store(args.data_dir)
+    table = store.read_snapshot(args.digest)
+    if args.out:
+        output = Path(args.out)
+        table.write(output, overwrite=False)
+        print(json.dumps({"rows": len(table), "output": str(output)}))
+    else:
+        table.pprint_all()
+    return 0
+
+
+def cmd_snapshot_restore(args: argparse.Namespace) -> int:
+    store = Store(args.data_dir)
+    meta = store.restore_snapshot(args.digest, overwrite=args.overwrite)
+    print(json.dumps({"restored": f"{meta.kind}/{meta.name}", "rows": meta.n_rows}))
+    return 0
+
+
+def cmd_snapshot_trace(args: argparse.Namespace) -> int:
+    from .provenance import trace_snapshot
+
+    print(json.dumps(trace_snapshot(Store(args.data_dir), args.digest), indent=2))
+    return 0
+
+
+def cmd_snapshot_inventory(args: argparse.Namespace) -> int:
+    from .provenance import inventory
+
+    result = inventory(Store(args.data_dir))
+    encoded = json.dumps(result, indent=2, ensure_ascii=False) + "\n"
+    if args.output:
+        output = Path(args.output)
+        with output.open("x", encoding="utf-8") as stream:
+            stream.write(encoded)
+        print(json.dumps({"output": str(output), "counts": result["counts"]}))
+    else:
+        print(encoded, end="")
+    return 0
+
+
+def cmd_snapshot_manifest(args: argparse.Namespace) -> int:
+    from .provenance import export_manifest
+
+    output = export_manifest(args.record, args.output)
+    print(json.dumps({"output": str(output), "records": len(args.record)}))
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="astrolabe", description=__doc__)
     parser.add_argument(
@@ -126,6 +195,58 @@ def build_parser() -> argparse.ArgumentParser:
     p_hr.add_argument("--dataset", required=True)
     p_hr.add_argument("--out", default="hr.png")
     p_hr.set_defaults(func=cmd_hr)
+
+    p_snapshot = sub.add_parser(
+        "snapshot", help="capture and use immutable orbit-research dataset pins"
+    )
+    snapshot_sub = p_snapshot.add_subparsers(dest="snapshot_command", required=True)
+
+    p_capture = snapshot_sub.add_parser(
+        "capture", help="retain one mutable dataset generation"
+    )
+    p_capture.add_argument("name")
+    p_capture.add_argument("--kind", choices=KINDS)
+    p_capture.add_argument(
+        "--parent",
+        action="append",
+        default=[],
+        help="exact parent snapshot record.json; repeat for each lineage parent",
+    )
+    p_capture.add_argument(
+        "--allow-unresolved",
+        action="store_true",
+        help="retain explicit pending legacy lineage (not reproducible-run export)",
+    )
+    p_capture.set_defaults(func=cmd_snapshot_capture)
+
+    p_read = snapshot_sub.add_parser("read", help="verify and read retained bytes")
+    p_read.add_argument("digest")
+    p_read.add_argument("--out")
+    p_read.set_defaults(func=cmd_snapshot_read)
+
+    p_restore = snapshot_sub.add_parser(
+        "restore", help="restore retained bytes to their mutable alias"
+    )
+    p_restore.add_argument("digest")
+    p_restore.add_argument("--overwrite", action="store_true")
+    p_restore.set_defaults(func=cmd_snapshot_restore)
+
+    p_trace = snapshot_sub.add_parser("trace", help="trace exact local parent pins")
+    p_trace.add_argument("digest")
+    p_trace.set_defaults(func=cmd_snapshot_trace)
+
+    p_inventory = snapshot_sub.add_parser(
+        "inventory", help="dry-run inventory without retaining or changing bytes"
+    )
+    p_inventory.add_argument("--output")
+    p_inventory.set_defaults(func=cmd_snapshot_inventory)
+
+    p_manifest = snapshot_sub.add_parser(
+        "manifest", help="export an exact v1 manifest from snapshot records"
+    )
+    p_manifest.add_argument("--record", action="append", required=True)
+    p_manifest.add_argument("--output", required=True)
+    p_manifest.set_defaults(func=cmd_snapshot_manifest)
 
     return parser
 

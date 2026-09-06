@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "kind": "artifact",
+  "id": "urn:research:astrolabe:artifact:dataset%3Acatalog%3Awidebin_pairs_baseline",
+  "aliases": [
+    "catalog/widebin_pairs_baseline",
+    "widebin_pairs_baseline"
+  ],
+  "activity": "unknown",
+  "scope": "unknown",
+  "provenance": {
+    "repository": "astrolabe",
+    "git_revision": "90f5b58890da36c44286a4edbde7eead879410a8",
+    "blob_oid": "e027916b0087a30f713cbfb2cc1b21f8464bd022",
+    "sha256": "sha256:5efd6457d7f13c2adce8786793aa24ef97110434395394ad141b47e12a6307c1",
+    "path": "scripts/run_wide_binary_study.py",
+    "selector": "dataset:catalog/widebin_pairs_baseline",
+    "historical": true,
+    "working_tree": false
+  },
+  "limitations": [
+    "Expected study output only; no dataset bytes or historical consumption were inferred."
+  ],
+  "missingness": [
+    "dataset-snapshot",
+    "historical-consumption",
+    "scope",
+    "activity"
+  ],
+  "legacy": {
+    "expected_dataset": {
+      "kind": "catalog",
+      "name": "widebin_pairs_baseline"
+    },
+    "availability_at_inventory": "missing",
+    "historical_consumption": "unknown"
+  },
+  "references": [],
+  "presentation": {},
+  "payload": {
+    "role": "dataset",
+    "availability": "missing",
+    "snapshot_digest": null,
+    "locator": "data/processed/catalog/widebin_pairs_baseline.parquet",
+    "media_type": "application/vnd.apache.parquet"
+  },
+  "revision_id": "sha256:eb5b5e5e6db1cd32348830d4315945f6eb83db8070a0930f711b4b525b0cad64"
+}

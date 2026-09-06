@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "kind": "manifest",
+  "repositories": [
+    {
+      "id": "astrolabe",
+      "git_revision": "90f5b58890da36c44286a4edbde7eead879410a8"
+    },
+    {
+      "id": "principia",
+      "git_revision": "c04f2ed1ae91d6c126bc60863b5e48f46abe4576"
+    }
+  ],
+  "references": [
+    {
+      "repository": "astrolabe",
+      "id": "urn:research:astrolabe:artifact:source%3Aastrolabe%3A90f5b58890da36c44286a4edbde7eead879410a8%3Asrc%2Fastrolabe%2Fanalysis%2Fwide_binaries.py",
+      "revision_id": "sha256:c094af1fe09fdfaae8e53ec1e4a29e2c60c14e7c4acff1a88224e96a57704226",
+      "source_revision": "90f5b58890da36c44286a4edbde7eead879410a8",
+      "status": "pending"
+    },
+    {
+      "repository": "astrolabe",
+      "id": "urn:research:astrolabe:artifact:source%3Aastrolabe%3A90f5b58890da36c44286a4edbde7eead879410a8%3Ascripts%2Frun_wide_binary_study.py",
+      "revision_id": "sha256:1e4be6ad9f8d5f8199348a0db4cc6df956c0459008f0cb30b3fbf8e708060ed9",
+      "source_revision": "90f5b58890da36c44286a4edbde7eead879410a8",
+      "status": "pending"
+    },
+    {
+      "repository": "astrolabe",
+      "id": "urn:research:astrolabe:artifact:dataset%3Acatalog%3Awidebin_gaia_dr3_d200",
+      "revision_id": "sha256:edd5093f6f24ff2a7e01eda7f43f750bb1be12ad7d1cc794ea390e509f600111",
+      "source_revision": "90f5b58890da36c44286a4edbde7eead879410a8",
+      "status": "pending"
+    },
+    {
+      "repository": "astrolabe",
+      "id": "urn:research:astrolabe:artifact:dataset%3Acatalog%3Awidebin_pairs_baseline",
+      "revision_id": "sha256:eb5b5e5e6db1cd32348830d4315945f6eb83db8070a0930f711b4b525b0cad64",
+      "source_revision": "90f5b58890da36c44286a4edbde7eead879410a8",
+      "status": "pending"
+    },
+    {
+      "repository": "astrolabe",
+      "id": "urn:research:astrolabe:artifact:dataset%3Aderived%3Awidebin_vtilde_gn",
+      "revision_id": "sha256:302bec3f697c44e4abbb4a5156cbf3f2af984a840972ea041b2575427b2344ef",
+      "source_revision": "90f5b58890da36c44286a4edbde7eead879410a8",
+      "status": "pending"
+    },
+    {
+      "repository": "astrolabe",
+      "id": "urn:research:astrolabe:artifact:dataset%3Aderived%3Awidebin_sensitivity",
+      "revision_id": "sha256:77cdac007b611695d1174e1e315d1218c797372c0ba77f31b23aa4f3fbe949f0",
+      "source_revision": "90f5b58890da36c44286a4edbde7eead879410a8",
+      "status": "pending"
+    },
+    {
+      "repository": "principia",
+      "id": "urn:research:principia:protocol:wide-binary-selection-bias-control",
+      "revision_id": "sha256:90b62ef438d73d1a9ceb25c4d7753c0d4fce49dbacbcc207c7febc17f7c70842",
+      "source_revision": "c04f2ed1ae91d6c126bc60863b5e48f46abe4576",
+      "status": "pending"
+    },
+    {
+      "repository": "principia",
+      "id": "urn:research:principia:program:wide-binary-selection-methodology",
+      "revision_id": "sha256:8984ee8cdbd455526503d40ce5f867b42d33e5a27428c4a630892d1bd22552df",
+      "source_revision": "c04f2ed1ae91d6c126bc60863b5e48f46abe4576",
+      "status": "pending"
+    }
+  ]
+}

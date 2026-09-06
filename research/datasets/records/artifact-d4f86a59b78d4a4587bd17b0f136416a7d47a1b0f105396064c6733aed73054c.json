@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "kind": "artifact",
+  "id": "urn:research:astrolabe:artifact:dataset%3Acatalog%3Asparc_galaxies",
+  "aliases": [
+    "catalog/sparc_galaxies",
+    "sparc_galaxies"
+  ],
+  "activity": "active",
+  "scope": "unknown",
+  "provenance": {
+    "repository": "astrolabe",
+    "git_revision": "90f5b58890da36c44286a4edbde7eead879410a8",
+    "blob_oid": null,
+    "sha256": "sha256:11c5345143672d1cb1d64090135652718d5ccd6ab03ab2fa69c2ca3dde077565",
+    "path": "data/processed/catalog/sparc_galaxies.json",
+    "selector": "$",
+    "historical": true,
+    "working_tree": true
+  },
+  "limitations": [
+    "Dry-run current-byte hash; retained immutable bytes require snapshot capture.",
+    "Present bytes do not establish which generation any historical analysis consumed."
+  ],
+  "missingness": [
+    "immutable-retained-bytes",
+    "historical-consumption",
+    "scope",
+    "lineage-not-recorded"
+  ],
+  "legacy": {
+    "dataset": {
+      "name": "sparc_galaxies",
+      "kind": "catalog",
+      "source": "sparc",
+      "query": {
+        "table": "galaxies",
+        "transport": "https manual validation"
+      },
+      "fetched_at": "2026-07-12T09:18:15.896492+00:00",
+      "n_rows": 175,
+      "columns": [
+        "source_id",
+        "hubble_type",
+        "dist_mpc",
+        "dist_err_mpc",
+        "dist_method",
+        "incl_deg",
+        "incl_err_deg",
+        "lum36_1e9lsun",
+        "lum36_err_1e9lsun",
+        "r_eff_kpc",
+        "sb_eff_lsun_pc2",
+        "r_disk_kpc",
+        "sb_disk_lsun_pc2",
+        "mhi_1e9msun",
+        "r_hi_kpc",
+        "v_flat_kms",
+        "v_flat_err_kms",
+        "quality"
+      ],
+      "lineage": null,
+      "semantics": null
+    },
+    "sidecar_bytes_base64": "ewogICJuYW1lIjogInNwYXJjX2dhbGF4aWVzIiwKICAia2luZCI6ICJjYXRhbG9nIiwKICAic291cmNlIjogInNwYXJjIiwKICAicXVlcnkiOiB7CiAgICAidGFibGUiOiAiZ2FsYXhpZXMiLAogICAgInRyYW5zcG9ydCI6ICJodHRwcyBtYW51YWwgdmFsaWRhdGlvbiIKICB9LAogICJmZXRjaGVkX2F0IjogIjIwMjYtMDctMTJUMDk6MTg6MTUuODk2NDkyKzAwOjAwIiwKICAibl9yb3dzIjogMTc1LAogICJjb2x1bW5zIjogWwogICAgInNvdXJjZV9pZCIsCiAgICAiaHViYmxlX3R5cGUiLAogICAgImRpc3RfbXBjIiwKICAgICJkaXN0X2Vycl9tcGMiLAogICAgImRpc3RfbWV0aG9kIiwKICAgICJpbmNsX2RlZyIsCiAgICAiaW5jbF9lcnJfZGVnIiwKICAgICJsdW0zNl8xZTlsc3VuIiwKICAgICJsdW0zNl9lcnJfMWU5bHN1biIsCiAgICAicl9lZmZfa3BjIiwKICAgICJzYl9lZmZfbHN1bl9wYzIiLAogICAgInJfZGlza19rcGMiLAogICAgInNiX2Rpc2tfbHN1bl9wYzIiLAogICAgIm1oaV8xZTltc3VuIiwKICAgICJyX2hpX2twYyIsCiAgICAidl9mbGF0X2ttcyIsCiAgICAidl9mbGF0X2Vycl9rbXMiLAogICAgInF1YWxpdHkiCiAgXSwKICAibGluZWFnZSI6IG51bGwsCiAgInNlbWFudGljcyI6IG51bGwKfQ==",
+    "inventory_pins": {
+      "sidecar_sha256": "sha256:11c5345143672d1cb1d64090135652718d5ccd6ab03ab2fa69c2ca3dde077565",
+      "parquet_sha256": "sha256:6c666d65012d29fc2ab111070305111763cd7283e1fc6600d168a0ac70bf3947"
+    },
+    "lineage_resolution": []
+  },
+  "references": [],
+  "presentation": {},
+  "payload": {
+    "role": "dataset",
+    "availability": "external",
+    "snapshot_digest": "sha256:6c666d65012d29fc2ab111070305111763cd7283e1fc6600d168a0ac70bf3947",
+    "locator": "data/processed/catalog/sparc_galaxies.parquet",
+    "media_type": "application/vnd.apache.parquet"
+  },
+  "revision_id": "sha256:d4f86a59b78d4a4587bd17b0f136416a7d47a1b0f105396064c6733aed73054c"
+}

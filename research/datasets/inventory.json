@@ -1,0 +1,1399 @@
+{
+  "schema_version": 1,
+  "kind": "astrolabe-dataset-inventory",
+  "dry_run": true,
+  "source_revision": "90f5b58890da36c44286a4edbde7eead879410a8",
+  "counts": {
+    "sidecars": 27,
+    "parquet": 27,
+    "mapped": 27,
+    "exceptions": 0,
+    "lineage_containers": 11
+  },
+  "items": [
+    {
+      "kind": "catalog",
+      "name": "field_eq180_sdss",
+      "legacy_aliases": [
+        "catalog/field_eq180_sdss",
+        "field_eq180_sdss"
+      ],
+      "sidecar_sha256": "sha256:dfd994605ac7a2a4fe14d033489330069938cada998cf4b7c7fb406cb00734db",
+      "sidecar_bytes_base64": "ewogICJuYW1lIjogImZpZWxkX2VxMTgwX3Nkc3MiLAogICJzb3VyY2UiOiAic2RzcyIsCiAgInF1ZXJ5IjogewogICAgInJhIjogMTgwLjAsCiAgICAiZGVjIjogMC4wLAogICAgInJhZGl1cyI6IDAuMDIKICB9LAogICJmZXRjaGVkX2F0IjogIjIwMjYtMDctMTBUMDQ6NDQ6MjQuNTc0NzI3KzAwOjAwIiwKICAibl9yb3dzIjogNDEsCiAgImNvbHVtbnMiOiBbCiAgICAic291cmNlX2lkIiwKICAgICJyYSIsCiAgICAiZGVjIiwKICAgICJ1IiwKICAgICJnIiwKICAgICJyIiwKICAgICJpIiwKICAgICJ6IgogIF0sCiAgImtpbmQiOiAiY2F0YWxvZyIsCiAgImxpbmVhZ2UiOiBudWxsCn0=",
+      "parquet_sha256": "sha256:a4532be0971fda0fc5d696cbc1187ce539ac0673a61ba5a6e6425f110543b2ea",
+      "metadata": {
+        "name": "field_eq180_sdss",
+        "source": "sdss",
+        "query": {
+          "ra": 180.0,
+          "dec": 0.0,
+          "radius": 0.02
+        },
+        "fetched_at": "2026-07-10T04:44:24.574727+00:00",
+        "n_rows": 41,
+        "columns": [
+          "source_id",
+          "ra",
+          "dec",
+          "u",
+          "g",
+          "r",
+          "i",
+          "z"
+        ],
+        "kind": "catalog",
+        "lineage": null
+      },
+      "lineage": null,
+      "historical_consumption": "unknown",
+      "disposition": "mapped",
+      "exceptions": []
+    },
+    {
+      "kind": "catalog",
+      "name": "mw_disk_anticenter_gaia",
+      "legacy_aliases": [
+        "catalog/mw_disk_anticenter_gaia",
+        "mw_disk_anticenter_gaia"
+      ],
+      "sidecar_sha256": "sha256:8b38adc4a1d6702cfb6c5c9649cc804f83fbf63cccc19687e3dc283c75811bed",
+      "sidecar_bytes_base64": "ewogICJuYW1lIjogIm13X2Rpc2tfYW50aWNlbnRlcl9nYWlhIiwKICAia2luZCI6ICJjYXRhbG9nIiwKICAic291cmNlIjogImdhaWEiLAogICJxdWVyeSI6IHsKICAgICJhZHFsIjogIlNFTEVDVCBUT1AgMzAwMDAwXG4gIGcuc291cmNlX2lkLCBnLnJhLCBnLmRlYywgZy5wYXJhbGxheCwgZy5wYXJhbGxheF9vdmVyX2Vycm9yLFxuICBnLnBtcmEsIGcucG1kZWMsIGcucmFkaWFsX3ZlbG9jaXR5LCBnLnJ1d2UsXG4gIGcucGhvdF9nX21lYW5fbWFnLCBnLmJwX3JwLCBkLnJfbWVkX3Bob3RvZ2VvXG5GUk9NIGdhaWFkcjMuZ2FpYV9zb3VyY2UgQVMgZ1xuSk9JTiBleHRlcm5hbC5nYWlhZWRyM19kaXN0YW5jZSBBUyBkIE9OIGcuc291cmNlX2lkID0gZC5zb3VyY2VfaWRcbldIRVJFIGcucmFkaWFsX3ZlbG9jaXR5IElTIE5PVCBOVUxMXG4gIEFORCBnLnJ1d2UgPCAxLjRcbiAgQU5EIGcucGFyYWxsYXhfb3Zlcl9lcnJvciA+IDFcbiAgQU5EIEFCUyhnLmIpIDwgMjVcbiAgQU5EIGcubCBCRVRXRUVOIDkwIEFORCAyNzBcbiAgQU5EIGQucl9tZWRfcGhvdG9nZW8gPiA2MDAwXG5PUkRFUiBCWSBnLnJhbmRvbV9pbmRleCIKICB9LAogICJmZXRjaGVkX2F0IjogIjIwMjYtMDctMTBUMDY6MTA6MTMuNDExOTY1KzAwOjAwIiwKICAibl9yb3dzIjogMjAwMjIwLAogICJjb2x1bW5zIjogWwogICAgInNvdXJjZV9pZCIsCiAgICAicmEiLAogICAgImRlYyIsCiAgICAicGFyYWxsYXgiLAogICAgInBhcmFsbGF4X292ZXJfZXJyb3IiLAogICAgInBtcmEiLAogICAgInBtZGVjIiwKICAgICJyYWRpYWxfdmVsb2NpdHkiLAogICAgInJ1d2UiLAogICAgInBob3RfZ19tZWFuX21hZyIsCiAgICAiYnBfcnAiLAogICAgInJfbWVkX3Bob3RvZ2VvIgogIF0sCiAgImxpbmVhZ2UiOiBudWxsCn0=",
+      "parquet_sha256": "sha256:9a485af95c41282010a0244866e4039c6f837654a6e161ce75689e9a266f413f",
+      "metadata": {
+        "name": "mw_disk_anticenter_gaia",
+        "kind": "catalog",
+        "source": "gaia",
+        "query": {
+          "adql": "SELECT TOP 300000\n  g.source_id, g.ra, g.dec, g.parallax, g.parallax_over_error,\n  g.pmra, g.pmdec, g.radial_velocity, g.ruwe,\n  g.phot_g_mean_mag, g.bp_rp, d.r_med_photogeo\nFROM gaiadr3.gaia_source AS g\nJOIN external.gaiaedr3_distance AS d ON g.source_id = d.source_id\nWHERE g.radial_velocity IS NOT NULL\n  AND g.ruwe < 1.4\n  AND g.parallax_over_error > 1\n  AND ABS(g.b) < 25\n  AND g.l BETWEEN 90 AND 270\n  AND d.r_med_photogeo > 6000\nORDER BY g.random_index"
+        },
+        "fetched_at": "2026-07-10T06:10:13.411965+00:00",
+        "n_rows": 200220,
+        "columns": [
+          "source_id",
+          "ra",
+          "dec",
+          "parallax",
+          "parallax_over_error",
+          "pmra",
+          "pmdec",
+          "radial_velocity",
+          "ruwe",
+          "phot_g_mean_mag",
+          "bp_rp",
+          "r_med_photogeo"
+        ],
+        "lineage": null
+      },
+      "lineage": null,
+      "historical_consumption": "unknown",
+      "disposition": "mapped",
+      "exceptions": []
+    },
+    {
+      "kind": "catalog",
+      "name": "mw_disk_gaia",
+      "legacy_aliases": [
+        "catalog/mw_disk_gaia",
+        "mw_disk_gaia"
+      ],
+      "sidecar_sha256": "sha256:3346a17e38cd2313285714a7f9e3f753b72f96e2e8b0ddedbc7f21b79ea89baf",
+      "sidecar_bytes_base64": "ewogICJuYW1lIjogIm13X2Rpc2tfZ2FpYSIsCiAgImtpbmQiOiAiY2F0YWxvZyIsCiAgInNvdXJjZSI6ICJnYWlhIiwKICAicXVlcnkiOiB7CiAgICAiYWRxbCI6ICJTRUxFQ1QgVE9QIDMwMDAwMFxuICBnLnNvdXJjZV9pZCwgZy5yYSwgZy5kZWMsIGcucGFyYWxsYXgsIGcucGFyYWxsYXhfb3Zlcl9lcnJvcixcbiAgZy5wbXJhLCBnLnBtZGVjLCBnLnJhZGlhbF92ZWxvY2l0eSwgZy5ydXdlLFxuICBnLnBob3RfZ19tZWFuX21hZywgZy5icF9ycCwgZC5yX21lZF9waG90b2dlb1xuRlJPTSBnYWlhZHIzLmdhaWFfc291cmNlIEFTIGdcbkpPSU4gZXh0ZXJuYWwuZ2FpYWVkcjNfZGlzdGFuY2UgQVMgZCBPTiBnLnNvdXJjZV9pZCA9IGQuc291cmNlX2lkXG5XSEVSRSBnLnJhZGlhbF92ZWxvY2l0eSBJUyBOT1QgTlVMTFxuICBBTkQgZy5ydXdlIDwgMS40XG4gIEFORCBnLnBhcmFsbGF4X292ZXJfZXJyb3IgPiAzXG4gIEFORCBBQlMoZy5iKSA8IDI1XG4gIEFORCBkLnJfbWVkX3Bob3RvZ2VvIElTIE5PVCBOVUxMXG5PUkRFUiBCWSBnLnJhbmRvbV9pbmRleCIKICB9LAogICJmZXRjaGVkX2F0IjogIjIwMjYtMDctMTBUMDY6MDM6NTMuODEwNjU1KzAwOjAwIiwKICAibl9yb3dzIjogMzAwMDAwLAogICJjb2x1bW5zIjogWwogICAgInNvdXJjZV9pZCIsCiAgICAicmEiLAogICAgImRlYyIsCiAgICAicGFyYWxsYXgiLAogICAgInBhcmFsbGF4X292ZXJfZXJyb3IiLAogICAgInBtcmEiLAogICAgInBtZGVjIiwKICAgICJyYWRpYWxfdmVsb2NpdHkiLAogICAgInJ1d2UiLAogICAgInBob3RfZ19tZWFuX21hZyIsCiAgICAiYnBfcnAiLAogICAgInJfbWVkX3Bob3RvZ2VvIgogIF0sCiAgImxpbmVhZ2UiOiBudWxsCn0=",
+      "parquet_sha256": "sha256:81217666295c46e72b79b941b87fd3f8027920637b313b043035b2597249f2bf",
+      "metadata": {
+        "name": "mw_disk_gaia",
+        "kind": "catalog",
+        "source": "gaia",
+        "query": {
+          "adql": "SELECT TOP 300000\n  g.source_id, g.ra, g.dec, g.parallax, g.parallax_over_error,\n  g.pmra, g.pmdec, g.radial_velocity, g.ruwe,\n  g.phot_g_mean_mag, g.bp_rp, d.r_med_photogeo\nFROM gaiadr3.gaia_source AS g\nJOIN external.gaiaedr3_distance AS d ON g.source_id = d.source_id\nWHERE g.radial_velocity IS NOT NULL\n  AND g.ruwe < 1.4\n  AND g.parallax_over_error > 3\n  AND ABS(g.b) < 25\n  AND d.r_med_photogeo IS NOT NULL\nORDER BY g.random_index"
+        },
+        "fetched_at": "2026-07-10T06:03:53.810655+00:00",
+        "n_rows": 300000,
+        "columns": [
+          "source_id",
+          "ra",
+          "dec",
+          "parallax",
+          "parallax_over_error",
+          "pmra",
+          "pmdec",
+          "radial_velocity",
+          "ruwe",
+          "phot_g_mean_mag",
+          "bp_rp",
+          "r_med_photogeo"
+        ],
+        "lineage": null
+      },
+      "lineage": null,
+      "historical_consumption": "unknown",
+      "disposition": "mapped",
+      "exceptions": []
+    },
+    {
+      "kind": "catalog",
+      "name": "mw_disk_outer_gaia",
+      "legacy_aliases": [
+        "catalog/mw_disk_outer_gaia",
+        "mw_disk_outer_gaia"
+      ],
+      "sidecar_sha256": "sha256:0f9d60b95fe4401ae201879adc518e605c34e14a40b502f0a2bc979599f3287f",
+      "sidecar_bytes_base64": "ewogICJuYW1lIjogIm13X2Rpc2tfb3V0ZXJfZ2FpYSIsCiAgImtpbmQiOiAiY2F0YWxvZyIsCiAgInNvdXJjZSI6ICJnYWlhIiwKICAicXVlcnkiOiB7CiAgICAiYWRxbCI6ICJTRUxFQ1QgVE9QIDMwMDAwMFxuICBnLnNvdXJjZV9pZCwgZy5yYSwgZy5kZWMsIGcucGFyYWxsYXgsIGcucGFyYWxsYXhfb3Zlcl9lcnJvcixcbiAgZy5wbXJhLCBnLnBtZGVjLCBnLnJhZGlhbF92ZWxvY2l0eSwgZy5ydXdlLFxuICBnLnBob3RfZ19tZWFuX21hZywgZy5icF9ycCwgZC5yX21lZF9waG90b2dlb1xuRlJPTSBnYWlhZHIzLmdhaWFfc291cmNlIEFTIGdcbkpPSU4gZXh0ZXJuYWwuZ2FpYWVkcjNfZGlzdGFuY2UgQVMgZCBPTiBnLnNvdXJjZV9pZCA9IGQuc291cmNlX2lkXG5XSEVSRSBnLnJhZGlhbF92ZWxvY2l0eSBJUyBOT1QgTlVMTFxuICBBTkQgZy5ydXdlIDwgMS40XG4gIEFORCBnLnBhcmFsbGF4X292ZXJfZXJyb3IgPiAzXG4gIEFORCBBQlMoZy5iKSA8IDI1XG4gIEFORCBkLnJfbWVkX3Bob3RvZ2VvID4gMzUwMFxuT1JERVIgQlkgZy5yYW5kb21faW5kZXgiCiAgfSwKICAiZmV0Y2hlZF9hdCI6ICIyMDI2LTA3LTEwVDA2OjA2OjMwLjczMTkzMiswMDowMCIsCiAgIm5fcm93cyI6IDMwMDAwMCwKICAiY29sdW1ucyI6IFsKICAgICJzb3VyY2VfaWQiLAogICAgInJhIiwKICAgICJkZWMiLAogICAgInBhcmFsbGF4IiwKICAgICJwYXJhbGxheF9vdmVyX2Vycm9yIiwKICAgICJwbXJhIiwKICAgICJwbWRlYyIsCiAgICAicmFkaWFsX3ZlbG9jaXR5IiwKICAgICJydXdlIiwKICAgICJwaG90X2dfbWVhbl9tYWciLAogICAgImJwX3JwIiwKICAgICJyX21lZF9waG90b2dlbyIKICBdLAogICJsaW5lYWdlIjogbnVsbAp9",
+      "parquet_sha256": "sha256:dd9813b93e05e4b06579a6f575fb32f0439d8496cdd21e0b4847cea74c5986c5",
+      "metadata": {
+        "name": "mw_disk_outer_gaia",
+        "kind": "catalog",
+        "source": "gaia",
+        "query": {
+          "adql": "SELECT TOP 300000\n  g.source_id, g.ra, g.dec, g.parallax, g.parallax_over_error,\n  g.pmra, g.pmdec, g.radial_velocity, g.ruwe,\n  g.phot_g_mean_mag, g.bp_rp, d.r_med_photogeo\nFROM gaiadr3.gaia_source AS g\nJOIN external.gaiaedr3_distance AS d ON g.source_id = d.source_id\nWHERE g.radial_velocity IS NOT NULL\n  AND g.ruwe < 1.4\n  AND g.parallax_over_error > 3\n  AND ABS(g.b) < 25\n  AND d.r_med_photogeo > 3500\nORDER BY g.random_index"
+        },
+        "fetched_at": "2026-07-10T06:06:30.731932+00:00",
+        "n_rows": 300000,
+        "columns": [
+          "source_id",
+          "ra",
+          "dec",
+          "parallax",
+          "parallax_over_error",
+          "pmra",
+          "pmdec",
+          "radial_velocity",
+          "ruwe",
+          "phot_g_mean_mag",
+          "bp_rp",
+          "r_med_photogeo"
+        ],
+        "lineage": null
+      },
+      "lineage": null,
+      "historical_consumption": "unknown",
+      "disposition": "mapped",
+      "exceptions": []
+    },
+    {
+      "kind": "catalog",
+      "name": "pleiades_gaia",
+      "legacy_aliases": [
+        "catalog/pleiades_gaia",
+        "pleiades_gaia"
+      ],
+      "sidecar_sha256": "sha256:26b54438f8a20091f038d3d215b0213a93f650ca3f977cc40a0c1bc51969e7b0",
+      "sidecar_bytes_base64": "ewogICJuYW1lIjogInBsZWlhZGVzX2dhaWEiLAogICJzb3VyY2UiOiAiZ2FpYSIsCiAgInF1ZXJ5IjogewogICAgInJhIjogNTYuNzUsCiAgICAiZGVjIjogMjQuMTE2NywKICAgICJyYWRpdXMiOiAxLjUsCiAgICAibGltaXQiOiA4MDAwCiAgfSwKICAiZmV0Y2hlZF9hdCI6ICIyMDI2LTA3LTEwVDA0OjQ0OjIxLjg5ODI3NiswMDowMCIsCiAgIm5fcm93cyI6IDgwMDAsCiAgImNvbHVtbnMiOiBbCiAgICAic291cmNlX2lkIiwKICAgICJyYSIsCiAgICAiZGVjIiwKICAgICJwaG90X2dfbWVhbl9tYWciLAogICAgImJwX3JwIiwKICAgICJwYXJhbGxheCIKICBdLAogICJraW5kIjogImNhdGFsb2ciLAogICJsaW5lYWdlIjogbnVsbAp9",
+      "parquet_sha256": "sha256:9b7233f8b6a7240ecf23a2fb1797faf986b4a3e54321459f10e857744dd3fb66",
+      "metadata": {
+        "name": "pleiades_gaia",
+        "source": "gaia",
+        "query": {
+          "ra": 56.75,
+          "dec": 24.1167,
+          "radius": 1.5,
+          "limit": 8000
+        },
+        "fetched_at": "2026-07-10T04:44:21.898276+00:00",
+        "n_rows": 8000,
+        "columns": [
+          "source_id",
+          "ra",
+          "dec",
+          "phot_g_mean_mag",
+          "bp_rp",
+          "parallax"
+        ],
+        "kind": "catalog",
+        "lineage": null
+      },
+      "lineage": null,
+      "historical_consumption": "unknown",
+      "disposition": "mapped",
+      "exceptions": []
+    },
+    {
+      "kind": "catalog",
+      "name": "sparc_galaxies",
+      "legacy_aliases": [
+        "catalog/sparc_galaxies",
+        "sparc_galaxies"
+      ],
+      "sidecar_sha256": "sha256:11c5345143672d1cb1d64090135652718d5ccd6ab03ab2fa69c2ca3dde077565",
+      "sidecar_bytes_base64": "ewogICJuYW1lIjogInNwYXJjX2dhbGF4aWVzIiwKICAia2luZCI6ICJjYXRhbG9nIiwKICAic291cmNlIjogInNwYXJjIiwKICAicXVlcnkiOiB7CiAgICAidGFibGUiOiAiZ2FsYXhpZXMiLAogICAgInRyYW5zcG9ydCI6ICJodHRwcyBtYW51YWwgdmFsaWRhdGlvbiIKICB9LAogICJmZXRjaGVkX2F0IjogIjIwMjYtMDctMTJUMDk6MTg6MTUuODk2NDkyKzAwOjAwIiwKICAibl9yb3dzIjogMTc1LAogICJjb2x1bW5zIjogWwogICAgInNvdXJjZV9pZCIsCiAgICAiaHViYmxlX3R5cGUiLAogICAgImRpc3RfbXBjIiwKICAgICJkaXN0X2Vycl9tcGMiLAogICAgImRpc3RfbWV0aG9kIiwKICAgICJpbmNsX2RlZyIsCiAgICAiaW5jbF9lcnJfZGVnIiwKICAgICJsdW0zNl8xZTlsc3VuIiwKICAgICJsdW0zNl9lcnJfMWU5bHN1biIsCiAgICAicl9lZmZfa3BjIiwKICAgICJzYl9lZmZfbHN1bl9wYzIiLAogICAgInJfZGlza19rcGMiLAogICAgInNiX2Rpc2tfbHN1bl9wYzIiLAogICAgIm1oaV8xZTltc3VuIiwKICAgICJyX2hpX2twYyIsCiAgICAidl9mbGF0X2ttcyIsCiAgICAidl9mbGF0X2Vycl9rbXMiLAogICAgInF1YWxpdHkiCiAgXSwKICAibGluZWFnZSI6IG51bGwsCiAgInNlbWFudGljcyI6IG51bGwKfQ==",
+      "parquet_sha256": "sha256:6c666d65012d29fc2ab111070305111763cd7283e1fc6600d168a0ac70bf3947",
+      "metadata": {
+        "name": "sparc_galaxies",
+        "kind": "catalog",
+        "source": "sparc",
+        "query": {
+          "table": "galaxies",
+          "transport": "https manual validation"
+        },
+        "fetched_at": "2026-07-12T09:18:15.896492+00:00",
+        "n_rows": 175,
+        "columns": [
+          "source_id",
+          "hubble_type",
+          "dist_mpc",
+          "dist_err_mpc",
+          "dist_method",
+          "incl_deg",
+          "incl_err_deg",
+          "lum36_1e9lsun",
+          "lum36_err_1e9lsun",
+          "r_eff_kpc",
+          "sb_eff_lsun_pc2",
+          "r_disk_kpc",
+          "sb_disk_lsun_pc2",
+          "mhi_1e9msun",
+          "r_hi_kpc",
+          "v_flat_kms",
+          "v_flat_err_kms",
+          "quality"
+        ],
+        "lineage": null,
+        "semantics": null
+      },
+      "lineage": null,
+      "historical_consumption": "unknown",
+      "disposition": "mapped",
+      "exceptions": []
+    },
+    {
+      "kind": "catalog",
+      "name": "sparc_rotcurves",
+      "legacy_aliases": [
+        "catalog/sparc_rotcurves",
+        "sparc_rotcurves"
+      ],
+      "sidecar_sha256": "sha256:b855a0a4eefa15ff7fa0681a183285821f85619fa27df9b45217f8b025374a12",
+      "sidecar_bytes_base64": "ewogICJuYW1lIjogInNwYXJjX3JvdGN1cnZlcyIsCiAgImtpbmQiOiAiY2F0YWxvZyIsCiAgInNvdXJjZSI6ICJzcGFyYyIsCiAgInF1ZXJ5IjogewogICAgInRhYmxlIjogInJvdGF0aW9uX2N1cnZlcyIsCiAgICAidHJhbnNwb3J0IjogImh0dHBzIG1hbnVhbCB2YWxpZGF0aW9uIgogIH0sCiAgImZldGNoZWRfYXQiOiAiMjAyNi0wNy0xMlQwOToxODoxNS44OTk3NzErMDA6MDAiLAogICJuX3Jvd3MiOiAzMzkxLAogICJjb2x1bW5zIjogWwogICAgInNvdXJjZV9pZCIsCiAgICAiZGlzdF9tcGMiLAogICAgInJfa3BjIiwKICAgICJ2X29ic19rbXMiLAogICAgInZfb2JzX2Vycl9rbXMiLAogICAgInZfZ2FzX2ttcyIsCiAgICAidl9kaXNrX2ttcyIsCiAgICAidl9idWxfa21zIiwKICAgICJzYl9kaXNrX2xzdW5fcGMyIiwKICAgICJzYl9idWxfbHN1bl9wYzIiCiAgXSwKICAibGluZWFnZSI6IG51bGwsCiAgInNlbWFudGljcyI6IG51bGwKfQ==",
+      "parquet_sha256": "sha256:5c61aa95214a461ec59fcf1f2fd5e4f481849cc36a1867175cacfd446dc5dab5",
+      "metadata": {
+        "name": "sparc_rotcurves",
+        "kind": "catalog",
+        "source": "sparc",
+        "query": {
+          "table": "rotation_curves",
+          "transport": "https manual validation"
+        },
+        "fetched_at": "2026-07-12T09:18:15.899771+00:00",
+        "n_rows": 3391,
+        "columns": [
+          "source_id",
+          "dist_mpc",
+          "r_kpc",
+          "v_obs_kms",
+          "v_obs_err_kms",
+          "v_gas_kms",
+          "v_disk_kms",
+          "v_bul_kms",
+          "sb_disk_lsun_pc2",
+          "sb_bul_lsun_pc2"
+        ],
+        "lineage": null,
+        "semantics": null
+      },
+      "lineage": null,
+      "historical_consumption": "unknown",
+      "disposition": "mapped",
+      "exceptions": []
+    },
+    {
+      "kind": "derived",
+      "name": "earth_newtonian_residuals",
+      "legacy_aliases": [
+        "derived/earth_newtonian_residuals",
+        "earth_newtonian_residuals"
+      ],
+      "sidecar_sha256": "sha256:18bfa2895287ce51fef014f4f048dc674d448978fe04e1ce4b91bc899570bb1a",
+      "sidecar_bytes_base64": "ewogICJuYW1lIjogImVhcnRoX25ld3Rvbmlhbl9yZXNpZHVhbHMiLAogICJraW5kIjogImRlcml2ZWQiLAogICJzb3VyY2UiOiAiYW5hbHlzaXMuZXBoZW1lcmlzX3Jlc2lkdWFscyIsCiAgInF1ZXJ5IjogewogICAgImVwaGVtZXJpcyI6ICJlcGhlbWVyaXMvZWFydGhfMjAxNl8yMDI2IiwKICAgICJiYXNlbGluZSI6ICJvcnJlcnkgbGFiL3NpbXMvc29sYXItc3lzdGVtLW5ib2R5L2Jhc2VsaW5lL25ld3Rvbmlhbl8yMDE2XzIwMjYucGFycXVldCIsCiAgICAib3JyZXJ5X2NvbW1pdCI6ICJmNWUwMmUzIiwKICAgICJwcm9kdWNlcl90YXNrIjogIk9SQi0xMDA5MyIsCiAgICAiY29udmVudGlvbiI6ICJiYXNlbGluZSBtaW51cyBlcGhlbWVyaXM7IGhlbGlvY2VudHJpYyBJQ1JGLCBBVSwgSkQgVERCIChkb2NzL2Jhc2VsaW5lLWludGVyZmFjZS5tZCkiCiAgfSwKICAiZmV0Y2hlZF9hdCI6ICIyMDI2LTA3LTExVDAxOjIzOjIwLjEwNTk0MCswMDowMCIsCiAgIm5fcm93cyI6IDM2NiwKICAiY29sdW1ucyI6IFsKICAgICJlcG9jaF9qZF90ZGIiLAogICAgImR4X2F1IiwKICAgICJkeV9hdSIsCiAgICAiZHpfYXUiLAogICAgImRyX2F1IgogIF0sCiAgImxpbmVhZ2UiOiBbCiAgICB7CiAgICAgICJkYXRhc2V0IjogImVhcnRoXzIwMTZfMjAyNiIsCiAgICAgICJmZXRjaGVkX2F0IjogIjIwMjYtMDctMTFUMDA6NDI6NTMuMjY0OTMzKzAwOjAwIgogICAgfSwKICAgIHsKICAgICAgImV4dGVybmFsIjogIm9ycmVyeS9sYWIvc2ltcy9zb2xhci1zeXN0ZW0tbmJvZHkvYmFzZWxpbmUvbmV3dG9uaWFuXzIwMTZfMjAyNi5wYXJxdWV0IiwKICAgICAgImNvbW1pdCI6ICJmNWUwMmUzIiwKICAgICAgInRhc2siOiAiT1JCLTEwMDkzIgogICAgfQogIF0KfQ==",
+      "parquet_sha256": "sha256:42e02b58fffaba556cfdccfc982d026ee6e03363ccd5aa4f50181a2cd7f2ca7d",
+      "metadata": {
+        "name": "earth_newtonian_residuals",
+        "kind": "derived",
+        "source": "analysis.ephemeris_residuals",
+        "query": {
+          "ephemeris": "ephemeris/earth_2016_2026",
+          "baseline": "orrery lab/sims/solar-system-nbody/baseline/newtonian_2016_2026.parquet",
+          "orrery_commit": "f5e02e3",
+          "producer_task": "ORB-10093",
+          "convention": "baseline minus ephemeris; heliocentric ICRF, AU, JD TDB (docs/baseline-interface.md)"
+        },
+        "fetched_at": "2026-07-11T01:23:20.105940+00:00",
+        "n_rows": 366,
+        "columns": [
+          "epoch_jd_tdb",
+          "dx_au",
+          "dy_au",
+          "dz_au",
+          "dr_au"
+        ],
+        "lineage": [
+          {
+            "dataset": "earth_2016_2026",
+            "fetched_at": "2026-07-11T00:42:53.264933+00:00"
+          },
+          {
+            "external": "orrery/lab/sims/solar-system-nbody/baseline/newtonian_2016_2026.parquet",
+            "commit": "f5e02e3",
+            "task": "ORB-10093"
+          }
+        ]
+      },
+      "lineage": [
+        {
+          "dataset": "earth_2016_2026",
+          "fetched_at": "2026-07-11T00:42:53.264933+00:00"
+        },
+        {
+          "external": "orrery/lab/sims/solar-system-nbody/baseline/newtonian_2016_2026.parquet",
+          "commit": "f5e02e3",
+          "task": "ORB-10093"
+        }
+      ],
+      "historical_consumption": "unknown",
+      "disposition": "mapped",
+      "exceptions": []
+    },
+    {
+      "kind": "derived",
+      "name": "field_eq180_xmatch",
+      "legacy_aliases": [
+        "derived/field_eq180_xmatch",
+        "field_eq180_xmatch"
+      ],
+      "sidecar_sha256": "sha256:3e27194bf8ab938c6850d8ae9c147e24b00169bc9d116901878a31cdad435258",
+      "sidecar_bytes_base64": "ewogICJuYW1lIjogImZpZWxkX2VxMTgwX3htYXRjaCIsCiAgInNvdXJjZSI6ICJhbmFseXNpcy5jcm9zc21hdGNoIiwKICAicXVlcnkiOiB7CiAgICAicmEiOiAxODAuMCwKICAgICJkZWMiOiAwLjAsCiAgICAicmFkaXVzIjogMC4wMiwKICAgICJyYWRpdXNfYXJjc2VjIjogMS4wCiAgfSwKICAiZmV0Y2hlZF9hdCI6ICIyMDI2LTA3LTEwVDA0OjQ0OjI0LjU3Nzg3OCswMDowMCIsCiAgIm5fcm93cyI6IDgsCiAgImNvbHVtbnMiOiBbCiAgICAic291cmNlX2lkIiwKICAgICJyYSIsCiAgICAiZGVjIiwKICAgICJwaG90X2dfbWVhbl9tYWciLAogICAgImJwX3JwIiwKICAgICJwYXJhbGxheCIsCiAgICAic291cmNlX2lkXzIiLAogICAgInJhXzIiLAogICAgImRlY18yIiwKICAgICJ1IiwKICAgICJnIiwKICAgICJyIiwKICAgICJpIiwKICAgICJ6IiwKICAgICJzZXBfYXJjc2VjIgogIF0sCiAgImtpbmQiOiAiZGVyaXZlZCIsCiAgImxpbmVhZ2UiOiBbCiAgICB7CiAgICAgICJkYXRhc2V0IjogImZpZWxkX2VxMTgwX3Nkc3MiLAogICAgICAiZmV0Y2hlZF9hdCI6ICIyMDI2LTA3LTEwVDA0OjQ0OjI0LjU3NDcyNyswMDowMCIKICAgIH0sCiAgICB7CiAgICAgICJkYXRhc2V0IjogbnVsbCwKICAgICAgInNvdXJjZSI6ICJnYWlhIiwKICAgICAgIm5vdGUiOiAiZ2FpYSBpbnB1dCB3YXMgbm90IHBlcnNpc3RlZCBhcyBhIGRhdGFzZXQiCiAgICB9CiAgXQp9",
+      "parquet_sha256": "sha256:2b607721f10320a2ccea4ddb32a8735b4eeb28579125ce6e24809c415fad7a60",
+      "metadata": {
+        "name": "field_eq180_xmatch",
+        "source": "analysis.crossmatch",
+        "query": {
+          "ra": 180.0,
+          "dec": 0.0,
+          "radius": 0.02,
+          "radius_arcsec": 1.0
+        },
+        "fetched_at": "2026-07-10T04:44:24.577878+00:00",
+        "n_rows": 8,
+        "columns": [
+          "source_id",
+          "ra",
+          "dec",
+          "phot_g_mean_mag",
+          "bp_rp",
+          "parallax",
+          "source_id_2",
+          "ra_2",
+          "dec_2",
+          "u",
+          "g",
+          "r",
+          "i",
+          "z",
+          "sep_arcsec"
+        ],
+        "kind": "derived",
+        "lineage": [
+          {
+            "dataset": "field_eq180_sdss",
+            "fetched_at": "2026-07-10T04:44:24.574727+00:00"
+          },
+          {
+            "dataset": null,
+            "source": "gaia",
+            "note": "gaia input was not persisted as a dataset"
+          }
+        ]
+      },
+      "lineage": [
+        {
+          "dataset": "field_eq180_sdss",
+          "fetched_at": "2026-07-10T04:44:24.574727+00:00"
+        },
+        {
+          "dataset": null,
+          "source": "gaia",
+          "note": "gaia input was not persisted as a dataset"
+        }
+      ],
+      "historical_consumption": "unknown",
+      "disposition": "mapped",
+      "exceptions": []
+    },
+    {
+      "kind": "derived",
+      "name": "jupiter_newtonian_residuals",
+      "legacy_aliases": [
+        "derived/jupiter_newtonian_residuals",
+        "jupiter_newtonian_residuals"
+      ],
+      "sidecar_sha256": "sha256:28044c62496b673d83d7521463846e76b7aa41623d3b6da63d10b34161ba3d5d",
+      "sidecar_bytes_base64": "ewogICJuYW1lIjogImp1cGl0ZXJfbmV3dG9uaWFuX3Jlc2lkdWFscyIsCiAgImtpbmQiOiAiZGVyaXZlZCIsCiAgInNvdXJjZSI6ICJhbmFseXNpcy5lcGhlbWVyaXNfcmVzaWR1YWxzIiwKICAicXVlcnkiOiB7CiAgICAiZXBoZW1lcmlzIjogImVwaGVtZXJpcy9qdXBpdGVyXzIwMTZfMjAyNiIsCiAgICAiYmFzZWxpbmUiOiAib3JyZXJ5IGxhYi9zaW1zL3NvbGFyLXN5c3RlbS1uYm9keS9iYXNlbGluZS9uZXd0b25pYW5fMjAxNl8yMDI2LnBhcnF1ZXQiLAogICAgIm9ycmVyeV9jb21taXQiOiAiZjVlMDJlMyIsCiAgICAicHJvZHVjZXJfdGFzayI6ICJPUkItMTAwOTMiLAogICAgImNvbnZlbnRpb24iOiAiYmFzZWxpbmUgbWludXMgZXBoZW1lcmlzOyBoZWxpb2NlbnRyaWMgSUNSRiwgQVUsIEpEIFREQiAoZG9jcy9iYXNlbGluZS1pbnRlcmZhY2UubWQpIgogIH0sCiAgImZldGNoZWRfYXQiOiAiMjAyNi0wNy0xMVQwMToyMzoyMC4xMTkxMTYrMDA6MDAiLAogICJuX3Jvd3MiOiAzNjYsCiAgImNvbHVtbnMiOiBbCiAgICAiZXBvY2hfamRfdGRiIiwKICAgICJkeF9hdSIsCiAgICAiZHlfYXUiLAogICAgImR6X2F1IiwKICAgICJkcl9hdSIKICBdLAogICJsaW5lYWdlIjogWwogICAgewogICAgICAiZGF0YXNldCI6ICJqdXBpdGVyXzIwMTZfMjAyNiIsCiAgICAgICJmZXRjaGVkX2F0IjogIjIwMjYtMDctMTFUMDA6NDI6NTQuMjU4ODU5KzAwOjAwIgogICAgfSwKICAgIHsKICAgICAgImV4dGVybmFsIjogIm9ycmVyeS9sYWIvc2ltcy9zb2xhci1zeXN0ZW0tbmJvZHkvYmFzZWxpbmUvbmV3dG9uaWFuXzIwMTZfMjAyNi5wYXJxdWV0IiwKICAgICAgImNvbW1pdCI6ICJmNWUwMmUzIiwKICAgICAgInRhc2siOiAiT1JCLTEwMDkzIgogICAgfQogIF0KfQ==",
+      "parquet_sha256": "sha256:c04ade49e81eed10dd803b239b7cf4b7b76d5ed591ab915851bddaf11e70babc",
+      "metadata": {
+        "name": "jupiter_newtonian_residuals",
+        "kind": "derived",
+        "source": "analysis.ephemeris_residuals",
+        "query": {
+          "ephemeris": "ephemeris/jupiter_2016_2026",
+          "baseline": "orrery lab/sims/solar-system-nbody/baseline/newtonian_2016_2026.parquet",
+          "orrery_commit": "f5e02e3",
+          "producer_task": "ORB-10093",
+          "convention": "baseline minus ephemeris; heliocentric ICRF, AU, JD TDB (docs/baseline-interface.md)"
+        },
+        "fetched_at": "2026-07-11T01:23:20.119116+00:00",
+        "n_rows": 366,
+        "columns": [
+          "epoch_jd_tdb",
+          "dx_au",
+          "dy_au",
+          "dz_au",
+          "dr_au"
+        ],
+        "lineage": [
+          {
+            "dataset": "jupiter_2016_2026",
+            "fetched_at": "2026-07-11T00:42:54.258859+00:00"
+          },
+          {
+            "external": "orrery/lab/sims/solar-system-nbody/baseline/newtonian_2016_2026.parquet",
+            "commit": "f5e02e3",
+            "task": "ORB-10093"
+          }
+        ]
+      },
+      "lineage": [
+        {
+          "dataset": "jupiter_2016_2026",
+          "fetched_at": "2026-07-11T00:42:54.258859+00:00"
+        },
+        {
+          "external": "orrery/lab/sims/solar-system-nbody/baseline/newtonian_2016_2026.parquet",
+          "commit": "f5e02e3",
+          "task": "ORB-10093"
+        }
+      ],
+      "historical_consumption": "unknown",
+      "disposition": "mapped",
+      "exceptions": []
+    },
+    {
+      "kind": "derived",
+      "name": "mars_newtonian_residuals",
+      "legacy_aliases": [
+        "derived/mars_newtonian_residuals",
+        "mars_newtonian_residuals"
+      ],
+      "sidecar_sha256": "sha256:3081cab1808faba3e61968ff3b531d8e590bcd8e96a29e5dcf7e75fc0d5cb310",
+      "sidecar_bytes_base64": "ewogICJuYW1lIjogIm1hcnNfbmV3dG9uaWFuX3Jlc2lkdWFscyIsCiAgImtpbmQiOiAiZGVyaXZlZCIsCiAgInNvdXJjZSI6ICJhbmFseXNpcy5lcGhlbWVyaXNfcmVzaWR1YWxzIiwKICAicXVlcnkiOiB7CiAgICAiZXBoZW1lcmlzIjogImVwaGVtZXJpcy9tYXJzXzIwMTZfMjAyNiIsCiAgICAiYmFzZWxpbmUiOiAib3JyZXJ5IGxhYi9zaW1zL3NvbGFyLXN5c3RlbS1uYm9keS9iYXNlbGluZS9uZXd0b25pYW5fMjAxNl8yMDI2LnBhcnF1ZXQiLAogICAgIm9ycmVyeV9jb21taXQiOiAiZjVlMDJlMyIsCiAgICAicHJvZHVjZXJfdGFzayI6ICJPUkItMTAwOTMiLAogICAgImNvbnZlbnRpb24iOiAiYmFzZWxpbmUgbWludXMgZXBoZW1lcmlzOyBoZWxpb2NlbnRyaWMgSUNSRiwgQVUsIEpEIFREQiAoZG9jcy9iYXNlbGluZS1pbnRlcmZhY2UubWQpIgogIH0sCiAgImZldGNoZWRfYXQiOiAiMjAyNi0wNy0xMVQwMToyMzoyMC4xMTI1NzgrMDA6MDAiLAogICJuX3Jvd3MiOiAzNjYsCiAgImNvbHVtbnMiOiBbCiAgICAiZXBvY2hfamRfdGRiIiwKICAgICJkeF9hdSIsCiAgICAiZHlfYXUiLAogICAgImR6X2F1IiwKICAgICJkcl9hdSIKICBdLAogICJsaW5lYWdlIjogWwogICAgewogICAgICAiZGF0YXNldCI6ICJtYXJzXzIwMTZfMjAyNiIsCiAgICAgICJmZXRjaGVkX2F0IjogIjIwMjYtMDctMTFUMDA6NDI6NTMuNzM3NTU0KzAwOjAwIgogICAgfSwKICAgIHsKICAgICAgImV4dGVybmFsIjogIm9ycmVyeS9sYWIvc2ltcy9zb2xhci1zeXN0ZW0tbmJvZHkvYmFzZWxpbmUvbmV3dG9uaWFuXzIwMTZfMjAyNi5wYXJxdWV0IiwKICAgICAgImNvbW1pdCI6ICJmNWUwMmUzIiwKICAgICAgInRhc2siOiAiT1JCLTEwMDkzIgogICAgfQogIF0KfQ==",
+      "parquet_sha256": "sha256:48671ef5bd3e7359797195461649b9075a794e8c94199eb31c279ee29e147be5",
+      "metadata": {
+        "name": "mars_newtonian_residuals",
+        "kind": "derived",
+        "source": "analysis.ephemeris_residuals",
+        "query": {
+          "ephemeris": "ephemeris/mars_2016_2026",
+          "baseline": "orrery lab/sims/solar-system-nbody/baseline/newtonian_2016_2026.parquet",
+          "orrery_commit": "f5e02e3",
+          "producer_task": "ORB-10093",
+          "convention": "baseline minus ephemeris; heliocentric ICRF, AU, JD TDB (docs/baseline-interface.md)"
+        },
+        "fetched_at": "2026-07-11T01:23:20.112578+00:00",
+        "n_rows": 366,
+        "columns": [
+          "epoch_jd_tdb",
+          "dx_au",
+          "dy_au",
+          "dz_au",
+          "dr_au"
+        ],
+        "lineage": [
+          {
+            "dataset": "mars_2016_2026",
+            "fetched_at": "2026-07-11T00:42:53.737554+00:00"
+          },
+          {
+            "external": "orrery/lab/sims/solar-system-nbody/baseline/newtonian_2016_2026.parquet",
+            "commit": "f5e02e3",
+            "task": "ORB-10093"
+          }
+        ]
+      },
+      "lineage": [
+        {
+          "dataset": "mars_2016_2026",
+          "fetched_at": "2026-07-11T00:42:53.737554+00:00"
+        },
+        {
+          "external": "orrery/lab/sims/solar-system-nbody/baseline/newtonian_2016_2026.parquet",
+          "commit": "f5e02e3",
+          "task": "ORB-10093"
+        }
+      ],
+      "historical_consumption": "unknown",
+      "disposition": "mapped",
+      "exceptions": []
+    },
+    {
+      "kind": "derived",
+      "name": "mercury_newtonian_residuals",
+      "legacy_aliases": [
+        "derived/mercury_newtonian_residuals",
+        "mercury_newtonian_residuals"
+      ],
+      "sidecar_sha256": "sha256:360eba739c956c7c9c19ff5f4ede4b07b22ff696dc1b11f52f2b2698be0951a4",
+      "sidecar_bytes_base64": "ewogICJuYW1lIjogIm1lcmN1cnlfbmV3dG9uaWFuX3Jlc2lkdWFscyIsCiAgImtpbmQiOiAiZGVyaXZlZCIsCiAgInNvdXJjZSI6ICJhbmFseXNpcy5lcGhlbWVyaXNfcmVzaWR1YWxzIiwKICAicXVlcnkiOiB7CiAgICAiZXBoZW1lcmlzIjogImVwaGVtZXJpcy9tZXJjdXJ5XzIwMTZfMjAyNiIsCiAgICAiYmFzZWxpbmUiOiAib3JyZXJ5IGxhYi9zaW1zL3NvbGFyLXN5c3RlbS1uYm9keS9iYXNlbGluZS9uZXd0b25pYW5fMjAxNl8yMDI2LnBhcnF1ZXQiLAogICAgIm9ycmVyeV9jb21taXQiOiAiZjVlMDJlMyIsCiAgICAicHJvZHVjZXJfdGFzayI6ICJPUkItMTAwOTMiLAogICAgImNvbnZlbnRpb24iOiAiYmFzZWxpbmUgbWludXMgZXBoZW1lcmlzOyBoZWxpb2NlbnRyaWMgSUNSRiwgQVUsIEpEIFREQiAoZG9jcy9iYXNlbGluZS1pbnRlcmZhY2UubWQpIgogIH0sCiAgImZldGNoZWRfYXQiOiAiMjAyNi0wNy0xMVQwMToyMzoyMC4wOTI0MjYrMDA6MDAiLAogICJuX3Jvd3MiOiAzNjYsCiAgImNvbHVtbnMiOiBbCiAgICAiZXBvY2hfamRfdGRiIiwKICAgICJkeF9hdSIsCiAgICAiZHlfYXUiLAogICAgImR6X2F1IiwKICAgICJkcl9hdSIKICBdLAogICJsaW5lYWdlIjogWwogICAgewogICAgICAiZGF0YXNldCI6ICJtZXJjdXJ5XzIwMTZfMjAyNiIsCiAgICAgICJmZXRjaGVkX2F0IjogIjIwMjYtMDctMTFUMDA6NDI6NTIuMjQ4NDY0KzAwOjAwIgogICAgfSwKICAgIHsKICAgICAgImV4dGVybmFsIjogIm9ycmVyeS9sYWIvc2ltcy9zb2xhci1zeXN0ZW0tbmJvZHkvYmFzZWxpbmUvbmV3dG9uaWFuXzIwMTZfMjAyNi5wYXJxdWV0IiwKICAgICAgImNvbW1pdCI6ICJmNWUwMmUzIiwKICAgICAgInRhc2siOiAiT1JCLTEwMDkzIgogICAgfQogIF0KfQ==",
+      "parquet_sha256": "sha256:d6b8e40be4382214280132452d9ad33e5994c732d4a169b543d292f760bb5e3c",
+      "metadata": {
+        "name": "mercury_newtonian_residuals",
+        "kind": "derived",
+        "source": "analysis.ephemeris_residuals",
+        "query": {
+          "ephemeris": "ephemeris/mercury_2016_2026",
+          "baseline": "orrery lab/sims/solar-system-nbody/baseline/newtonian_2016_2026.parquet",
+          "orrery_commit": "f5e02e3",
+          "producer_task": "ORB-10093",
+          "convention": "baseline minus ephemeris; heliocentric ICRF, AU, JD TDB (docs/baseline-interface.md)"
+        },
+        "fetched_at": "2026-07-11T01:23:20.092426+00:00",
+        "n_rows": 366,
+        "columns": [
+          "epoch_jd_tdb",
+          "dx_au",
+          "dy_au",
+          "dz_au",
+          "dr_au"
+        ],
+        "lineage": [
+          {
+            "dataset": "mercury_2016_2026",
+            "fetched_at": "2026-07-11T00:42:52.248464+00:00"
+          },
+          {
+            "external": "orrery/lab/sims/solar-system-nbody/baseline/newtonian_2016_2026.parquet",
+            "commit": "f5e02e3",
+            "task": "ORB-10093"
+          }
+        ]
+      },
+      "lineage": [
+        {
+          "dataset": "mercury_2016_2026",
+          "fetched_at": "2026-07-11T00:42:52.248464+00:00"
+        },
+        {
+          "external": "orrery/lab/sims/solar-system-nbody/baseline/newtonian_2016_2026.parquet",
+          "commit": "f5e02e3",
+          "task": "ORB-10093"
+        }
+      ],
+      "historical_consumption": "unknown",
+      "disposition": "mapped",
+      "exceptions": []
+    },
+    {
+      "kind": "derived",
+      "name": "mw_rotation_curve",
+      "legacy_aliases": [
+        "derived/mw_rotation_curve",
+        "mw_rotation_curve"
+      ],
+      "sidecar_sha256": "sha256:3fe8e6bef3aec980c90c6d5a89f16d708d5a3ab867563a17248349793a012d81",
+      "sidecar_bytes_base64": "ewogICJuYW1lIjogIm13X3JvdGF0aW9uX2N1cnZlIiwKICAia2luZCI6ICJkZXJpdmVkIiwKICAic291cmNlIjogImFuYWx5c2lzLnJvdGF0aW9uX2N1cnZlIiwKICAicXVlcnkiOiB7CiAgICAicl9taW5fa3BjIjogNC4wLAogICAgInJfbWF4X2twYyI6IDI1LjAsCiAgICAiYmluX2twYyI6IDAuNSwKICAgICJ6X21heF9rcGMiOiAwLjUsCiAgICAibWluX3N0YXJzIjogMzAsCiAgICAiZGlzdGFuY2VfY29sIjogInJfbWVkX3Bob3RvZ2VvIiwKICAgICJkZWR1cCI6ICJ1bmlxdWUgc291cmNlX2lkIGFjcm9zcyB0aGUgdGhyZWUgbGluZWFnZSBjYXRhbG9ncyIsCiAgICAic2VsZWN0aW9uX25vdGUiOiAiaW5uZXIgc2FtcGxlIFBPRT4zOyBvdXRlciBkPjMuNWtwYyBQT0U+MzsgYW50aWNlbnRlciBkPjZrcGMgUE9FPjEgKEJhaWxlci1Kb25lcyBwaG90b2dlb21ldHJpYyBkaXN0YW5jZXMgY2FycnkgdGhlIGZhciBiaW5zKSIsCiAgICAibWV0aG9kIjogIm1lZGlhbiB2X3BoaSBwZXIgUiBiaW4sIHx6fCA8IDAuNSBrcGM7IE5PVCBhc3ltbWV0cmljLWRyaWZ0IGNvcnJlY3RlZCAoYmlhc2VkIGxvdyB+NS0xNSBrbS9zIGZvciBhIG1peGVkIHNhbXBsZSk7IGVyciA9IDEuNDgyNipNQUQvc3FydChuKSIsCiAgICAiZ2FsYWN0b2NlbnRyaWNfcGFyYW1zIjogewogICAgICAiZ2FsY2VuX2Rpc3RhbmNlX2twYyI6IDguMTIyLAogICAgICAiel9zdW5fcGMiOiAyMC44LAogICAgICAiZ2FsY2VuX3Zfc3VuX2ttcyI6IFsKICAgICAgICAxMi45LAogICAgICAgIDI0NS42LAogICAgICAgIDcuNzgKICAgICAgXQogICAgfQogIH0sCiAgImZldGNoZWRfYXQiOiAiMjAyNi0wNy0xMFQwNjoxMDoxMy42NzI3NzErMDA6MDAiLAogICJuX3Jvd3MiOiAzMCwKICAiY29sdW1ucyI6IFsKICAgICJSX2twYyIsCiAgICAidl9jX2ttcyIsCiAgICAidl9jX2Vycl9rbXMiLAogICAgIm5fc3RhcnMiCiAgXSwKICAibGluZWFnZSI6IFsKICAgIHsKICAgICAgImRhdGFzZXQiOiAibXdfZGlza19nYWlhIiwKICAgICAgImZldGNoZWRfYXQiOiAiMjAyNi0wNy0xMFQwNjowMzo1My44MTA2NTUrMDA6MDAiCiAgICB9LAogICAgewogICAgICAiZGF0YXNldCI6ICJtd19kaXNrX291dGVyX2dhaWEiLAogICAgICAiZmV0Y2hlZF9hdCI6ICIyMDI2LTA3LTEwVDA2OjA2OjMwLjczMTkzMiswMDowMCIKICAgIH0sCiAgICB7CiAgICAgICJkYXRhc2V0IjogIm13X2Rpc2tfYW50aWNlbnRlcl9nYWlhIiwKICAgICAgImZldGNoZWRfYXQiOiAiMjAyNi0wNy0xMFQwNjoxMDoxMy40MTE5NjUrMDA6MDAiCiAgICB9CiAgXQp9",
+      "parquet_sha256": "sha256:dd1fb11919515c685c86d30c7183110504785af95217f1c1216b784ff7cb6cb1",
+      "metadata": {
+        "name": "mw_rotation_curve",
+        "kind": "derived",
+        "source": "analysis.rotation_curve",
+        "query": {
+          "r_min_kpc": 4.0,
+          "r_max_kpc": 25.0,
+          "bin_kpc": 0.5,
+          "z_max_kpc": 0.5,
+          "min_stars": 30,
+          "distance_col": "r_med_photogeo",
+          "dedup": "unique source_id across the three lineage catalogs",
+          "selection_note": "inner sample POE>3; outer d>3.5kpc POE>3; anticenter d>6kpc POE>1 (Bailer-Jones photogeometric distances carry the far bins)",
+          "method": "median v_phi per R bin, |z| < 0.5 kpc; NOT asymmetric-drift corrected (biased low ~5-15 km/s for a mixed sample); err = 1.4826*MAD/sqrt(n)",
+          "galactocentric_params": {
+            "galcen_distance_kpc": 8.122,
+            "z_sun_pc": 20.8,
+            "galcen_v_sun_kms": [
+              12.9,
+              245.6,
+              7.78
+            ]
+          }
+        },
+        "fetched_at": "2026-07-10T06:10:13.672771+00:00",
+        "n_rows": 30,
+        "columns": [
+          "R_kpc",
+          "v_c_kms",
+          "v_c_err_kms",
+          "n_stars"
+        ],
+        "lineage": [
+          {
+            "dataset": "mw_disk_gaia",
+            "fetched_at": "2026-07-10T06:03:53.810655+00:00"
+          },
+          {
+            "dataset": "mw_disk_outer_gaia",
+            "fetched_at": "2026-07-10T06:06:30.731932+00:00"
+          },
+          {
+            "dataset": "mw_disk_anticenter_gaia",
+            "fetched_at": "2026-07-10T06:10:13.411965+00:00"
+          }
+        ]
+      },
+      "lineage": [
+        {
+          "dataset": "mw_disk_gaia",
+          "fetched_at": "2026-07-10T06:03:53.810655+00:00"
+        },
+        {
+          "dataset": "mw_disk_outer_gaia",
+          "fetched_at": "2026-07-10T06:06:30.731932+00:00"
+        },
+        {
+          "dataset": "mw_disk_anticenter_gaia",
+          "fetched_at": "2026-07-10T06:10:13.411965+00:00"
+        }
+      ],
+      "historical_consumption": "unknown",
+      "disposition": "mapped",
+      "exceptions": []
+    },
+    {
+      "kind": "derived",
+      "name": "neptune_newtonian_residuals",
+      "legacy_aliases": [
+        "derived/neptune_newtonian_residuals",
+        "neptune_newtonian_residuals"
+      ],
+      "sidecar_sha256": "sha256:1717eaac39d3255a86e43ca57b4e67e72cde34c9eed1450642b4013f517ff158",
+      "sidecar_bytes_base64": "ewogICJuYW1lIjogIm5lcHR1bmVfbmV3dG9uaWFuX3Jlc2lkdWFscyIsCiAgImtpbmQiOiAiZGVyaXZlZCIsCiAgInNvdXJjZSI6ICJhbmFseXNpcy5lcGhlbWVyaXNfcmVzaWR1YWxzIiwKICAicXVlcnkiOiB7CiAgICAiZXBoZW1lcmlzIjogImVwaGVtZXJpcy9uZXB0dW5lXzIwMTZfMjAyNiIsCiAgICAiYmFzZWxpbmUiOiAib3JyZXJ5IGxhYi9zaW1zL3NvbGFyLXN5c3RlbS1uYm9keS9iYXNlbGluZS9uZXd0b25pYW5fMjAxNl8yMDI2LnBhcnF1ZXQiLAogICAgIm9ycmVyeV9jb21taXQiOiAiZjVlMDJlMyIsCiAgICAicHJvZHVjZXJfdGFzayI6ICJPUkItMTAwOTMiLAogICAgImNvbnZlbnRpb24iOiAiYmFzZWxpbmUgbWludXMgZXBoZW1lcmlzOyBoZWxpb2NlbnRyaWMgSUNSRiwgQVUsIEpEIFREQiAoZG9jcy9iYXNlbGluZS1pbnRlcmZhY2UubWQpIgogIH0sCiAgImZldGNoZWRfYXQiOiAiMjAyNi0wNy0xMVQwMToyMzoyMC4xMzg3MjErMDA6MDAiLAogICJuX3Jvd3MiOiAzNjYsCiAgImNvbHVtbnMiOiBbCiAgICAiZXBvY2hfamRfdGRiIiwKICAgICJkeF9hdSIsCiAgICAiZHlfYXUiLAogICAgImR6X2F1IiwKICAgICJkcl9hdSIKICBdLAogICJsaW5lYWdlIjogWwogICAgewogICAgICAiZGF0YXNldCI6ICJuZXB0dW5lXzIwMTZfMjAyNiIsCiAgICAgICJmZXRjaGVkX2F0IjogIjIwMjYtMDctMTFUMDA6NDI6NTUuOTI0OTQ2KzAwOjAwIgogICAgfSwKICAgIHsKICAgICAgImV4dGVybmFsIjogIm9ycmVyeS9sYWIvc2ltcy9zb2xhci1zeXN0ZW0tbmJvZHkvYmFzZWxpbmUvbmV3dG9uaWFuXzIwMTZfMjAyNi5wYXJxdWV0IiwKICAgICAgImNvbW1pdCI6ICJmNWUwMmUzIiwKICAgICAgInRhc2siOiAiT1JCLTEwMDkzIgogICAgfQogIF0KfQ==",
+      "parquet_sha256": "sha256:64a813862030c75acbc8ba9d8b6bb628930ebe5d126125a2dacca1e74b434316",
+      "metadata": {
+        "name": "neptune_newtonian_residuals",
+        "kind": "derived",
+        "source": "analysis.ephemeris_residuals",
+        "query": {
+          "ephemeris": "ephemeris/neptune_2016_2026",
+          "baseline": "orrery lab/sims/solar-system-nbody/baseline/newtonian_2016_2026.parquet",
+          "orrery_commit": "f5e02e3",
+          "producer_task": "ORB-10093",
+          "convention": "baseline minus ephemeris; heliocentric ICRF, AU, JD TDB (docs/baseline-interface.md)"
+        },
+        "fetched_at": "2026-07-11T01:23:20.138721+00:00",
+        "n_rows": 366,
+        "columns": [
+          "epoch_jd_tdb",
+          "dx_au",
+          "dy_au",
+          "dz_au",
+          "dr_au"
+        ],
+        "lineage": [
+          {
+            "dataset": "neptune_2016_2026",
+            "fetched_at": "2026-07-11T00:42:55.924946+00:00"
+          },
+          {
+            "external": "orrery/lab/sims/solar-system-nbody/baseline/newtonian_2016_2026.parquet",
+            "commit": "f5e02e3",
+            "task": "ORB-10093"
+          }
+        ]
+      },
+      "lineage": [
+        {
+          "dataset": "neptune_2016_2026",
+          "fetched_at": "2026-07-11T00:42:55.924946+00:00"
+        },
+        {
+          "external": "orrery/lab/sims/solar-system-nbody/baseline/newtonian_2016_2026.parquet",
+          "commit": "f5e02e3",
+          "task": "ORB-10093"
+        }
+      ],
+      "historical_consumption": "unknown",
+      "disposition": "mapped",
+      "exceptions": []
+    },
+    {
+      "kind": "derived",
+      "name": "saturn_newtonian_residuals",
+      "legacy_aliases": [
+        "derived/saturn_newtonian_residuals",
+        "saturn_newtonian_residuals"
+      ],
+      "sidecar_sha256": "sha256:62eab4e485aedf8106ea07d58c87027fd51950ca95bb15a9cc3425ef564a0aba",
+      "sidecar_bytes_base64": "ewogICJuYW1lIjogInNhdHVybl9uZXd0b25pYW5fcmVzaWR1YWxzIiwKICAia2luZCI6ICJkZXJpdmVkIiwKICAic291cmNlIjogImFuYWx5c2lzLmVwaGVtZXJpc19yZXNpZHVhbHMiLAogICJxdWVyeSI6IHsKICAgICJlcGhlbWVyaXMiOiAiZXBoZW1lcmlzL3NhdHVybl8yMDE2XzIwMjYiLAogICAgImJhc2VsaW5lIjogIm9ycmVyeSBsYWIvc2ltcy9zb2xhci1zeXN0ZW0tbmJvZHkvYmFzZWxpbmUvbmV3dG9uaWFuXzIwMTZfMjAyNi5wYXJxdWV0IiwKICAgICJvcnJlcnlfY29tbWl0IjogImY1ZTAyZTMiLAogICAgInByb2R1Y2VyX3Rhc2siOiAiT1JCLTEwMDkzIiwKICAgICJjb252ZW50aW9uIjogImJhc2VsaW5lIG1pbnVzIGVwaGVtZXJpczsgaGVsaW9jZW50cmljIElDUkYsIEFVLCBKRCBUREIgKGRvY3MvYmFzZWxpbmUtaW50ZXJmYWNlLm1kKSIKICB9LAogICJmZXRjaGVkX2F0IjogIjIwMjYtMDctMTFUMDE6MjM6MjAuMTI1NzEwKzAwOjAwIiwKICAibl9yb3dzIjogMzY2LAogICJjb2x1bW5zIjogWwogICAgImVwb2NoX2pkX3RkYiIsCiAgICAiZHhfYXUiLAogICAgImR5X2F1IiwKICAgICJkel9hdSIsCiAgICAiZHJfYXUiCiAgXSwKICAibGluZWFnZSI6IFsKICAgIHsKICAgICAgImRhdGFzZXQiOiAic2F0dXJuXzIwMTZfMjAyNiIsCiAgICAgICJmZXRjaGVkX2F0IjogIjIwMjYtMDctMTFUMDA6NDI6NTQuODAwMjg3KzAwOjAwIgogICAgfSwKICAgIHsKICAgICAgImV4dGVybmFsIjogIm9ycmVyeS9sYWIvc2ltcy9zb2xhci1zeXN0ZW0tbmJvZHkvYmFzZWxpbmUvbmV3dG9uaWFuXzIwMTZfMjAyNi5wYXJxdWV0IiwKICAgICAgImNvbW1pdCI6ICJmNWUwMmUzIiwKICAgICAgInRhc2siOiAiT1JCLTEwMDkzIgogICAgfQogIF0KfQ==",
+      "parquet_sha256": "sha256:9353185b90c7a4efcb0b0068156be2b93a50e8cb1ca3c540bad6593f1ec461ac",
+      "metadata": {
+        "name": "saturn_newtonian_residuals",
+        "kind": "derived",
+        "source": "analysis.ephemeris_residuals",
+        "query": {
+          "ephemeris": "ephemeris/saturn_2016_2026",
+          "baseline": "orrery lab/sims/solar-system-nbody/baseline/newtonian_2016_2026.parquet",
+          "orrery_commit": "f5e02e3",
+          "producer_task": "ORB-10093",
+          "convention": "baseline minus ephemeris; heliocentric ICRF, AU, JD TDB (docs/baseline-interface.md)"
+        },
+        "fetched_at": "2026-07-11T01:23:20.125710+00:00",
+        "n_rows": 366,
+        "columns": [
+          "epoch_jd_tdb",
+          "dx_au",
+          "dy_au",
+          "dz_au",
+          "dr_au"
+        ],
+        "lineage": [
+          {
+            "dataset": "saturn_2016_2026",
+            "fetched_at": "2026-07-11T00:42:54.800287+00:00"
+          },
+          {
+            "external": "orrery/lab/sims/solar-system-nbody/baseline/newtonian_2016_2026.parquet",
+            "commit": "f5e02e3",
+            "task": "ORB-10093"
+          }
+        ]
+      },
+      "lineage": [
+        {
+          "dataset": "saturn_2016_2026",
+          "fetched_at": "2026-07-11T00:42:54.800287+00:00"
+        },
+        {
+          "external": "orrery/lab/sims/solar-system-nbody/baseline/newtonian_2016_2026.parquet",
+          "commit": "f5e02e3",
+          "task": "ORB-10093"
+        }
+      ],
+      "historical_consumption": "unknown",
+      "disposition": "mapped",
+      "exceptions": []
+    },
+    {
+      "kind": "derived",
+      "name": "sparc_rar",
+      "legacy_aliases": [
+        "derived/sparc_rar",
+        "sparc_rar"
+      ],
+      "sidecar_sha256": "sha256:6e492df44b7a1b45fcaa9e29ef193b278fe497491690fc1cb16237388be969dd",
+      "sidecar_bytes_base64": "ewogICJuYW1lIjogInNwYXJjX3JhciIsCiAgImtpbmQiOiAiZGVyaXZlZCIsCiAgInNvdXJjZSI6ICJhbmFseXNpcy5yYWRpYWxfYWNjZWxlcmF0aW9uX3JlbGF0aW9uIiwKICAicXVlcnkiOiB7CiAgICAibWxfZGlzayI6IDAuNSwKICAgICJtbF9idWxnZSI6IDAuNywKICAgICJmb3JtdWxhIjogImdfYmFyID0gKHZfZ2FzfHZfZ2FzfCArIFlfZGlzayB2X2Rpc2t8dl9kaXNrfCArIFlfYnVsIHZfYnVsfHZfYnVsfCkvcjsgZ19vYnMgPSB2X29ic14yL3I7IG0vc14yIiwKICAgICJzYW1wbGVfY3V0cyI6IHsKICAgICAgIm1heF9xdWFsaXR5IjogMiwKICAgICAgIm1pbl9pbmNsX2RlZyI6IDMwLjAKICAgIH0KICB9LAogICJmZXRjaGVkX2F0IjogIjIwMjYtMDctMTJUMDk6MTg6MTUuOTEzMjQ0KzAwOjAwIiwKICAibl9yb3dzIjogMzE2OCwKICAiY29sdW1ucyI6IFsKICAgICJzb3VyY2VfaWQiLAogICAgImRpc3RfbXBjIiwKICAgICJyX2twYyIsCiAgICAidl9vYnNfa21zIiwKICAgICJ2X29ic19lcnJfa21zIiwKICAgICJ2X2dhc19rbXMiLAogICAgInZfZGlza19rbXMiLAogICAgInZfYnVsX2ttcyIsCiAgICAic2JfZGlza19sc3VuX3BjMiIsCiAgICAic2JfYnVsX2xzdW5fcGMyIiwKICAgICJnX29ic19tczIiLAogICAgImdfb2JzX2Vycl9tczIiLAogICAgImdfYmFyX21zMiIsCiAgICAicXVhbGl0eSIsCiAgICAiaW5jbF9kZWciLAogICAgInJfZGlza19rcGMiLAogICAgImx1bTM2XzFlOWxzdW4iCiAgXSwKICAibGluZWFnZSI6IFsKICAgIHsKICAgICAgImRhdGFzZXQiOiAic3BhcmNfZ2FsYXhpZXMiLAogICAgICAiZmV0Y2hlZF9hdCI6ICIyMDI2LTA3LTEyVDA5OjE4OjE1Ljg5NjQ5MiswMDowMCIKICAgIH0sCiAgICB7CiAgICAgICJkYXRhc2V0IjogInNwYXJjX3JvdGN1cnZlcyIsCiAgICAgICJmZXRjaGVkX2F0IjogIjIwMjYtMDctMTJUMDk6MTg6MTUuODk5NzcxKzAwOjAwIgogICAgfQogIF0sCiAgInNlbWFudGljcyI6IG51bGwKfQ==",
+      "parquet_sha256": "sha256:aab41ef19c50e82890481d2cf029bdd008016472fd49e9a2b9f29e8daa68f40c",
+      "metadata": {
+        "name": "sparc_rar",
+        "kind": "derived",
+        "source": "analysis.radial_acceleration_relation",
+        "query": {
+          "ml_disk": 0.5,
+          "ml_bulge": 0.7,
+          "formula": "g_bar = (v_gas|v_gas| + Y_disk v_disk|v_disk| + Y_bul v_bul|v_bul|)/r; g_obs = v_obs^2/r; m/s^2",
+          "sample_cuts": {
+            "max_quality": 2,
+            "min_incl_deg": 30.0
+          }
+        },
+        "fetched_at": "2026-07-12T09:18:15.913244+00:00",
+        "n_rows": 3168,
+        "columns": [
+          "source_id",
+          "dist_mpc",
+          "r_kpc",
+          "v_obs_kms",
+          "v_obs_err_kms",
+          "v_gas_kms",
+          "v_disk_kms",
+          "v_bul_kms",
+          "sb_disk_lsun_pc2",
+          "sb_bul_lsun_pc2",
+          "g_obs_ms2",
+          "g_obs_err_ms2",
+          "g_bar_ms2",
+          "quality",
+          "incl_deg",
+          "r_disk_kpc",
+          "lum36_1e9lsun"
+        ],
+        "lineage": [
+          {
+            "dataset": "sparc_galaxies",
+            "fetched_at": "2026-07-12T09:18:15.896492+00:00"
+          },
+          {
+            "dataset": "sparc_rotcurves",
+            "fetched_at": "2026-07-12T09:18:15.899771+00:00"
+          }
+        ],
+        "semantics": null
+      },
+      "lineage": [
+        {
+          "dataset": "sparc_galaxies",
+          "fetched_at": "2026-07-12T09:18:15.896492+00:00"
+        },
+        {
+          "dataset": "sparc_rotcurves",
+          "fetched_at": "2026-07-12T09:18:15.899771+00:00"
+        }
+      ],
+      "historical_consumption": "unknown",
+      "disposition": "mapped",
+      "exceptions": []
+    },
+    {
+      "kind": "derived",
+      "name": "uranus_newtonian_residuals",
+      "legacy_aliases": [
+        "derived/uranus_newtonian_residuals",
+        "uranus_newtonian_residuals"
+      ],
+      "sidecar_sha256": "sha256:c582a537bcba34f07ad492c9cb705c26f91b00478595217e85f3e1e596a75b96",
+      "sidecar_bytes_base64": "ewogICJuYW1lIjogInVyYW51c19uZXd0b25pYW5fcmVzaWR1YWxzIiwKICAia2luZCI6ICJkZXJpdmVkIiwKICAic291cmNlIjogImFuYWx5c2lzLmVwaGVtZXJpc19yZXNpZHVhbHMiLAogICJxdWVyeSI6IHsKICAgICJlcGhlbWVyaXMiOiAiZXBoZW1lcmlzL3VyYW51c18yMDE2XzIwMjYiLAogICAgImJhc2VsaW5lIjogIm9ycmVyeSBsYWIvc2ltcy9zb2xhci1zeXN0ZW0tbmJvZHkvYmFzZWxpbmUvbmV3dG9uaWFuXzIwMTZfMjAyNi5wYXJxdWV0IiwKICAgICJvcnJlcnlfY29tbWl0IjogImY1ZTAyZTMiLAogICAgInByb2R1Y2VyX3Rhc2siOiAiT1JCLTEwMDkzIiwKICAgICJjb252ZW50aW9uIjogImJhc2VsaW5lIG1pbnVzIGVwaGVtZXJpczsgaGVsaW9jZW50cmljIElDUkYsIEFVLCBKRCBUREIgKGRvY3MvYmFzZWxpbmUtaW50ZXJmYWNlLm1kKSIKICB9LAogICJmZXRjaGVkX2F0IjogIjIwMjYtMDctMTFUMDE6MjM6MjAuMTMyMzY4KzAwOjAwIiwKICAibl9yb3dzIjogMzY2LAogICJjb2x1bW5zIjogWwogICAgImVwb2NoX2pkX3RkYiIsCiAgICAiZHhfYXUiLAogICAgImR5X2F1IiwKICAgICJkel9hdSIsCiAgICAiZHJfYXUiCiAgXSwKICAibGluZWFnZSI6IFsKICAgIHsKICAgICAgImRhdGFzZXQiOiAidXJhbnVzXzIwMTZfMjAyNiIsCiAgICAgICJmZXRjaGVkX2F0IjogIjIwMjYtMDctMTFUMDA6NDI6NTUuNDE5MzI3KzAwOjAwIgogICAgfSwKICAgIHsKICAgICAgImV4dGVybmFsIjogIm9ycmVyeS9sYWIvc2ltcy9zb2xhci1zeXN0ZW0tbmJvZHkvYmFzZWxpbmUvbmV3dG9uaWFuXzIwMTZfMjAyNi5wYXJxdWV0IiwKICAgICAgImNvbW1pdCI6ICJmNWUwMmUzIiwKICAgICAgInRhc2siOiAiT1JCLTEwMDkzIgogICAgfQogIF0KfQ==",
+      "parquet_sha256": "sha256:96b1063c4e9f7c1202d8c33c1092fb1708fbaf2460ddc786ad2366d04415ffc7",
+      "metadata": {
+        "name": "uranus_newtonian_residuals",
+        "kind": "derived",
+        "source": "analysis.ephemeris_residuals",
+        "query": {
+          "ephemeris": "ephemeris/uranus_2016_2026",
+          "baseline": "orrery lab/sims/solar-system-nbody/baseline/newtonian_2016_2026.parquet",
+          "orrery_commit": "f5e02e3",
+          "producer_task": "ORB-10093",
+          "convention": "baseline minus ephemeris; heliocentric ICRF, AU, JD TDB (docs/baseline-interface.md)"
+        },
+        "fetched_at": "2026-07-11T01:23:20.132368+00:00",
+        "n_rows": 366,
+        "columns": [
+          "epoch_jd_tdb",
+          "dx_au",
+          "dy_au",
+          "dz_au",
+          "dr_au"
+        ],
+        "lineage": [
+          {
+            "dataset": "uranus_2016_2026",
+            "fetched_at": "2026-07-11T00:42:55.419327+00:00"
+          },
+          {
+            "external": "orrery/lab/sims/solar-system-nbody/baseline/newtonian_2016_2026.parquet",
+            "commit": "f5e02e3",
+            "task": "ORB-10093"
+          }
+        ]
+      },
+      "lineage": [
+        {
+          "dataset": "uranus_2016_2026",
+          "fetched_at": "2026-07-11T00:42:55.419327+00:00"
+        },
+        {
+          "external": "orrery/lab/sims/solar-system-nbody/baseline/newtonian_2016_2026.parquet",
+          "commit": "f5e02e3",
+          "task": "ORB-10093"
+        }
+      ],
+      "historical_consumption": "unknown",
+      "disposition": "mapped",
+      "exceptions": []
+    },
+    {
+      "kind": "derived",
+      "name": "venus_newtonian_residuals",
+      "legacy_aliases": [
+        "derived/venus_newtonian_residuals",
+        "venus_newtonian_residuals"
+      ],
+      "sidecar_sha256": "sha256:703e5631a4f7818ff2a996bcc784eac53cf0969cc53a38c37172124a4b0cc418",
+      "sidecar_bytes_base64": "ewogICJuYW1lIjogInZlbnVzX25ld3Rvbmlhbl9yZXNpZHVhbHMiLAogICJraW5kIjogImRlcml2ZWQiLAogICJzb3VyY2UiOiAiYW5hbHlzaXMuZXBoZW1lcmlzX3Jlc2lkdWFscyIsCiAgInF1ZXJ5IjogewogICAgImVwaGVtZXJpcyI6ICJlcGhlbWVyaXMvdmVudXNfMjAxNl8yMDI2IiwKICAgICJiYXNlbGluZSI6ICJvcnJlcnkgbGFiL3NpbXMvc29sYXItc3lzdGVtLW5ib2R5L2Jhc2VsaW5lL25ld3Rvbmlhbl8yMDE2XzIwMjYucGFycXVldCIsCiAgICAib3JyZXJ5X2NvbW1pdCI6ICJmNWUwMmUzIiwKICAgICJwcm9kdWNlcl90YXNrIjogIk9SQi0xMDA5MyIsCiAgICAiY29udmVudGlvbiI6ICJiYXNlbGluZSBtaW51cyBlcGhlbWVyaXM7IGhlbGlvY2VudHJpYyBJQ1JGLCBBVSwgSkQgVERCIChkb2NzL2Jhc2VsaW5lLWludGVyZmFjZS5tZCkiCiAgfSwKICAiZmV0Y2hlZF9hdCI6ICIyMDI2LTA3LTExVDAxOjIzOjIwLjA5OTM2MiswMDowMCIsCiAgIm5fcm93cyI6IDM2NiwKICAiY29sdW1ucyI6IFsKICAgICJlcG9jaF9qZF90ZGIiLAogICAgImR4X2F1IiwKICAgICJkeV9hdSIsCiAgICAiZHpfYXUiLAogICAgImRyX2F1IgogIF0sCiAgImxpbmVhZ2UiOiBbCiAgICB7CiAgICAgICJkYXRhc2V0IjogInZlbnVzXzIwMTZfMjAyNiIsCiAgICAgICJmZXRjaGVkX2F0IjogIjIwMjYtMDctMTFUMDA6NDI6NTIuNzU0NDY4KzAwOjAwIgogICAgfSwKICAgIHsKICAgICAgImV4dGVybmFsIjogIm9ycmVyeS9sYWIvc2ltcy9zb2xhci1zeXN0ZW0tbmJvZHkvYmFzZWxpbmUvbmV3dG9uaWFuXzIwMTZfMjAyNi5wYXJxdWV0IiwKICAgICAgImNvbW1pdCI6ICJmNWUwMmUzIiwKICAgICAgInRhc2siOiAiT1JCLTEwMDkzIgogICAgfQogIF0KfQ==",
+      "parquet_sha256": "sha256:1663f47379d0f5f4695fa90f5a722e3325376e5125fb8b60fd6f6837cc83d6a5",
+      "metadata": {
+        "name": "venus_newtonian_residuals",
+        "kind": "derived",
+        "source": "analysis.ephemeris_residuals",
+        "query": {
+          "ephemeris": "ephemeris/venus_2016_2026",
+          "baseline": "orrery lab/sims/solar-system-nbody/baseline/newtonian_2016_2026.parquet",
+          "orrery_commit": "f5e02e3",
+          "producer_task": "ORB-10093",
+          "convention": "baseline minus ephemeris; heliocentric ICRF, AU, JD TDB (docs/baseline-interface.md)"
+        },
+        "fetched_at": "2026-07-11T01:23:20.099362+00:00",
+        "n_rows": 366,
+        "columns": [
+          "epoch_jd_tdb",
+          "dx_au",
+          "dy_au",
+          "dz_au",
+          "dr_au"
+        ],
+        "lineage": [
+          {
+            "dataset": "venus_2016_2026",
+            "fetched_at": "2026-07-11T00:42:52.754468+00:00"
+          },
+          {
+            "external": "orrery/lab/sims/solar-system-nbody/baseline/newtonian_2016_2026.parquet",
+            "commit": "f5e02e3",
+            "task": "ORB-10093"
+          }
+        ]
+      },
+      "lineage": [
+        {
+          "dataset": "venus_2016_2026",
+          "fetched_at": "2026-07-11T00:42:52.754468+00:00"
+        },
+        {
+          "external": "orrery/lab/sims/solar-system-nbody/baseline/newtonian_2016_2026.parquet",
+          "commit": "f5e02e3",
+          "task": "ORB-10093"
+        }
+      ],
+      "historical_consumption": "unknown",
+      "disposition": "mapped",
+      "exceptions": []
+    },
+    {
+      "kind": "ephemeris",
+      "name": "earth_2016_2026",
+      "legacy_aliases": [
+        "ephemeris/earth_2016_2026",
+        "earth_2016_2026"
+      ],
+      "sidecar_sha256": "sha256:624dc3d1bad66bb152027b7f0c5a7e730820ea61a0de489827001ed7642e4b6a",
+      "sidecar_bytes_base64": "ewogICJuYW1lIjogImVhcnRoXzIwMTZfMjAyNiIsCiAgImtpbmQiOiAiZXBoZW1lcmlzIiwKICAic291cmNlIjogImhvcml6b25zIiwKICAicXVlcnkiOiB7CiAgICAidGFyZ2V0IjogIjMiLAogICAgInR5cGUiOiAidmVjdG9ycyIsCiAgICAibG9jYXRpb24iOiAiNTAwQDEwIiwKICAgICJyZWZwbGFuZSI6ICJlYXJ0aCIsCiAgICAiZXBvY2hzIjogewogICAgICAic3RhcnQiOiAiMjAxNi0wMS0wMSIsCiAgICAgICJzdG9wIjogIjIwMjYtMDEtMDEiLAogICAgICAic3RlcCI6ICIxMGQiCiAgICB9CiAgfSwKICAiZmV0Y2hlZF9hdCI6ICIyMDI2LTA3LTExVDAwOjQyOjUzLjI2NDkzMyswMDowMCIsCiAgIm5fcm93cyI6IDM2NiwKICAiY29sdW1ucyI6IFsKICAgICJ0YXJnZXRuYW1lIiwKICAgICJlcG9jaF9qZF90ZGIiLAogICAgImRhdGV0aW1lX3N0ciIsCiAgICAieF9hdSIsCiAgICAieV9hdSIsCiAgICAiel9hdSIsCiAgICAidnhfYXVfZCIsCiAgICAidnlfYXVfZCIsCiAgICAidnpfYXVfZCIsCiAgICAibGlnaHR0aW1lIiwKICAgICJyYW5nZSIsCiAgICAicmFuZ2VfcmF0ZSIsCiAgICAic291cmNlX2lkIgogIF0sCiAgImxpbmVhZ2UiOiBudWxsCn0=",
+      "parquet_sha256": "sha256:7f2bd8baf51148bc9201173c7daa9761bb655fb7a581e6da3c66bcaaa96784fa",
+      "metadata": {
+        "name": "earth_2016_2026",
+        "kind": "ephemeris",
+        "source": "horizons",
+        "query": {
+          "target": "3",
+          "type": "vectors",
+          "location": "500@10",
+          "refplane": "earth",
+          "epochs": {
+            "start": "2016-01-01",
+            "stop": "2026-01-01",
+            "step": "10d"
+          }
+        },
+        "fetched_at": "2026-07-11T00:42:53.264933+00:00",
+        "n_rows": 366,
+        "columns": [
+          "targetname",
+          "epoch_jd_tdb",
+          "datetime_str",
+          "x_au",
+          "y_au",
+          "z_au",
+          "vx_au_d",
+          "vy_au_d",
+          "vz_au_d",
+          "lighttime",
+          "range",
+          "range_rate",
+          "source_id"
+        ],
+        "lineage": null
+      },
+      "lineage": null,
+      "historical_consumption": "unknown",
+      "disposition": "mapped",
+      "exceptions": []
+    },
+    {
+      "kind": "ephemeris",
+      "name": "jupiter_2016_2026",
+      "legacy_aliases": [
+        "ephemeris/jupiter_2016_2026",
+        "jupiter_2016_2026"
+      ],
+      "sidecar_sha256": "sha256:b4dd8a75ef02c5b286fe3f9efb790d4c9c651a81ec78a32606ffebd717544e1c",
+      "sidecar_bytes_base64": "ewogICJuYW1lIjogImp1cGl0ZXJfMjAxNl8yMDI2IiwKICAia2luZCI6ICJlcGhlbWVyaXMiLAogICJzb3VyY2UiOiAiaG9yaXpvbnMiLAogICJxdWVyeSI6IHsKICAgICJ0YXJnZXQiOiAiNSIsCiAgICAidHlwZSI6ICJ2ZWN0b3JzIiwKICAgICJsb2NhdGlvbiI6ICI1MDBAMTAiLAogICAgInJlZnBsYW5lIjogImVhcnRoIiwKICAgICJlcG9jaHMiOiB7CiAgICAgICJzdGFydCI6ICIyMDE2LTAxLTAxIiwKICAgICAgInN0b3AiOiAiMjAyNi0wMS0wMSIsCiAgICAgICJzdGVwIjogIjEwZCIKICAgIH0KICB9LAogICJmZXRjaGVkX2F0IjogIjIwMjYtMDctMTFUMDA6NDI6NTQuMjU4ODU5KzAwOjAwIiwKICAibl9yb3dzIjogMzY2LAogICJjb2x1bW5zIjogWwogICAgInRhcmdldG5hbWUiLAogICAgImVwb2NoX2pkX3RkYiIsCiAgICAiZGF0ZXRpbWVfc3RyIiwKICAgICJ4X2F1IiwKICAgICJ5X2F1IiwKICAgICJ6X2F1IiwKICAgICJ2eF9hdV9kIiwKICAgICJ2eV9hdV9kIiwKICAgICJ2el9hdV9kIiwKICAgICJsaWdodHRpbWUiLAogICAgInJhbmdlIiwKICAgICJyYW5nZV9yYXRlIiwKICAgICJzb3VyY2VfaWQiCiAgXSwKICAibGluZWFnZSI6IG51bGwKfQ==",
+      "parquet_sha256": "sha256:a920a87ef80a9afd1a9779c5ac0a1a525685db55e7aff1f61e2ca1885b3902f2",
+      "metadata": {
+        "name": "jupiter_2016_2026",
+        "kind": "ephemeris",
+        "source": "horizons",
+        "query": {
+          "target": "5",
+          "type": "vectors",
+          "location": "500@10",
+          "refplane": "earth",
+          "epochs": {
+            "start": "2016-01-01",
+            "stop": "2026-01-01",
+            "step": "10d"
+          }
+        },
+        "fetched_at": "2026-07-11T00:42:54.258859+00:00",
+        "n_rows": 366,
+        "columns": [
+          "targetname",
+          "epoch_jd_tdb",
+          "datetime_str",
+          "x_au",
+          "y_au",
+          "z_au",
+          "vx_au_d",
+          "vy_au_d",
+          "vz_au_d",
+          "lighttime",
+          "range",
+          "range_rate",
+          "source_id"
+        ],
+        "lineage": null
+      },
+      "lineage": null,
+      "historical_consumption": "unknown",
+      "disposition": "mapped",
+      "exceptions": []
+    },
+    {
+      "kind": "ephemeris",
+      "name": "mars_2016_2026",
+      "legacy_aliases": [
+        "ephemeris/mars_2016_2026",
+        "mars_2016_2026"
+      ],
+      "sidecar_sha256": "sha256:a3ce081bbe3d379bdae0feb76a1ae9f8fe0b993fd20e44ae2bbb4994a0376531",
+      "sidecar_bytes_base64": "ewogICJuYW1lIjogIm1hcnNfMjAxNl8yMDI2IiwKICAia2luZCI6ICJlcGhlbWVyaXMiLAogICJzb3VyY2UiOiAiaG9yaXpvbnMiLAogICJxdWVyeSI6IHsKICAgICJ0YXJnZXQiOiAiNCIsCiAgICAidHlwZSI6ICJ2ZWN0b3JzIiwKICAgICJsb2NhdGlvbiI6ICI1MDBAMTAiLAogICAgInJlZnBsYW5lIjogImVhcnRoIiwKICAgICJlcG9jaHMiOiB7CiAgICAgICJzdGFydCI6ICIyMDE2LTAxLTAxIiwKICAgICAgInN0b3AiOiAiMjAyNi0wMS0wMSIsCiAgICAgICJzdGVwIjogIjEwZCIKICAgIH0KICB9LAogICJmZXRjaGVkX2F0IjogIjIwMjYtMDctMTFUMDA6NDI6NTMuNzM3NTU0KzAwOjAwIiwKICAibl9yb3dzIjogMzY2LAogICJjb2x1bW5zIjogWwogICAgInRhcmdldG5hbWUiLAogICAgImVwb2NoX2pkX3RkYiIsCiAgICAiZGF0ZXRpbWVfc3RyIiwKICAgICJ4X2F1IiwKICAgICJ5X2F1IiwKICAgICJ6X2F1IiwKICAgICJ2eF9hdV9kIiwKICAgICJ2eV9hdV9kIiwKICAgICJ2el9hdV9kIiwKICAgICJsaWdodHRpbWUiLAogICAgInJhbmdlIiwKICAgICJyYW5nZV9yYXRlIiwKICAgICJzb3VyY2VfaWQiCiAgXSwKICAibGluZWFnZSI6IG51bGwKfQ==",
+      "parquet_sha256": "sha256:f46e02362f255a54a9b248869e482cab1c20515b443075fdc9d3f50576538248",
+      "metadata": {
+        "name": "mars_2016_2026",
+        "kind": "ephemeris",
+        "source": "horizons",
+        "query": {
+          "target": "4",
+          "type": "vectors",
+          "location": "500@10",
+          "refplane": "earth",
+          "epochs": {
+            "start": "2016-01-01",
+            "stop": "2026-01-01",
+            "step": "10d"
+          }
+        },
+        "fetched_at": "2026-07-11T00:42:53.737554+00:00",
+        "n_rows": 366,
+        "columns": [
+          "targetname",
+          "epoch_jd_tdb",
+          "datetime_str",
+          "x_au",
+          "y_au",
+          "z_au",
+          "vx_au_d",
+          "vy_au_d",
+          "vz_au_d",
+          "lighttime",
+          "range",
+          "range_rate",
+          "source_id"
+        ],
+        "lineage": null
+      },
+      "lineage": null,
+      "historical_consumption": "unknown",
+      "disposition": "mapped",
+      "exceptions": []
+    },
+    {
+      "kind": "ephemeris",
+      "name": "mars_2026",
+      "legacy_aliases": [
+        "ephemeris/mars_2026",
+        "mars_2026"
+      ],
+      "sidecar_sha256": "sha256:aa61c4953e6d5bd8084765097cc41f11689f928a737fb4c3b74430b0aea8c0cf",
+      "sidecar_bytes_base64": "ewogICJuYW1lIjogIm1hcnNfMjAyNiIsCiAgInNvdXJjZSI6ICJob3Jpem9ucyIsCiAgInF1ZXJ5IjogewogICAgInRhcmdldCI6ICI0OTkiLAogICAgImxvY2F0aW9uIjogIjUwMEAzOTkiLAogICAgImVwb2NocyI6IHsKICAgICAgInN0YXJ0IjogIjIwMjYtMDEtMDEiLAogICAgICAic3RvcCI6ICIyMDI2LTEyLTMxIiwKICAgICAgInN0ZXAiOiAiM2QiCiAgICB9CiAgfSwKICAiZmV0Y2hlZF9hdCI6ICIyMDI2LTA3LTEwVDA0OjQ0OjI1LjAzODY0NSswMDowMCIsCiAgIm5fcm93cyI6IDEyMiwKICAiY29sdW1ucyI6IFsKICAgICJzb3VyY2VfaWQiLAogICAgImRhdGV0aW1lX3N0ciIsCiAgICAiZGF0ZXRpbWVfamQiLAogICAgInJhIiwKICAgICJkZWMiLAogICAgIlYiLAogICAgImRlbHRhIiwKICAgICJyIgogIF0sCiAgImtpbmQiOiAiZXBoZW1lcmlzIiwKICAibGluZWFnZSI6IG51bGwKfQ==",
+      "parquet_sha256": "sha256:887af957480a89b00ab4ce94e3f6a7f69263b89a6233d50918946de874f43d27",
+      "metadata": {
+        "name": "mars_2026",
+        "source": "horizons",
+        "query": {
+          "target": "499",
+          "location": "500@399",
+          "epochs": {
+            "start": "2026-01-01",
+            "stop": "2026-12-31",
+            "step": "3d"
+          }
+        },
+        "fetched_at": "2026-07-10T04:44:25.038645+00:00",
+        "n_rows": 122,
+        "columns": [
+          "source_id",
+          "datetime_str",
+          "datetime_jd",
+          "ra",
+          "dec",
+          "V",
+          "delta",
+          "r"
+        ],
+        "kind": "ephemeris",
+        "lineage": null
+      },
+      "lineage": null,
+      "historical_consumption": "unknown",
+      "disposition": "mapped",
+      "exceptions": []
+    },
+    {
+      "kind": "ephemeris",
+      "name": "mercury_2016_2026",
+      "legacy_aliases": [
+        "ephemeris/mercury_2016_2026",
+        "mercury_2016_2026"
+      ],
+      "sidecar_sha256": "sha256:eb86d4bfeeee260d072b9f74df9e34bb41aeb9be64fc32e13b9a8bd6b7a96455",
+      "sidecar_bytes_base64": "ewogICJuYW1lIjogIm1lcmN1cnlfMjAxNl8yMDI2IiwKICAia2luZCI6ICJlcGhlbWVyaXMiLAogICJzb3VyY2UiOiAiaG9yaXpvbnMiLAogICJxdWVyeSI6IHsKICAgICJ0YXJnZXQiOiAiMSIsCiAgICAidHlwZSI6ICJ2ZWN0b3JzIiwKICAgICJsb2NhdGlvbiI6ICI1MDBAMTAiLAogICAgInJlZnBsYW5lIjogImVhcnRoIiwKICAgICJlcG9jaHMiOiB7CiAgICAgICJzdGFydCI6ICIyMDE2LTAxLTAxIiwKICAgICAgInN0b3AiOiAiMjAyNi0wMS0wMSIsCiAgICAgICJzdGVwIjogIjEwZCIKICAgIH0KICB9LAogICJmZXRjaGVkX2F0IjogIjIwMjYtMDctMTFUMDA6NDI6NTIuMjQ4NDY0KzAwOjAwIiwKICAibl9yb3dzIjogMzY2LAogICJjb2x1bW5zIjogWwogICAgInRhcmdldG5hbWUiLAogICAgImVwb2NoX2pkX3RkYiIsCiAgICAiZGF0ZXRpbWVfc3RyIiwKICAgICJ4X2F1IiwKICAgICJ5X2F1IiwKICAgICJ6X2F1IiwKICAgICJ2eF9hdV9kIiwKICAgICJ2eV9hdV9kIiwKICAgICJ2el9hdV9kIiwKICAgICJsaWdodHRpbWUiLAogICAgInJhbmdlIiwKICAgICJyYW5nZV9yYXRlIiwKICAgICJzb3VyY2VfaWQiCiAgXSwKICAibGluZWFnZSI6IG51bGwKfQ==",
+      "parquet_sha256": "sha256:4406750276f8aab69e34b962bdd6d3f2079df34afd033b208db1e82ccb2b0791",
+      "metadata": {
+        "name": "mercury_2016_2026",
+        "kind": "ephemeris",
+        "source": "horizons",
+        "query": {
+          "target": "1",
+          "type": "vectors",
+          "location": "500@10",
+          "refplane": "earth",
+          "epochs": {
+            "start": "2016-01-01",
+            "stop": "2026-01-01",
+            "step": "10d"
+          }
+        },
+        "fetched_at": "2026-07-11T00:42:52.248464+00:00",
+        "n_rows": 366,
+        "columns": [
+          "targetname",
+          "epoch_jd_tdb",
+          "datetime_str",
+          "x_au",
+          "y_au",
+          "z_au",
+          "vx_au_d",
+          "vy_au_d",
+          "vz_au_d",
+          "lighttime",
+          "range",
+          "range_rate",
+          "source_id"
+        ],
+        "lineage": null
+      },
+      "lineage": null,
+      "historical_consumption": "unknown",
+      "disposition": "mapped",
+      "exceptions": []
+    },
+    {
+      "kind": "ephemeris",
+      "name": "neptune_2016_2026",
+      "legacy_aliases": [
+        "ephemeris/neptune_2016_2026",
+        "neptune_2016_2026"
+      ],
+      "sidecar_sha256": "sha256:e815252d7806e3428fad6efb1786d0fd2d1ef4b09ca5d61c43bcc2196db5f32a",
+      "sidecar_bytes_base64": "ewogICJuYW1lIjogIm5lcHR1bmVfMjAxNl8yMDI2IiwKICAia2luZCI6ICJlcGhlbWVyaXMiLAogICJzb3VyY2UiOiAiaG9yaXpvbnMiLAogICJxdWVyeSI6IHsKICAgICJ0YXJnZXQiOiAiOCIsCiAgICAidHlwZSI6ICJ2ZWN0b3JzIiwKICAgICJsb2NhdGlvbiI6ICI1MDBAMTAiLAogICAgInJlZnBsYW5lIjogImVhcnRoIiwKICAgICJlcG9jaHMiOiB7CiAgICAgICJzdGFydCI6ICIyMDE2LTAxLTAxIiwKICAgICAgInN0b3AiOiAiMjAyNi0wMS0wMSIsCiAgICAgICJzdGVwIjogIjEwZCIKICAgIH0KICB9LAogICJmZXRjaGVkX2F0IjogIjIwMjYtMDctMTFUMDA6NDI6NTUuOTI0OTQ2KzAwOjAwIiwKICAibl9yb3dzIjogMzY2LAogICJjb2x1bW5zIjogWwogICAgInRhcmdldG5hbWUiLAogICAgImVwb2NoX2pkX3RkYiIsCiAgICAiZGF0ZXRpbWVfc3RyIiwKICAgICJ4X2F1IiwKICAgICJ5X2F1IiwKICAgICJ6X2F1IiwKICAgICJ2eF9hdV9kIiwKICAgICJ2eV9hdV9kIiwKICAgICJ2el9hdV9kIiwKICAgICJsaWdodHRpbWUiLAogICAgInJhbmdlIiwKICAgICJyYW5nZV9yYXRlIiwKICAgICJzb3VyY2VfaWQiCiAgXSwKICAibGluZWFnZSI6IG51bGwKfQ==",
+      "parquet_sha256": "sha256:cb9916bce7846de6ec3674f7b6f97b314f3d812389fb2c3d2b0b0edd0aff3dba",
+      "metadata": {
+        "name": "neptune_2016_2026",
+        "kind": "ephemeris",
+        "source": "horizons",
+        "query": {
+          "target": "8",
+          "type": "vectors",
+          "location": "500@10",
+          "refplane": "earth",
+          "epochs": {
+            "start": "2016-01-01",
+            "stop": "2026-01-01",
+            "step": "10d"
+          }
+        },
+        "fetched_at": "2026-07-11T00:42:55.924946+00:00",
+        "n_rows": 366,
+        "columns": [
+          "targetname",
+          "epoch_jd_tdb",
+          "datetime_str",
+          "x_au",
+          "y_au",
+          "z_au",
+          "vx_au_d",
+          "vy_au_d",
+          "vz_au_d",
+          "lighttime",
+          "range",
+          "range_rate",
+          "source_id"
+        ],
+        "lineage": null
+      },
+      "lineage": null,
+      "historical_consumption": "unknown",
+      "disposition": "mapped",
+      "exceptions": []
+    },
+    {
+      "kind": "ephemeris",
+      "name": "saturn_2016_2026",
+      "legacy_aliases": [
+        "ephemeris/saturn_2016_2026",
+        "saturn_2016_2026"
+      ],
+      "sidecar_sha256": "sha256:10c75c1c30e7440ef49364040b7571f222937dfb48f71ae42817022f206364a7",
+      "sidecar_bytes_base64": "ewogICJuYW1lIjogInNhdHVybl8yMDE2XzIwMjYiLAogICJraW5kIjogImVwaGVtZXJpcyIsCiAgInNvdXJjZSI6ICJob3Jpem9ucyIsCiAgInF1ZXJ5IjogewogICAgInRhcmdldCI6ICI2IiwKICAgICJ0eXBlIjogInZlY3RvcnMiLAogICAgImxvY2F0aW9uIjogIjUwMEAxMCIsCiAgICAicmVmcGxhbmUiOiAiZWFydGgiLAogICAgImVwb2NocyI6IHsKICAgICAgInN0YXJ0IjogIjIwMTYtMDEtMDEiLAogICAgICAic3RvcCI6ICIyMDI2LTAxLTAxIiwKICAgICAgInN0ZXAiOiAiMTBkIgogICAgfQogIH0sCiAgImZldGNoZWRfYXQiOiAiMjAyNi0wNy0xMVQwMDo0Mjo1NC44MDAyODcrMDA6MDAiLAogICJuX3Jvd3MiOiAzNjYsCiAgImNvbHVtbnMiOiBbCiAgICAidGFyZ2V0bmFtZSIsCiAgICAiZXBvY2hfamRfdGRiIiwKICAgICJkYXRldGltZV9zdHIiLAogICAgInhfYXUiLAogICAgInlfYXUiLAogICAgInpfYXUiLAogICAgInZ4X2F1X2QiLAogICAgInZ5X2F1X2QiLAogICAgInZ6X2F1X2QiLAogICAgImxpZ2h0dGltZSIsCiAgICAicmFuZ2UiLAogICAgInJhbmdlX3JhdGUiLAogICAgInNvdXJjZV9pZCIKICBdLAogICJsaW5lYWdlIjogbnVsbAp9",
+      "parquet_sha256": "sha256:6d7051cfc4ed721a5c845e23ba7e426a30f1627e2c60c1a644b028a8c6306328",
+      "metadata": {
+        "name": "saturn_2016_2026",
+        "kind": "ephemeris",
+        "source": "horizons",
+        "query": {
+          "target": "6",
+          "type": "vectors",
+          "location": "500@10",
+          "refplane": "earth",
+          "epochs": {
+            "start": "2016-01-01",
+            "stop": "2026-01-01",
+            "step": "10d"
+          }
+        },
+        "fetched_at": "2026-07-11T00:42:54.800287+00:00",
+        "n_rows": 366,
+        "columns": [
+          "targetname",
+          "epoch_jd_tdb",
+          "datetime_str",
+          "x_au",
+          "y_au",
+          "z_au",
+          "vx_au_d",
+          "vy_au_d",
+          "vz_au_d",
+          "lighttime",
+          "range",
+          "range_rate",
+          "source_id"
+        ],
+        "lineage": null
+      },
+      "lineage": null,
+      "historical_consumption": "unknown",
+      "disposition": "mapped",
+      "exceptions": []
+    },
+    {
+      "kind": "ephemeris",
+      "name": "uranus_2016_2026",
+      "legacy_aliases": [
+        "ephemeris/uranus_2016_2026",
+        "uranus_2016_2026"
+      ],
+      "sidecar_sha256": "sha256:8ebc83db527c473b26a24310743ab46eb725cc9730dd619f047bbb37637d15da",
+      "sidecar_bytes_base64": "ewogICJuYW1lIjogInVyYW51c18yMDE2XzIwMjYiLAogICJraW5kIjogImVwaGVtZXJpcyIsCiAgInNvdXJjZSI6ICJob3Jpem9ucyIsCiAgInF1ZXJ5IjogewogICAgInRhcmdldCI6ICI3IiwKICAgICJ0eXBlIjogInZlY3RvcnMiLAogICAgImxvY2F0aW9uIjogIjUwMEAxMCIsCiAgICAicmVmcGxhbmUiOiAiZWFydGgiLAogICAgImVwb2NocyI6IHsKICAgICAgInN0YXJ0IjogIjIwMTYtMDEtMDEiLAogICAgICAic3RvcCI6ICIyMDI2LTAxLTAxIiwKICAgICAgInN0ZXAiOiAiMTBkIgogICAgfQogIH0sCiAgImZldGNoZWRfYXQiOiAiMjAyNi0wNy0xMVQwMDo0Mjo1NS40MTkzMjcrMDA6MDAiLAogICJuX3Jvd3MiOiAzNjYsCiAgImNvbHVtbnMiOiBbCiAgICAidGFyZ2V0bmFtZSIsCiAgICAiZXBvY2hfamRfdGRiIiwKICAgICJkYXRldGltZV9zdHIiLAogICAgInhfYXUiLAogICAgInlfYXUiLAogICAgInpfYXUiLAogICAgInZ4X2F1X2QiLAogICAgInZ5X2F1X2QiLAogICAgInZ6X2F1X2QiLAogICAgImxpZ2h0dGltZSIsCiAgICAicmFuZ2UiLAogICAgInJhbmdlX3JhdGUiLAogICAgInNvdXJjZV9pZCIKICBdLAogICJsaW5lYWdlIjogbnVsbAp9",
+      "parquet_sha256": "sha256:bb5ed5019f8f3084ef8c71cae3fc1fe7a59e0e1bfe5512d2d59b3e7169e79207",
+      "metadata": {
+        "name": "uranus_2016_2026",
+        "kind": "ephemeris",
+        "source": "horizons",
+        "query": {
+          "target": "7",
+          "type": "vectors",
+          "location": "500@10",
+          "refplane": "earth",
+          "epochs": {
+            "start": "2016-01-01",
+            "stop": "2026-01-01",
+            "step": "10d"
+          }
+        },
+        "fetched_at": "2026-07-11T00:42:55.419327+00:00",
+        "n_rows": 366,
+        "columns": [
+          "targetname",
+          "epoch_jd_tdb",
+          "datetime_str",
+          "x_au",
+          "y_au",
+          "z_au",
+          "vx_au_d",
+          "vy_au_d",
+          "vz_au_d",
+          "lighttime",
+          "range",
+          "range_rate",
+          "source_id"
+        ],
+        "lineage": null
+      },
+      "lineage": null,
+      "historical_consumption": "unknown",
+      "disposition": "mapped",
+      "exceptions": []
+    },
+    {
+      "kind": "ephemeris",
+      "name": "venus_2016_2026",
+      "legacy_aliases": [
+        "ephemeris/venus_2016_2026",
+        "venus_2016_2026"
+      ],
+      "sidecar_sha256": "sha256:28647cc5d418e4c18e8be94fedfb07b7187438b70eefeeda78ba3ef277bc567b",
+      "sidecar_bytes_base64": "ewogICJuYW1lIjogInZlbnVzXzIwMTZfMjAyNiIsCiAgImtpbmQiOiAiZXBoZW1lcmlzIiwKICAic291cmNlIjogImhvcml6b25zIiwKICAicXVlcnkiOiB7CiAgICAidGFyZ2V0IjogIjIiLAogICAgInR5cGUiOiAidmVjdG9ycyIsCiAgICAibG9jYXRpb24iOiAiNTAwQDEwIiwKICAgICJyZWZwbGFuZSI6ICJlYXJ0aCIsCiAgICAiZXBvY2hzIjogewogICAgICAic3RhcnQiOiAiMjAxNi0wMS0wMSIsCiAgICAgICJzdG9wIjogIjIwMjYtMDEtMDEiLAogICAgICAic3RlcCI6ICIxMGQiCiAgICB9CiAgfSwKICAiZmV0Y2hlZF9hdCI6ICIyMDI2LTA3LTExVDAwOjQyOjUyLjc1NDQ2OCswMDowMCIsCiAgIm5fcm93cyI6IDM2NiwKICAiY29sdW1ucyI6IFsKICAgICJ0YXJnZXRuYW1lIiwKICAgICJlcG9jaF9qZF90ZGIiLAogICAgImRhdGV0aW1lX3N0ciIsCiAgICAieF9hdSIsCiAgICAieV9hdSIsCiAgICAiel9hdSIsCiAgICAidnhfYXVfZCIsCiAgICAidnlfYXVfZCIsCiAgICAidnpfYXVfZCIsCiAgICAibGlnaHR0aW1lIiwKICAgICJyYW5nZSIsCiAgICAicmFuZ2VfcmF0ZSIsCiAgICAic291cmNlX2lkIgogIF0sCiAgImxpbmVhZ2UiOiBudWxsCn0=",
+      "parquet_sha256": "sha256:5ba947f3df4976200fcf2b7c98cd778f583a426c1871046af35417e7cc6ca500",
+      "metadata": {
+        "name": "venus_2016_2026",
+        "kind": "ephemeris",
+        "source": "horizons",
+        "query": {
+          "target": "2",
+          "type": "vectors",
+          "location": "500@10",
+          "refplane": "earth",
+          "epochs": {
+            "start": "2016-01-01",
+            "stop": "2026-01-01",
+            "step": "10d"
+          }
+        },
+        "fetched_at": "2026-07-11T00:42:52.754468+00:00",
+        "n_rows": 366,
+        "columns": [
+          "targetname",
+          "epoch_jd_tdb",
+          "datetime_str",
+          "x_au",
+          "y_au",
+          "z_au",
+          "vx_au_d",
+          "vy_au_d",
+          "vz_au_d",
+          "lighttime",
+          "range",
+          "range_rate",
+          "source_id"
+        ],
+        "lineage": null
+      },
+      "lineage": null,
+      "historical_consumption": "unknown",
+      "disposition": "mapped",
+      "exceptions": []
+    }
+  ]
+}

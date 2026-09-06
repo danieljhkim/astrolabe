@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "kind": "artifact",
+  "id": "urn:research:astrolabe:artifact:dataset%3Acatalog%3Asparc_rotcurves",
+  "aliases": [
+    "catalog/sparc_rotcurves",
+    "sparc_rotcurves"
+  ],
+  "activity": "active",
+  "scope": "unknown",
+  "provenance": {
+    "repository": "astrolabe",
+    "git_revision": "90f5b58890da36c44286a4edbde7eead879410a8",
+    "blob_oid": null,
+    "sha256": "sha256:b855a0a4eefa15ff7fa0681a183285821f85619fa27df9b45217f8b025374a12",
+    "path": "data/processed/catalog/sparc_rotcurves.json",
+    "selector": "$",
+    "historical": true,
+    "working_tree": true
+  },
+  "limitations": [
+    "Dry-run current-byte hash; retained immutable bytes require snapshot capture.",
+    "Present bytes do not establish which generation any historical analysis consumed."
+  ],
+  "missingness": [
+    "immutable-retained-bytes",
+    "historical-consumption",
+    "scope",
+    "lineage-not-recorded"
+  ],
+  "legacy": {
+    "dataset": {
+      "name": "sparc_rotcurves",
+      "kind": "catalog",
+      "source": "sparc",
+      "query": {
+        "table": "rotation_curves",
+        "transport": "https manual validation"
+      },
+      "fetched_at": "2026-07-12T09:18:15.899771+00:00",
+      "n_rows": 3391,
+      "columns": [
+        "source_id",
+        "dist_mpc",
+        "r_kpc",
+        "v_obs_kms",
+        "v_obs_err_kms",
+        "v_gas_kms",
+        "v_disk_kms",
+        "v_bul_kms",
+        "sb_disk_lsun_pc2",
+        "sb_bul_lsun_pc2"
+      ],
+      "lineage": null,
+      "semantics": null
+    },
+    "sidecar_bytes_base64": "ewogICJuYW1lIjogInNwYXJjX3JvdGN1cnZlcyIsCiAgImtpbmQiOiAiY2F0YWxvZyIsCiAgInNvdXJjZSI6ICJzcGFyYyIsCiAgInF1ZXJ5IjogewogICAgInRhYmxlIjogInJvdGF0aW9uX2N1cnZlcyIsCiAgICAidHJhbnNwb3J0IjogImh0dHBzIG1hbnVhbCB2YWxpZGF0aW9uIgogIH0sCiAgImZldGNoZWRfYXQiOiAiMjAyNi0wNy0xMlQwOToxODoxNS44OTk3NzErMDA6MDAiLAogICJuX3Jvd3MiOiAzMzkxLAogICJjb2x1bW5zIjogWwogICAgInNvdXJjZV9pZCIsCiAgICAiZGlzdF9tcGMiLAogICAgInJfa3BjIiwKICAgICJ2X29ic19rbXMiLAogICAgInZfb2JzX2Vycl9rbXMiLAogICAgInZfZ2FzX2ttcyIsCiAgICAidl9kaXNrX2ttcyIsCiAgICAidl9idWxfa21zIiwKICAgICJzYl9kaXNrX2xzdW5fcGMyIiwKICAgICJzYl9idWxfbHN1bl9wYzIiCiAgXSwKICAibGluZWFnZSI6IG51bGwsCiAgInNlbWFudGljcyI6IG51bGwKfQ==",
+    "inventory_pins": {
+      "sidecar_sha256": "sha256:b855a0a4eefa15ff7fa0681a183285821f85619fa27df9b45217f8b025374a12",
+      "parquet_sha256": "sha256:5c61aa95214a461ec59fcf1f2fd5e4f481849cc36a1867175cacfd446dc5dab5"
+    },
+    "lineage_resolution": []
+  },
+  "references": [],
+  "presentation": {},
+  "payload": {
+    "role": "dataset",
+    "availability": "external",
+    "snapshot_digest": "sha256:5c61aa95214a461ec59fcf1f2fd5e4f481849cc36a1867175cacfd446dc5dab5",
+    "locator": "data/processed/catalog/sparc_rotcurves.parquet",
+    "media_type": "application/vnd.apache.parquet"
+  },
+  "revision_id": "sha256:87fe8460e9581723b77fae75c1e05d02553f331e497835f46281c6249baee398"
+}

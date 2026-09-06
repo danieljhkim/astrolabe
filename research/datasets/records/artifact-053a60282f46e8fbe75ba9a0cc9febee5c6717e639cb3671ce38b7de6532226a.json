@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "kind": "artifact",
+  "id": "urn:research:astrolabe:artifact:dataset%3Aderived%3Aearth_newtonian_residuals",
+  "aliases": [
+    "derived/earth_newtonian_residuals",
+    "earth_newtonian_residuals"
+  ],
+  "activity": "active",
+  "scope": "unknown",
+  "provenance": {
+    "repository": "astrolabe",
+    "git_revision": "90f5b58890da36c44286a4edbde7eead879410a8",
+    "blob_oid": null,
+    "sha256": "sha256:18bfa2895287ce51fef014f4f048dc674d448978fe04e1ce4b91bc899570bb1a",
+    "path": "data/processed/derived/earth_newtonian_residuals.json",
+    "selector": "$",
+    "historical": true,
+    "working_tree": true
+  },
+  "limitations": [
+    "Dry-run current-byte hash; retained immutable bytes require snapshot capture.",
+    "Present bytes do not establish which generation any historical analysis consumed."
+  ],
+  "missingness": [
+    "immutable-retained-bytes",
+    "historical-consumption",
+    "scope",
+    "historical-lineage-unresolved"
+  ],
+  "legacy": {
+    "dataset": {
+      "name": "earth_newtonian_residuals",
+      "kind": "derived",
+      "source": "analysis.ephemeris_residuals",
+      "query": {
+        "ephemeris": "ephemeris/earth_2016_2026",
+        "baseline": "orrery lab/sims/solar-system-nbody/baseline/newtonian_2016_2026.parquet",
+        "orrery_commit": "f5e02e3",
+        "producer_task": "ORB-10093",
+        "convention": "baseline minus ephemeris; heliocentric ICRF, AU, JD TDB (docs/baseline-interface.md)"
+      },
+      "fetched_at": "2026-07-11T01:23:20.105940+00:00",
+      "n_rows": 366,
+      "columns": [
+        "epoch_jd_tdb",
+        "dx_au",
+        "dy_au",
+        "dz_au",
+        "dr_au"
+      ],
+      "lineage": [
+        {
+          "dataset": "earth_2016_2026",
+          "fetched_at": "2026-07-11T00:42:53.264933+00:00"
+        },
+        {
+          "external": "orrery/lab/sims/solar-system-nbody/baseline/newtonian_2016_2026.parquet",
+          "commit": "f5e02e3",
+          "task": "ORB-10093"
+        }
+      ]
+    },
+    "sidecar_bytes_base64": "ewogICJuYW1lIjogImVhcnRoX25ld3Rvbmlhbl9yZXNpZHVhbHMiLAogICJraW5kIjogImRlcml2ZWQiLAogICJzb3VyY2UiOiAiYW5hbHlzaXMuZXBoZW1lcmlzX3Jlc2lkdWFscyIsCiAgInF1ZXJ5IjogewogICAgImVwaGVtZXJpcyI6ICJlcGhlbWVyaXMvZWFydGhfMjAxNl8yMDI2IiwKICAgICJiYXNlbGluZSI6ICJvcnJlcnkgbGFiL3NpbXMvc29sYXItc3lzdGVtLW5ib2R5L2Jhc2VsaW5lL25ld3Rvbmlhbl8yMDE2XzIwMjYucGFycXVldCIsCiAgICAib3JyZXJ5X2NvbW1pdCI6ICJmNWUwMmUzIiwKICAgICJwcm9kdWNlcl90YXNrIjogIk9SQi0xMDA5MyIsCiAgICAiY29udmVudGlvbiI6ICJiYXNlbGluZSBtaW51cyBlcGhlbWVyaXM7IGhlbGlvY2VudHJpYyBJQ1JGLCBBVSwgSkQgVERCIChkb2NzL2Jhc2VsaW5lLWludGVyZmFjZS5tZCkiCiAgfSwKICAiZmV0Y2hlZF9hdCI6ICIyMDI2LTA3LTExVDAxOjIzOjIwLjEwNTk0MCswMDowMCIsCiAgIm5fcm93cyI6IDM2NiwKICAiY29sdW1ucyI6IFsKICAgICJlcG9jaF9qZF90ZGIiLAogICAgImR4X2F1IiwKICAgICJkeV9hdSIsCiAgICAiZHpfYXUiLAogICAgImRyX2F1IgogIF0sCiAgImxpbmVhZ2UiOiBbCiAgICB7CiAgICAgICJkYXRhc2V0IjogImVhcnRoXzIwMTZfMjAyNiIsCiAgICAgICJmZXRjaGVkX2F0IjogIjIwMjYtMDctMTFUMDA6NDI6NTMuMjY0OTMzKzAwOjAwIgogICAgfSwKICAgIHsKICAgICAgImV4dGVybmFsIjogIm9ycmVyeS9sYWIvc2ltcy9zb2xhci1zeXN0ZW0tbmJvZHkvYmFzZWxpbmUvbmV3dG9uaWFuXzIwMTZfMjAyNi5wYXJxdWV0IiwKICAgICAgImNvbW1pdCI6ICJmNWUwMmUzIiwKICAgICAgInRhc2siOiAiT1JCLTEwMDkzIgogICAgfQogIF0KfQ==",
+    "inventory_pins": {
+      "sidecar_sha256": "sha256:18bfa2895287ce51fef014f4f048dc674d448978fe04e1ce4b91bc899570bb1a",
+      "parquet_sha256": "sha256:42e02b58fffaba556cfdccfc982d026ee6e03363ccd5aa4f50181a2cd7f2ca7d"
+    },
+    "lineage_resolution": [
+      {
+        "index": 0,
+        "legacy": {
+          "dataset": "earth_2016_2026",
+          "fetched_at": "2026-07-11T00:42:53.264933+00:00"
+        },
+        "status": "pending",
+        "reason": "Legacy name/timestamp is not an immutable historical parent pin."
+      },
+      {
+        "index": 1,
+        "legacy": {
+          "external": "orrery/lab/sims/solar-system-nbody/baseline/newtonian_2016_2026.parquet",
+          "commit": "f5e02e3",
+          "task": "ORB-10093"
+        },
+        "status": "pending",
+        "reason": "Legacy parent was never persisted."
+      }
+    ]
+  },
+  "references": [],
+  "presentation": {},
+  "payload": {
+    "role": "dataset",
+    "availability": "external",
+    "snapshot_digest": "sha256:42e02b58fffaba556cfdccfc982d026ee6e03363ccd5aa4f50181a2cd7f2ca7d",
+    "locator": "data/processed/derived/earth_newtonian_residuals.parquet",
+    "media_type": "application/vnd.apache.parquet"
+  },
+  "revision_id": "sha256:053a60282f46e8fbe75ba9a0cc9febee5c6717e639cb3671ce38b7de6532226a"
+}

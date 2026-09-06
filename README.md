@@ -22,6 +22,9 @@ uv run astrolabe query "SELECT source_id, ra, dec FROM m31_core WHERE dec > 41.2
 # list datasets / render an HR diagram
 uv run astrolabe list
 uv run astrolabe hr --dataset m31_core --out m31_hr.png
+
+# freeze the current generation before reproducible scientific consumption
+uv run astrolabe snapshot capture m31_core --kind catalog
 ```
 
 ## Layout
@@ -41,6 +44,11 @@ src/astrolabe/
 Fetched data lands under `data/` (gitignored): raw as-fetched in `data/raw/<source>/`,
 normalized in `data/processed/` as Parquet with a sidecar `<name>.json` (source, query,
 fetched_at, row count).
+
+Mutable names remain convenient for exploration. Reproducible runs use content-addressed
+snapshots under ignored `data/snapshots/` and orbit-research v1 artifact/manifest pins.
+See [immutable dataset provenance](docs/research-provenance.md) for installation, exact
+parent capture, trace/export, the 27-dataset migration, compatibility, and rollback.
 
 ## Adding a source
 

@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "kind": "artifact",
+  "id": "urn:research:astrolabe:artifact:dataset%3Acatalog%3Amw_disk_anticenter_gaia",
+  "aliases": [
+    "catalog/mw_disk_anticenter_gaia",
+    "mw_disk_anticenter_gaia"
+  ],
+  "activity": "active",
+  "scope": "unknown",
+  "provenance": {
+    "repository": "astrolabe",
+    "git_revision": "90f5b58890da36c44286a4edbde7eead879410a8",
+    "blob_oid": null,
+    "sha256": "sha256:8b38adc4a1d6702cfb6c5c9649cc804f83fbf63cccc19687e3dc283c75811bed",
+    "path": "data/processed/catalog/mw_disk_anticenter_gaia.json",
+    "selector": "$",
+    "historical": true,
+    "working_tree": true
+  },
+  "limitations": [
+    "Dry-run current-byte hash; retained immutable bytes require snapshot capture.",
+    "Present bytes do not establish which generation any historical analysis consumed."
+  ],
+  "missingness": [
+    "immutable-retained-bytes",
+    "historical-consumption",
+    "scope",
+    "lineage-not-recorded"
+  ],
+  "legacy": {
+    "dataset": {
+      "name": "mw_disk_anticenter_gaia",
+      "kind": "catalog",
+      "source": "gaia",
+      "query": {
+        "adql": "SELECT TOP 300000\n  g.source_id, g.ra, g.dec, g.parallax, g.parallax_over_error,\n  g.pmra, g.pmdec, g.radial_velocity, g.ruwe,\n  g.phot_g_mean_mag, g.bp_rp, d.r_med_photogeo\nFROM gaiadr3.gaia_source AS g\nJOIN external.gaiaedr3_distance AS d ON g.source_id = d.source_id\nWHERE g.radial_velocity IS NOT NULL\n  AND g.ruwe < 1.4\n  AND g.parallax_over_error > 1\n  AND ABS(g.b) < 25\n  AND g.l BETWEEN 90 AND 270\n  AND d.r_med_photogeo > 6000\nORDER BY g.random_index"
+      },
+      "fetched_at": "2026-07-10T06:10:13.411965+00:00",
+      "n_rows": 200220,
+      "columns": [
+        "source_id",
+        "ra",
+        "dec",
+        "parallax",
+        "parallax_over_error",
+        "pmra",
+        "pmdec",
+        "radial_velocity",
+        "ruwe",
+        "phot_g_mean_mag",
+        "bp_rp",
+        "r_med_photogeo"
+      ],
+      "lineage": null
+    },
+    "sidecar_bytes_base64": "ewogICJuYW1lIjogIm13X2Rpc2tfYW50aWNlbnRlcl9nYWlhIiwKICAia2luZCI6ICJjYXRhbG9nIiwKICAic291cmNlIjogImdhaWEiLAogICJxdWVyeSI6IHsKICAgICJhZHFsIjogIlNFTEVDVCBUT1AgMzAwMDAwXG4gIGcuc291cmNlX2lkLCBnLnJhLCBnLmRlYywgZy5wYXJhbGxheCwgZy5wYXJhbGxheF9vdmVyX2Vycm9yLFxuICBnLnBtcmEsIGcucG1kZWMsIGcucmFkaWFsX3ZlbG9jaXR5LCBnLnJ1d2UsXG4gIGcucGhvdF9nX21lYW5fbWFnLCBnLmJwX3JwLCBkLnJfbWVkX3Bob3RvZ2VvXG5GUk9NIGdhaWFkcjMuZ2FpYV9zb3VyY2UgQVMgZ1xuSk9JTiBleHRlcm5hbC5nYWlhZWRyM19kaXN0YW5jZSBBUyBkIE9OIGcuc291cmNlX2lkID0gZC5zb3VyY2VfaWRcbldIRVJFIGcucmFkaWFsX3ZlbG9jaXR5IElTIE5PVCBOVUxMXG4gIEFORCBnLnJ1d2UgPCAxLjRcbiAgQU5EIGcucGFyYWxsYXhfb3Zlcl9lcnJvciA+IDFcbiAgQU5EIEFCUyhnLmIpIDwgMjVcbiAgQU5EIGcubCBCRVRXRUVOIDkwIEFORCAyNzBcbiAgQU5EIGQucl9tZWRfcGhvdG9nZW8gPiA2MDAwXG5PUkRFUiBCWSBnLnJhbmRvbV9pbmRleCIKICB9LAogICJmZXRjaGVkX2F0IjogIjIwMjYtMDctMTBUMDY6MTA6MTMuNDExOTY1KzAwOjAwIiwKICAibl9yb3dzIjogMjAwMjIwLAogICJjb2x1bW5zIjogWwogICAgInNvdXJjZV9pZCIsCiAgICAicmEiLAogICAgImRlYyIsCiAgICAicGFyYWxsYXgiLAogICAgInBhcmFsbGF4X292ZXJfZXJyb3IiLAogICAgInBtcmEiLAogICAgInBtZGVjIiwKICAgICJyYWRpYWxfdmVsb2NpdHkiLAogICAgInJ1d2UiLAogICAgInBob3RfZ19tZWFuX21hZyIsCiAgICAiYnBfcnAiLAogICAgInJfbWVkX3Bob3RvZ2VvIgogIF0sCiAgImxpbmVhZ2UiOiBudWxsCn0=",
+    "inventory_pins": {
+      "sidecar_sha256": "sha256:8b38adc4a1d6702cfb6c5c9649cc804f83fbf63cccc19687e3dc283c75811bed",
+      "parquet_sha256": "sha256:9a485af95c41282010a0244866e4039c6f837654a6e161ce75689e9a266f413f"
+    },
+    "lineage_resolution": []
+  },
+  "references": [],
+  "presentation": {},
+  "payload": {
+    "role": "dataset",
+    "availability": "external",
+    "snapshot_digest": "sha256:9a485af95c41282010a0244866e4039c6f837654a6e161ce75689e9a266f413f",
+    "locator": "data/processed/catalog/mw_disk_anticenter_gaia.parquet",
+    "media_type": "application/vnd.apache.parquet"
+  },
+  "revision_id": "sha256:f61af27d574b31ba95a43d96bac30132948d35c0fada12e4deec73124bec093c"
+}
