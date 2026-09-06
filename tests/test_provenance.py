@@ -25,6 +25,82 @@ from astrolabe.provenance import (
 from astrolabe.store import Store
 
 
+def _git_repo_revision(path: Path) -> str:
+    subprocess.run(["git", "init", "-q", str(path)], check=True)
+    subprocess.run(
+        [
+            "git",
+            "-C",
+            str(path),
+            "-c",
+            "user.email=tests@example.invalid",
+            "-c",
+            "user.name=Astrolabe tests",
+            "commit",
+            "--allow-empty",
+            "-qm",
+            "test checkout",
+        ],
+        check=True,
+    )
+    return subprocess.check_output(
+        ["git", "-C", str(path), "rev-parse", "HEAD"], text=True
+    ).strip()
+
+
+def test_git_revision_requires_owning_checkout(tmp_path, monkeypatch):
+    import astrolabe.provenance as provenance
+
+    checkout = tmp_path / "checkout"
+    revision = _git_repo_revision(checkout)
+    module = checkout / "src" / "astrolabe" / "provenance.py"
+    module.parent.mkdir(parents=True)
+    module.touch()
+    monkeypatch.setattr(provenance, "__file__", str(module))
+
+    assert provenance._git_revision() == revision
+
+
+def test_git_revision_is_unknown_for_installed_package_without_git(tmp_path, monkeypatch):
+    import astrolabe.provenance as provenance
+
+    module = (
+        tmp_path
+        / "venv"
+        / "lib"
+        / "python3.12"
+        / "site-packages"
+        / "astrolabe"
+        / "provenance.py"
+    )
+    module.parent.mkdir(parents=True)
+    module.touch()
+    monkeypatch.setattr(provenance, "__file__", str(module))
+
+    assert provenance._git_revision() is None
+
+
+def test_git_revision_rejects_unrelated_ancestor_checkout(tmp_path, monkeypatch):
+    import astrolabe.provenance as provenance
+
+    ancestor = tmp_path / "unrelated-checkout"
+    _git_repo_revision(ancestor)
+    module = (
+        ancestor
+        / "venv"
+        / "lib"
+        / "python3.12"
+        / "site-packages"
+        / "astrolabe"
+        / "provenance.py"
+    )
+    module.parent.mkdir(parents=True)
+    module.touch()
+    monkeypatch.setattr(provenance, "__file__", str(module))
+
+    assert provenance._git_revision() is None
+
+
 def test_snapshot_survives_overwrite_and_is_idempotent(tmp_path, gaia_table):
     store = Store(tmp_path)
     store.write(gaia_table, name="stars", source="gaia", query={"release": "DR3"})
@@ -183,7 +259,12 @@ def test_manifest_and_inventory_validate_without_reading_science(tmp_path, gaia_
     assert report["items"][0]["historical_consumption"] == "unknown"
 
 
-def test_legacy_sidecar_without_integrity_fields_remains_capturable(tmp_path, gaia_table):
+def test_legacy_sidecar_without_integrity_fields_remains_capturable(
+    tmp_path, gaia_table, monkeypatch
+):
+    import astrolabe.provenance as provenance
+
+    monkeypatch.setattr(provenance, "_git_revision", lambda: None)
     store = Store(tmp_path)
     store.write(gaia_table, name="stars", source="gaia")
     meta_path = store._meta_path("catalog", "stars")
@@ -197,6 +278,7 @@ def test_legacy_sidecar_without_integrity_fields_remains_capturable(tmp_path, ga
         "non-git-dataset-bytes",
         "lineage-not-recorded",
         "scope",
+        "git-revision",
     ]
 
 

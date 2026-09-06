@@ -108,8 +108,28 @@ def _encoded(value: Any) -> bytes:
 
 
 def _git_revision() -> str | None:
+    """Return a revision only when this module is in its owning checkout.
+
+    An installed wheel can sit below an unrelated Git repository.  Git's
+    upward discovery would then produce that repository's revision, which is
+    not evidence for the installed Astrolabe code.  A source checkout has a
+    stable ``src/astrolabe/provenance.py`` layout and must itself be the Git
+    top-level directory before its revision is recorded.
+    """
     root = Path(__file__).resolve().parents[2]
+    expected_module = root / "src" / "astrolabe" / "provenance.py"
+    if Path(__file__).resolve() != expected_module:
+        return None
     try:
+        checkout = Path(
+            subprocess.check_output(
+                ["git", "-C", str(root), "rev-parse", "--show-toplevel"],
+                text=True,
+                stderr=subprocess.DEVNULL,
+            ).strip()
+        ).resolve()
+        if checkout != root:
+            return None
         return subprocess.check_output(
             ["git", "-C", str(root), "rev-parse", "HEAD"],
             text=True,
